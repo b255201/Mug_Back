@@ -1,0 +1,453 @@
+table.dataTable {
+	margin: 0px auto;
+	width: 100%;
+	clear: both;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid #ddd;
+	margin: 15px 0 0 0;
+}
+table.dataTable thead th,
+table.dataTable tfoot th {
+	font-weight: bold;
+}
+table.dataTable thead th,
+table.dataTable thead td {
+	padding: 10px 18px;
+	border-bottom: 1px solid #ddd;
+}
+table.dataTable thead th:active {
+
+}
+table.dataTable thead td:active {
+
+}
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+	padding: 10px;
+	border-bottom: rgb(17, 17, 17) 1px solid;
+}
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+	cursor: pointer;
+}
+table.dataTable thead .sorting {
+	background: url("../images/sort_both.png") no-repeat right #f8f8f8;
+}
+table.dataTable thead .sorting_asc {
+	background: url("../images/sort_asc.png") no-repeat right #f8f8f8;
+}
+table.dataTable thead .sorting_desc {
+	background: url("../images/sort_desc.png") no-repeat right;
+}
+table.dataTable thead .sorting_asc_disabled {
+	background: url("../images/sort_asc_disabled.png") no-repeat right;
+}
+table.dataTable thead .sorting_desc_disabled {
+	background: url("../images/sort_desc_disabled.png") no-repeat right;
+}
+table.dataTable tbody tr {
+	background: rgb(255, 255, 255);
+}
+table.dataTable tbody tr.selected {
+	background: rgb(176, 190, 217);
+}
+table.dataTable tbody th {
+	padding: 8px 10px;
+}
+table.dataTable tbody td {
+	padding:10px;
+/*	font-size:0.9em;*/
+}
+table.display {
+	font-family: "微軟正黑體";
+}
+table.row-border.dataTable tbody th,
+table.row-border.dataTable tbody td,
+table.display.dataTable tbody th,
+table.display.dataTable tbody td {
+	border-top: rgb(221, 221, 221) 1px solid;
+}
+table.row-border.dataTable tbody tr:first-child th,
+table.row-border.dataTable tbody tr:first-child td,
+table.display.dataTable tbody tr:first-child th,
+table.display.dataTable tbody tr:first-child td {
+	border-top: currentColor medium none;
+}
+table.cell-border.dataTable tbody th,
+table.cell-border.dataTable tbody td {
+	border-top: rgb(221, 221, 221) 1px solid;
+	border-right: rgb(221, 221, 221) 1px solid;
+}
+table.cell-border.dataTable tbody tr th:first-child,
+table.cell-border.dataTable tbody tr td:first-child {
+	border-left: rgb(221, 221, 221) 1px solid;
+}
+table.cell-border.dataTable tbody tr:first-child th,
+table.cell-border.dataTable tbody tr:first-child td {
+	border-top: currentColor medium none;
+}
+table.stripe.dataTable tbody tr.odd,
+table.display.dataTable tbody tr.odd {
+	background: rgb(249, 249, 249);
+}
+table.stripe.dataTable tbody tr.selected.odd,
+table.display.dataTable tbody tr.selected.odd {
+	background: rgb(171, 185, 211);
+}
+table.display.dataTable tbody tr td:last-child {
+	color: #868686;
+	/*font-size:0.5em;*/
+}
+table.hover.dataTable tbody tr:hover,
+table.display.dataTable tbody tr:hover {
+	background: whitesmoke;
+}
+table.hover.dataTable tbody tr.selected:hover,
+table.display.dataTable tbody tr.selected:hover {
+	background: rgb(169, 183, 209);
+}
+table.order-column.dataTable tbody tr > .sorting_1,
+table.order-column.dataTable tbody tr > .sorting_2,
+table.order-column.dataTable tbody tr > .sorting_3 {
+	background: rgb(249, 249, 249);
+}
+table.display.dataTable tbody tr > .sorting_1,
+table.display.dataTable tbody tr > .sorting_2,
+table.display.dataTable tbody tr > .sorting_3 {
+	background: rgb(249, 249, 249);
+	color:#868686;
+}
+table.order-column.dataTable tbody tr.selected > .sorting_1,
+table.order-column.dataTable tbody tr.selected > .sorting_2,
+table.order-column.dataTable tbody tr.selected > .sorting_3 {
+	background: rgb(172, 186, 212);
+}
+table.display.dataTable tbody tr.selected > .sorting_1,
+table.display.dataTable tbody tr.selected > .sorting_2,
+table.display.dataTable tbody tr.selected > .sorting_3 {
+	background: rgb(172, 186, 212);
+}
+table.display.dataTable tbody tr.odd > .sorting_1,
+table.stripe.order-column.dataTable tbody tr.odd > .sorting_1{
+	background: rgb(241, 241, 241);
+}
+table.display.dataTable tbody tr.odd > .sorting_2,
+table.stripe.order-column.dataTable tbody tr.odd > .sorting_2 {
+	background: rgb(243, 243, 243);
+}
+table.display.dataTable tbody tr.odd > .sorting_3,
+table.stripe.order-column.dataTable tbody tr.odd > .sorting_3 {
+	background: whitesmoke;
+}
+table.display.dataTable tbody tr.selected.odd > .sorting_1,
+table.stripe.order-column.dataTable tbody tr.selected.odd > .sorting_1 {
+	background: rgb(166, 179, 205);
+}
+table.display.dataTable tbody tr.selected.odd > .sorting_2,
+table.stripe.order-column.dataTable tbody tr.selected.odd > .sorting_2{
+	background: rgb(167, 181, 206);
+}
+table.display.dataTable tbody tr.selected.odd > .sorting_3,
+table.stripe.order-column.dataTable tbody tr.selected.odd > .sorting_3 {
+	background: rgb(169, 182, 208);
+}
+table.display.dataTable tbody tr.even > .sorting_1,
+table.stripe.order-column.dataTable tbody tr.even > .sorting_1 {
+	background: rgb(249, 249, 249);
+}
+table.display.dataTable tbody tr.even > .sorting_2,
+table.stripe.order-column.dataTable tbody tr.even > .sorting_2 {
+	background: rgb(251, 251, 251);
+}
+table.display.dataTable tbody tr.even > .sorting_3,
+table.stripe.order-column.dataTable tbody tr.even > .sorting_3 {
+	background: rgb(253, 253, 253);
+}
+table.display.dataTable tbody tr.selected.even > .sorting_1,
+table.stripe.order-column.dataTable tbody tr.selected.even > .sorting_1 {
+	background: rgb(172, 186, 212);
+}
+table.display.dataTable tbody tr.selected.even > .sorting_2,
+table.stripe.order-column.dataTable tbody tr.selected.even > .sorting_2 {
+	background: rgb(173, 187, 214);
+}
+table.display.dataTable tbody tr.selected.even > .sorting_3,
+table.stripe.order-column.dataTable tbody tr.selected.even > .sorting_3 {
+	background: rgb(175, 189, 216);
+}
+table.display.dataTable tbody tr:hover > .sorting_1,
+table.hover.order-column.dataTable tbody tr:hover > .sorting_1 {
+	background: rgb(234, 234, 234);
+}
+table.display.dataTable tbody tr:hover > .sorting_2, table.hover.order-column.dataTable tbody tr:hover > .sorting_2 {
+	background: rgb(235, 235, 235);
+}
+table.display.dataTable tbody tr:hover > .sorting_3,
+table.hover.order-column.dataTable tbody tr:hover > .sorting_3 {
+	background: rgb(238, 238, 238);
+}
+table.display.dataTable tbody tr.selected:hover > .sorting_1 {
+	background: rgb(161, 174, 199);
+}
+table.hover.order-column.dataTable tbody tr.selected:hover > .sorting_1 {
+	background: rgb(161, 174, 199);
+}
+table.display.dataTable tbody tr.selected:hover > .sorting_2 {
+	background: rgb(162, 175, 200);
+}
+table.hover.order-column.dataTable tbody tr.selected:hover > .sorting_2 {
+	background: rgb(162, 175, 200);
+}
+table.display.dataTable tbody tr.selected:hover > .sorting_3 {
+	background: rgb(164, 178, 203);
+}
+table.hover.order-column.dataTable tbody tr.selected:hover > .sorting_3 {
+	background: rgb(164, 178, 203);
+}
+table.no-footer.dataTable {
+	border-bottom: 1px solid #ddd;
+}
+table.nowrap.dataTable th, table.nowrap.dataTable td {
+	white-space: nowrap;
+}
+table.compact.dataTable thead th,
+table.compact.dataTable thead td {
+	padding: 4px 17px 4px 4px;
+}
+table.compact.dataTable tfoot th,
+table.compact.dataTable tfoot td,
+table.compact.dataTable tbody th,
+table.compact.dataTable tbody td {
+	padding: 4px;
+}
+table.dataTable th.dt-left,
+table.dataTable td.dt-left {
+	text-align: left;
+}
+table.dataTable th.dt-center,
+table.dataTable td.dt-center,
+table.dataTable td.dataTables_empty {
+	text-align: center;
+}
+table.dataTable th.dt-right,
+table.dataTable td.dt-right {
+	text-align: right;
+}
+table.dataTable th.dt-justify,
+table.dataTable td.dt-justify {
+	text-align: justify;
+}
+table.dataTable th.dt-nowrap,
+table.dataTable td.dt-nowrap {
+	white-space: nowrap;
+}
+table.dataTable thead th.dt-head-left,
+table.dataTable thead td.dt-head-left,
+table.dataTable tfoot th.dt-head-left,
+table.dataTable tfoot td.dt-head-left {
+	text-align: left;
+}
+table.dataTable thead th.dt-head-center,
+table.dataTable thead td.dt-head-center,
+table.dataTable tfoot th.dt-head-center,
+table.dataTable tfoot td.dt-head-center {
+	text-align: center;
+}
+table.dataTable thead th.dt-head-right,
+table.dataTable thead td.dt-head-right,
+table.dataTable tfoot th.dt-head-right,
+table.dataTable tfoot td.dt-head-right {
+	text-align: right;
+}
+table.dataTable thead th.dt-head-justify,
+table.dataTable thead td.dt-head-justify,
+table.dataTable tfoot th.dt-head-justify,
+table.dataTable tfoot td.dt-head-justify {
+	text-align: justify;
+}
+table.dataTable thead th.dt-head-nowrap,
+table.dataTable thead td.dt-head-nowrap,
+table.dataTable tfoot th.dt-head-nowrap,
+table.dataTable tfoot td.dt-head-nowrap {
+	white-space: nowrap;
+}
+table.dataTable tbody th.dt-body-left,
+table.dataTable tbody td.dt-body-left {
+	text-align: left;
+}
+table.dataTable tbody th.dt-body-center,
+table.dataTable tbody td.dt-body-center {
+	text-align: center;
+}
+table.dataTable tbody th.dt-body-right,
+table.dataTable tbody td.dt-body-right {
+	text-align: right;
+}
+table.dataTable tbody th.dt-body-justify,
+table.dataTable tbody td.dt-body-justify {
+	text-align: justify;
+}
+table.dataTable tbody th.dt-body-nowrap,
+table.dataTable tbody td.dt-body-nowrap {
+	white-space: nowrap;
+}
+
+table.dataTable, table.dataTable th,
+table.dataTable td {
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+}
+.dataTables_wrapper {
+	clear: both;
+	position: relative;
+	-ms-zoom: 1;
+}
+.dataTables_length,
+.dataTables_filter {
+	margin:10px 0;
+}
+.dataTables_length label,
+.dataTables_filter label {
+	font-weight:400;
+}
+.dataTables_wrapper .dataTables_length {
+	float: left;
+}
+.dataTables_wrapper .dataTables_filter {
+	text-align: right;
+	float: right;
+}
+.dataTables_wrapper .dataTables_filter input {
+	margin-left: 0.5em;
+}
+.dataTables_wrapper .dataTables_info {
+	padding-top: 0.75em;
+	clear: both;
+	float: left;
+}
+.dataTables_wrapper .dataTables_paginate {
+	text-align: right;
+	padding-top: 0.25em;
+	float: right;
+	padding:0.75em 0 0 0;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	padding: 0.1em 0.3em;
+	border: 1px solid transparent;
+	border-image: none;
+	text-align: center;
+	color: rgb(51, 51, 51) !important;
+	text-decoration: none !important;
+	margin: 0 0 0 2px;
+    display: inline-block;
+    cursor: pointer;
+    min-width: 1.5em;
+    box-sizing: border-box;
+    /*font-size:0.75em;*/
+}
+.dataTables_wrapper .dataTables_paginate .current.paginate_button {
+	background: #eeeeee;
+	border: 1px solid rgb(202, 202, 202);
+	color: rgb(51, 51, 51) !important;
+}
+.dataTables_wrapper .dataTables_paginate .current.paginate_button:hover {
+	background: #a39161;
+	border: 1px solid rgb(202, 202, 202);
+	color:#fff;
+}
+.dataTables_wrapper .dataTables_paginate .disabled.paginate_button,
+.dataTables_wrapper .dataTables_paginate .disabled.paginate_button:hover,
+.dataTables_wrapper .dataTables_paginate .disabled.paginate_button:active {
+	background: none;
+	border: 1px solid transparent;
+	border-image: none;
+	color:#6c6c6c !important;
+	cursor: default;
+	box-shadow: none;
+	cursor: pointer;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+	background: linear-gradient(rgb(88, 88, 88) 0%, rgb(17, 17, 17) 100%);
+	border: 1px solid rgb(17, 17, 17);
+	border-image: none;
+	color: white !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+	background: linear-gradient(rgb(43, 43, 43) 0%, rgb(12, 12, 12) 100%);
+	box-shadow: inset 0px 0px 3px #111;
+}
+.dataTables_wrapper .dataTables_paginate .ellipsis {
+	padding: 0px 1em;
+}
+.dataTables_wrapper .dataTables_processing {
+	background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+	left: 50%;
+	top: 50%;
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	padding: 20px 0 0 0;
+	font-size: 1.2em;
+	margin: -25px 0 0 0;
+	margin:0 0 0 -50%;
+	position: absolute;
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+	color: #6c6c6c;
+	/*font-size:0.75em;*/
+}
+.dataTables_wrapper .dataTables_scroll {
+	clear: both;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+	-webkit-overflow-scrolling: touch;
+}
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td > div.dataTables_sizing {
+	margin: 0px !important;
+	padding: 0px !important;
+	height: 0px;
+	overflow: hidden;
+}
+.no-footer.dataTables_wrapper .dataTables_scrollBody {
+	border-bottom: rgb(17, 17, 17) 1px solid;
+}
+.no-footer.dataTables_wrapper div.dataTables_scrollHead table,
+.no-footer.dataTables_wrapper div.dataTables_scrollBody table {
+	border-bottom: currentColor medium none;
+}
+.dataTables_wrapper::after {
+	height: 0px;
+	clear: both;
+	display: block;
+	visibility: hidden;
+	content: "";
+}
+@media screen and (max-width:767px)
+{
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+	text-align: center;
+	float: none;
+}
+.dataTables_wrapper .dataTables_paginate {
+	margin-top: 0.5em;
+}
+}
+@media screen and (max-width:640px)
+{
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+	text-align: center;
+	float: none;
+}
+.dataTables_wrapper .dataTables_filter {
+	margin-top: 0.5em;
+}
+}

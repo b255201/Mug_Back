@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mug", "Mug\Mug.csproj", "{989CC8EF-42AA-43D2-A8FD-E28FD362D779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mug.Dao", "Mug.Dao\Mug.Dao.csproj", "{BA9D6EFF-8114-455E-B18A-0860648D9BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mug.Service", "Mug.Service\Mug.Service.csproj", "{04EC60D3-CC30-4BB6-9B27-2153AC2ECB9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{989CC8EF-42AA-43D2-A8FD-E28FD362D779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989CC8EF-42AA-43D2-A8FD-E28FD362D779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989CC8EF-42AA-43D2-A8FD-E28FD362D779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989CC8EF-42AA-43D2-A8FD-E28FD362D779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA9D6EFF-8114-455E-B18A-0860648D9BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9D6EFF-8114-455E-B18A-0860648D9BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9D6EFF-8114-455E-B18A-0860648D9BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9D6EFF-8114-455E-B18A-0860648D9BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04EC60D3-CC30-4BB6-9B27-2153AC2ECB9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04EC60D3-CC30-4BB6-9B27-2153AC2ECB9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04EC60D3-CC30-4BB6-9B27-2153AC2ECB9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04EC60D3-CC30-4BB6-9B27-2153AC2ECB9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9F4EDC1-E102-4B3C-AD53-FCBC52C85FB4}
+	EndGlobalSection
+EndGlobal
