@@ -12,7 +12,9 @@ namespace Mug.Dao.Interface
     {
         void Create(TEntity instance);
 
-        void Update(TEntity instance);
+        //  void Update(TEntity instance);
+        //kai
+        void Update(TEntity instance, params object[] keyValues);
 
         void Delete(TEntity instance);
 

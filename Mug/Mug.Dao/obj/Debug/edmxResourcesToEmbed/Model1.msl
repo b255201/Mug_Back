@@ -1,6 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MugFactoryModelStoreContainer" CdmEntityContainer="MugFactoryEntities">
+    <EntitySetMapping Name="AboutPage">
+      <EntityTypeMapping TypeName="MugFactoryModel.AboutPage">
+        <MappingFragment StoreEntitySet="AboutPage">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subheading" ColumnName="Subheading" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="MugFactoryModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="Post_Id" ColumnName="Post_Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Sub_Title" ColumnName="Sub_Title" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Article_ID" ColumnName="Article_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Blogger">
+      <EntityTypeMapping TypeName="MugFactoryModel.Blogger">
+        <MappingFragment StoreEntitySet="Blogger">
+          <ScalarProperty Name="Blog_id" ColumnName="Blog_id" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Categore" ColumnName="Categore" />
+          <ScalarProperty Name="Category_Opt" ColumnName="Category_Opt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employee">
+      <EntityTypeMapping TypeName="MugFactoryModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+          <ScalarProperty Name="employeeName" ColumnName="employeeName" />
+          <ScalarProperty Name="employeeAccount" ColumnName="employeeAccount" />
+          <ScalarProperty Name="employeePwd" ColumnName="employeePwd" />
+          <ScalarProperty Name="employeeSalt" ColumnName="employeeSalt" />
+          <ScalarProperty Name="employeeEmail" ColumnName="employeeEmail" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="HomePage">
       <EntityTypeMapping TypeName="MugFactoryModel.HomePage">
         <MappingFragment StoreEntitySet="HomePage">
@@ -15,17 +68,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AboutPage">
-      <EntityTypeMapping TypeName="MugFactoryModel.AboutPage">
-        <MappingFragment StoreEntitySet="AboutPage">
+    <EntitySetMapping Name="Language">
+      <EntityTypeMapping TypeName="MugFactoryModel.Language">
+        <MappingFragment StoreEntitySet="Language">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Subheading" ColumnName="Subheading" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="Lang_val" ColumnName="Lang_val" />
+          <ScalarProperty Name="Lang_text" ColumnName="Lang_text" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -43,6 +91,13 @@
           <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
           <ScalarProperty Name="ServiceContent" ColumnName="ServiceContent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SerialNumber">
+      <EntityTypeMapping TypeName="MugFactoryModel.SerialNumber">
+        <MappingFragment StoreEntitySet="SerialNumber">
+          <ScalarProperty Name="SeqId" ColumnName="SeqId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

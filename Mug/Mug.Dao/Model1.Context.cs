@@ -25,8 +25,13 @@ namespace Mug.Dao
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<HomePage> HomePage { get; set; }
         public virtual DbSet<AboutPage> AboutPage { get; set; }
+        public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<Blogger> Blogger { get; set; }
+        public virtual DbSet<employee> employee { get; set; }
+        public virtual DbSet<HomePage> HomePage { get; set; }
+        public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<ProductPage> ProductPage { get; set; }
+        public virtual DbSet<SerialNumber> SerialNumber { get; set; }
     }
 }

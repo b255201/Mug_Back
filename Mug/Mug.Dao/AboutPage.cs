@@ -22,6 +22,5 @@ namespace Mug.Dao
         public Nullable<System.DateTime> CreateTime { get; set; }
         public Nullable<System.DateTime> ModifyTime { get; set; }
         public Nullable<bool> Enable { get; set; }
-        public string Time { get; set; }
     }
 }

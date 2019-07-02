@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MugFactoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MugFactoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AboutPage">
           <Key>
             <PropertyRef Name="Id" />
@@ -18,6 +18,42 @@
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="Enable" Type="bit" />
         </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Article_ID" />
+          </Key>
+          <Property Name="Post_Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" />
+          <Property Name="Sub_Title" Type="nvarchar(max)" />
+          <Property Name="Contents" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Article_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Blogger">
+          <Key>
+            <PropertyRef Name="Blog_id" />
+          </Key>
+          <Property Name="Blog_id" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="Categore" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category_Opt" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employeeId" />
+          </Key>
+          <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employeeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="employeeAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="employeePwd" Type="varbinary" MaxLength="60" Nullable="false" />
+          <Property Name="employeeSalt" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="employeeEmail" Type="nvarchar(max)" />
+          <Property Name="createTime" Type="datetime" />
+          <Property Name="modifyTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="HomePage">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,6 +66,14 @@
           <Property Name="ModifyTime" Type="datetime" />
           <Property Name="Enable" Type="bit" />
           <Property Name="Opt" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Lang_val" Type="nvarchar" MaxLength="10" />
+          <Property Name="Lang_text" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ProductPage">
           <Key>
@@ -47,15 +91,111 @@
           <Property Name="ServiceTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="ServiceContent" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="SerialNumber">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Article_Blogger">
+          <End Role="Blogger" Type="Self.Blogger" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blogger">
+              <PropertyRef Name="Blog_id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Post_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MugFactoryModelStoreContainer">
           <EntitySet Name="AboutPage" EntityType="Self.AboutPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blogger" EntityType="Self.Blogger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductPage" EntityType="Self.ProductPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerialNumber" EntityType="Self.SerialNumber" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Article_Blogger" Association="Self.FK_Article_Blogger">
+            <End Role="Blogger" EntitySet="Blogger" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Language" Association="Self.FK_Article_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MugFactoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AboutPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Subheading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="Enable" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Article_ID" />
+          </Key>
+          <Property Name="Post_Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Sub_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Article_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Blogger" Relationship="Self.FK_Article_Blogger" FromRole="Article" ToRole="Blogger" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_Article_Language" FromRole="Article" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="Blogger">
+          <Key>
+            <PropertyRef Name="Blog_id" />
+          </Key>
+          <Property Name="Blog_id" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="Categore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category_Opt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Article_Blogger" FromRole="Blogger" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employeeId" />
+          </Key>
+          <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employeeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="employeePwd" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+          <Property Name="employeeSalt" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="employeeEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="createTime" Type="DateTime" Precision="3" />
+          <Property Name="modifyTime" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="HomePage">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,18 +209,14 @@
           <Property Name="Enable" Type="Boolean" />
           <Property Name="Opt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="AboutPage">
+        <EntityType Name="Language">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Subheading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
-          <Property Name="Enable" Type="Boolean" />
+          <Property Name="Lang_val" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Lang_text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Article_Language" FromRole="Language" ToRole="Article" />
         </EntityType>
         <EntityType Name="ProductPage">
           <Key>
@@ -98,10 +234,53 @@
           <Property Name="ServiceTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ServiceContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SerialNumber">
+          <Key>
+            <PropertyRef Name="SeqId" />
+          </Key>
+          <Property Name="SeqId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Article_Blogger">
+          <End Role="Blogger" Type="Self.Blogger" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blogger">
+              <PropertyRef Name="Blog_id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Post_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MugFactoryEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="HomePage" EntityType="Self.HomePage" />
           <EntitySet Name="AboutPage" EntityType="Self.AboutPage" />
+          <EntitySet Name="Article" EntityType="Self.Article" />
+          <EntitySet Name="Blogger" EntityType="Self.Blogger" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="HomePage" EntityType="Self.HomePage" />
+          <EntitySet Name="Language" EntityType="Self.Language" />
           <EntitySet Name="ProductPage" EntityType="Self.ProductPage" />
+          <EntitySet Name="SerialNumber" EntityType="Self.SerialNumber" />
+          <AssociationSet Name="FK_Article_Blogger" Association="Self.FK_Article_Blogger">
+            <End Role="Blogger" EntitySet="Blogger" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Language" Association="Self.FK_Article_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -109,6 +288,59 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MugFactoryModelStoreContainer" CdmEntityContainer="MugFactoryEntities">
+          <EntitySetMapping Name="AboutPage">
+            <EntityTypeMapping TypeName="MugFactoryModel.AboutPage">
+              <MappingFragment StoreEntitySet="AboutPage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subheading" ColumnName="Subheading" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="MugFactoryModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Post_Id" ColumnName="Post_Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Sub_Title" ColumnName="Sub_Title" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Article_ID" ColumnName="Article_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogger">
+            <EntityTypeMapping TypeName="MugFactoryModel.Blogger">
+              <MappingFragment StoreEntitySet="Blogger">
+                <ScalarProperty Name="Blog_id" ColumnName="Blog_id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Categore" ColumnName="Categore" />
+                <ScalarProperty Name="Category_Opt" ColumnName="Category_Opt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="MugFactoryModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
+                <ScalarProperty Name="employeeAccount" ColumnName="employeeAccount" />
+                <ScalarProperty Name="employeePwd" ColumnName="employeePwd" />
+                <ScalarProperty Name="employeeSalt" ColumnName="employeeSalt" />
+                <ScalarProperty Name="employeeEmail" ColumnName="employeeEmail" />
+                <ScalarProperty Name="createTime" ColumnName="createTime" />
+                <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="HomePage">
             <EntityTypeMapping TypeName="MugFactoryModel.HomePage">
               <MappingFragment StoreEntitySet="HomePage">
@@ -123,17 +355,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AboutPage">
-            <EntityTypeMapping TypeName="MugFactoryModel.AboutPage">
-              <MappingFragment StoreEntitySet="AboutPage">
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="MugFactoryModel.Language">
+              <MappingFragment StoreEntitySet="Language">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Subheading" ColumnName="Subheading" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
-                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Lang_val" ColumnName="Lang_val" />
+                <ScalarProperty Name="Lang_text" ColumnName="Lang_text" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -151,6 +378,13 @@
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="ServiceTitle" ColumnName="ServiceTitle" />
                 <ScalarProperty Name="ServiceContent" ColumnName="ServiceContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerialNumber">
+            <EntityTypeMapping TypeName="MugFactoryModel.SerialNumber">
+              <MappingFragment StoreEntitySet="SerialNumber">
+                <ScalarProperty Name="SeqId" ColumnName="SeqId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

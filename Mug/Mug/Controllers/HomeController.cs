@@ -33,7 +33,7 @@ namespace Mug.Controllers
                              Description = Row.Description,
                              Image = Row.Image,
                              Enable = Row.Enable,
-                             Time = DBNull.Value.Equals(Row.CreateTime) ?"":DateTimeExtension.ToYMD(Row.CreateTime)
+                           //  Time = DBNull.Value.Equals(Row.CreateTime) ?"":DateTimeExtension.ToYMD(Row.CreateTime)
                            
                          };
             JQueryDataTableResponse<HomePage> jqDataTableRs = JQueryDataTableHelper<HomePage>.GetResponse(1, totalLen, totalLen, result.ToList());

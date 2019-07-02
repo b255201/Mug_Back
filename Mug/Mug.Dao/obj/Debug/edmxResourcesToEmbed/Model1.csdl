@@ -1,5 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MugFactoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AboutPage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Subheading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="Enable" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Article_ID" />
+    </Key>
+    <Property Name="Post_Id" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Sub_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Article_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Blogger" Relationship="Self.FK_Article_Blogger" FromRole="Article" ToRole="Blogger" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Article_Language" FromRole="Article" ToRole="Language" />
+  </EntityType>
+  <EntityType Name="Blogger">
+    <Key>
+      <PropertyRef Name="Blog_id" />
+    </Key>
+    <Property Name="Blog_id" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Enable" Type="Boolean" />
+    <Property Name="Categore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Category_Opt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Article" Relationship="Self.FK_Article_Blogger" FromRole="Blogger" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="employeeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="employeePwd" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+    <Property Name="employeeSalt" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+    <Property Name="employeeEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="createTime" Type="DateTime" Precision="3" />
+    <Property Name="modifyTime" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="HomePage">
     <Key>
       <PropertyRef Name="Id" />
@@ -13,18 +65,14 @@
     <Property Name="Enable" Type="Boolean" />
     <Property Name="Opt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="AboutPage">
+  <EntityType Name="Language">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Subheading" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="CreateTime" Type="DateTime" Precision="3" />
-    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
-    <Property Name="Enable" Type="Boolean" />
+    <Property Name="Lang_val" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Lang_text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Article" Relationship="Self.FK_Article_Language" FromRole="Language" ToRole="Article" />
   </EntityType>
   <EntityType Name="ProductPage">
     <Key>
@@ -42,9 +90,52 @@
     <Property Name="ServiceTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ServiceContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="SerialNumber">
+    <Key>
+      <PropertyRef Name="SeqId" />
+    </Key>
+    <Property Name="SeqId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Article_Blogger">
+    <End Role="Blogger" Type="Self.Blogger" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogger">
+        <PropertyRef Name="Blog_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Post_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Article_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MugFactoryEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="HomePage" EntityType="Self.HomePage" />
     <EntitySet Name="AboutPage" EntityType="Self.AboutPage" />
+    <EntitySet Name="Article" EntityType="Self.Article" />
+    <EntitySet Name="Blogger" EntityType="Self.Blogger" />
+    <EntitySet Name="employee" EntityType="Self.employee" />
+    <EntitySet Name="HomePage" EntityType="Self.HomePage" />
+    <EntitySet Name="Language" EntityType="Self.Language" />
     <EntitySet Name="ProductPage" EntityType="Self.ProductPage" />
+    <EntitySet Name="SerialNumber" EntityType="Self.SerialNumber" />
+    <AssociationSet Name="FK_Article_Blogger" Association="Self.FK_Article_Blogger">
+      <End Role="Blogger" EntitySet="Blogger" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Article_Language" Association="Self.FK_Article_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

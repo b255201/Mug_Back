@@ -13,6 +13,42 @@
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="Enable" Type="bit" />
   </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Article_ID" />
+    </Key>
+    <Property Name="Post_Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sub_Title" Type="nvarchar(max)" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Article_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blogger">
+    <Key>
+      <PropertyRef Name="Blog_id" />
+    </Key>
+    <Property Name="Blog_id" Type="int" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="Categore" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category_Opt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employeeId" />
+    </Key>
+    <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="employeeAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="employeePwd" Type="varbinary" MaxLength="60" Nullable="false" />
+    <Property Name="employeeSalt" Type="varbinary" MaxLength="50" Nullable="false" />
+    <Property Name="employeeEmail" Type="nvarchar(max)" />
+    <Property Name="createTime" Type="datetime" />
+    <Property Name="modifyTime" Type="datetime" />
+  </EntityType>
   <EntityType Name="HomePage">
     <Key>
       <PropertyRef Name="Id" />
@@ -25,6 +61,14 @@
     <Property Name="ModifyTime" Type="datetime" />
     <Property Name="Enable" Type="bit" />
     <Property Name="Opt" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Lang_val" Type="nvarchar" MaxLength="10" />
+    <Property Name="Lang_text" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProductPage">
     <Key>
@@ -42,9 +86,52 @@
     <Property Name="ServiceTitle" Type="nvarchar" MaxLength="50" />
     <Property Name="ServiceContent" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="SerialNumber">
+    <Key>
+      <PropertyRef Name="SeqId" />
+    </Key>
+    <Property Name="SeqId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Article_Blogger">
+    <End Role="Blogger" Type="Self.Blogger" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogger">
+        <PropertyRef Name="Blog_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Post_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Article_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MugFactoryModelStoreContainer">
     <EntitySet Name="AboutPage" EntityType="Self.AboutPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blogger" EntityType="Self.Blogger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductPage" EntityType="Self.ProductPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SerialNumber" EntityType="Self.SerialNumber" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Article_Blogger" Association="Self.FK_Article_Blogger">
+      <End Role="Blogger" EntitySet="Blogger" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Article_Language" Association="Self.FK_Article_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

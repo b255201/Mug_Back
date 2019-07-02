@@ -68,17 +68,32 @@ namespace Mug.Dao.Repository
         /// </summary>
         /// <param name="instance">The instance.</param>
         /// <exception cref="System.NotImplementedException"></exception>
-        public void Update(TEntity instance)
+        public void Update(TEntity instance, params object[] keyValues)
         {
             if (instance == null)
             {
                 throw new ArgumentNullException("instance");
             }
-            else
+
+            var entry = _context.Entry<TEntity>(instance);
+
+            if (entry.State == EntityState.Detached)
             {
-                this._context.Entry(instance).State = EntityState.Modified;
-                this.SaveChanges();
+                var set = _context.Set<TEntity>();
+
+                TEntity attachedEntity = set.Find(keyValues);
+
+                if (attachedEntity != null)
+                {
+                    var attachedEntry = _context.Entry(attachedEntity);
+                    attachedEntry.CurrentValues.SetValues(instance);
+                }
+                else
+                {
+                    entry.State = EntityState.Modified;
+                }
             }
+            this.SaveChanges();
         }
 
         /// <summary>
