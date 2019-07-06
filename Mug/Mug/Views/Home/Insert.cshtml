@@ -1,12 +1,12 @@
 ﻿@using Mug.Dao;
 @model Blogger
 @{
-    ViewBag.Title = "新增-首頁大圖Test";
+    ViewBag.Title = "新增-首頁大圖";
 }
 
 <div class="page-header">
     <h1>
-        新增-首頁大圖Test
+        新增-首頁大圖
     </h1>
 </div>
 <br />
@@ -44,7 +44,14 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:location.href='/Home/Index'">回查詢頁</button>
         </div>
     </div>
+    @Html.Action("ArticleCreate","ArticlePartial");
 </form>
+@{ 
+//Html.RenderPartial("../ArticlePartial/ArticleCreate");
+//Html.Partial("ArticleCreate", "ArticlePartial");
+//Html.Action("ArticleCreateTest","ArticlePartial");
+}
+
 
 @section Scripts
 {
@@ -70,7 +77,6 @@
             }
              var fileData = new FormData();
             var file = $("#Image");//.get(0);
-            console.log(file);
             var isEmpty = true;
             for (var i = 0; i < file.length; i++) {
                 if (file[i].files.length > 0) {
@@ -80,7 +86,7 @@
             }
             if (isEmpty) return;
            // fileData.append("Blog_id", $("#Blog_id").val());
-            fileData.append("Enable", $("#Enable").val());
+            fileData.append("Enable", $("#Enable").prop("checked"));
             lockScreen();
            $.ajax({
             url: '@Url.Action("Insert")',
@@ -108,6 +114,63 @@
             }
         });
             }
+
+    function onSaveLang(lang)
+    {
+        var Blog_id = $("#Blog_id").val();
+        if (Blog_id == "")
+        {
+            alert("請先新增圖片，再來新增語言內容");
+            return false;
+        }
+        var Title = $("#Title_"+lang).val();
+        var Contents = $("#Contents_" + lang).val();
+        // var SubTitle = $("#SubTitle").val();
+        if (Title.trim() == "") {
+        alert("請輸入標題");
+        return false;
+        }
+        //if (SubTitle.trim() == "") {
+        //alert("請輸入子標題");
+        //return false;
+        //}
+        if (Contents.trim() == "") {
+        alert("請輸入內文");
+        return false;
+        }
+        var fileData = new FormData();
+        fileData.append("Title", Title);
+      //  fileData.append("SubTitle", SubTitle);
+        fileData.append("Contents", Contents);
+        fileData.append("Blog_id", Blog_id);
+         fileData.append("lang_Id",lang);
+
+         lockScreen();
+           $.ajax({
+            url: '@Url.Action("Insert","ArticlePartial")',
+            type: "POST",
+            contentType: false,  // Not to set any content header
+            processData: false, 
+            data: fileData,
+            success: function (data)
+            {
+                unlockScreen();
+                var message = data.Message;
+                if (data.Status == "0") {
+                    alert('' + data.Message);
+                     $("#AtricleBtn_"+lang).attr("disabled", true);                        
+                }
+                else if (data.Status == "1") {
+                    alert('' + data.Message);
+                }
+            },
+            error: function (err) {
+                unlockScreen();
+                alert(err.status);
+            }
+        });
+           
+    }
 
     </script>
 }

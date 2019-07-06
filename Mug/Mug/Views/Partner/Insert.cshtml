@@ -1,0 +1,181 @@
+﻿@using Mug.Dao;
+@model Blogger
+@{
+    ViewBag.Title = "新增-合作廠商";
+}
+
+<div class="page-header">
+    <h1>
+        新增-合作廠商
+    </h1>
+</div>
+<br />
+<br />
+<form id="frmSub" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Blog_id" class="col-sm-2 control-label">編號</label>
+        <div class="col-sm-3">
+            <input type="text" class="theinput form-control" id="Blog_id" name="Blog_id" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="file" class="col-sm-2 control-label">圖片</label>
+        <div class="col-sm-3">
+            @Html.EditorFor(c => c.Image, new { htmlAttributes = new { type = "file", @class = "form-control", placeholder = "Image", onchange = "onfileChange();" } })
+        </div>
+        <div class="col-sm-offset-2 col-sm-10" style="color:red">*請使用1500*1000.jpg圖片</div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">預覽</label>
+        <div class="col-sm-3">
+            <img id="preimg" class="img-thumbnail thumb imgthumb" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Enable" class="col-sm-2 control-label">是否啟用</label>
+        <div class="col-sm-3">
+            <input type="checkbox" id="Enable" name="Enable" checked />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+            <button type="button" id="Blogbtn" class="btn btn-primary" onclick="onSave();">儲存</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:location.href='/partner/Index'">回查詢頁</button>
+        </div>
+    </div>
+    @Html.Action("ArticleCreate", "ArticlePartial");
+</form>
+@{
+    //Html.RenderPartial("../ArticlePartial/ArticleCreate");
+    //Html.Partial("ArticleCreate", "ArticlePartial");
+    //Html.Action("ArticleCreateTest","ArticlePartial");
+}
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+
+        });
+        function onfileChange() {
+            var input = document.getElementById("Image");
+            var fReader = new FileReader();
+            fReader.readAsDataURL(input.files[0]);
+            fReader.onloadend = function (event) {
+                var img = document.getElementById("preimg");
+                img.src = event.target.result;
+            }
+        }
+
+        function onSave() {
+            if ($("#Image").val() == "")
+            {
+                alert("請上傳圖片");
+                return false;
+            }
+             var fileData = new FormData();
+            var file = $("#Image");//.get(0);
+            var isEmpty = true;
+            for (var i = 0; i < file.length; i++) {
+                if (file[i].files.length > 0) {
+                    fileData.append(file[i].files[0].name, file[i].files[0]);
+                    isEmpty = false;
+                }
+            }
+            if (isEmpty) return;
+           // fileData.append("Blog_id", $("#Blog_id").val());
+            fileData.append("Enable", $("#Enable").prop("checked"));
+            lockScreen();
+           $.ajax({
+            url: '@Url.Action("Insert")',
+            type: "POST",
+            contentType: false,  // Not to set any content header
+            processData: false,  // Not to process data
+            data: fileData,
+            success: function (data)
+            {
+                 unlockScreen();
+                var message = data.Message;
+                if (data.Status == "0") {
+                    alert('' + data.Message);
+                    $("#Blog_id").val(data.SeqID);
+                    $("#Blogbtn").attr("disabled", true);
+                }
+                else if (data.Status == "1") {
+
+                    alert('' + data.Message);
+                }
+            },
+            error: function (err) {
+                unlockScreen();
+                alert(err.status);
+            }
+        });
+            }
+
+    function onSaveLang(lang)
+    {
+        var Blog_id = $("#Blog_id").val();
+        if (Blog_id == "")
+        {
+            alert("請先新增圖片，再來新增語言內容");
+            return false;
+        }
+        var Title = $("#Title_"+lang).val();
+        var Contents = $("#Contents_" + lang).val();
+        // var SubTitle = $("#SubTitle").val();
+        if (Title.trim() == "") {
+        alert("請輸入標題");
+        return false;
+        }
+        //if (SubTitle.trim() == "") {
+        //alert("請輸入子標題");
+        //return false;
+        //}
+        if (Contents.trim() == "") {
+        alert("請輸入內文");
+        return false;
+        }
+        var fileData = new FormData();
+        fileData.append("Title", Title);
+      //  fileData.append("SubTitle", SubTitle);
+        fileData.append("Contents", Contents);
+        fileData.append("Blog_id", Blog_id);
+         fileData.append("lang_Id",lang);
+
+         lockScreen();
+           $.ajax({
+            url: '@Url.Action("Insert","ArticlePartial")',
+            type: "POST",
+            contentType: false,  // Not to set any content header
+            processData: false,
+            data: fileData,
+            success: function (data)
+            {
+                unlockScreen();
+                var message = data.Message;
+                if (data.Status == "0") {
+                    alert('' + data.Message);
+                    if (lang == "1") {
+                       $("#AtricleBtn").attr("disabled", true);
+                    } else if (lang == "2")
+                    {
+                        $("#AtricleBtn_TW").attr("disabled", true);
+                    }
+                }
+                else if (data.Status == "1") {
+                    alert('' + data.Message);
+                }
+            },
+            error: function (err) {
+                unlockScreen();
+                alert(err.status);
+            }
+        });
+
+    }
+
+    </script>
+}

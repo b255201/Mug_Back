@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "About Page";
+    ViewBag.Title = "首頁-大圖維護";
 }
 @section heads
 {
@@ -13,7 +13,7 @@
 }
 <div class="page-header">
     <h1>
-        關於-維護
+        關於頁-維護
     </h1>
 </div>
 <br /><br />
@@ -24,15 +24,14 @@
         <tr>
             <th style="width:10%" class="control-label ">序號</th>
             <th style="width:10%" class="control-label ">標題</th>
-            <th style="width:10%" class="control-label ">描述</th>
             <th style="width:10%" class="control-label ">圖片</th>
             <th style="width:10%" class="control-label ">是否啟動</th>
-            <th style="width:10%" class="control-label ">建立時間</th>
             <th style="width:10%" class="control-label ">編輯</th>
             <th style="width:10%" class="control-label ">刪除</th>
         </tr>
     </thead>
 </table>
+
 
 @section Scripts
 {
@@ -69,26 +68,31 @@
                 },
                 "sServerMethod": "post",
                 "columns": [
-                    { "data": "Id" },
+                    { "data": "Blog_id" },
                     { "data": "Title" },
-                    { "data": "Description" },
                     { "data": "Image" },
                     { "data": "Enable" },
-                    { "data": "Time" },
-                    { "data": "Id" },
-                    { "data": "Id" }
+                    { "data": "Blog_id" },
+                    { "data": "Blog_id" }
                 ],
                 "createdRow": function (row, data, index) {
-
                     var $lnkcode = $("<img class='img - thumbnail thumb' style='width:50px; heigh:40px;' />");
-                    $lnkcode.attr("src", "@Url.Action("GetImageFile", "About")/?fileName=" +data.Image);
-                    $("td", row).eq(3).text("").append($lnkcode);
-                    var $lnkcode =  $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
-                    $lnkcode.attr("onclick", "onEdit('" + data.Id + "' )");
-                    $("td", row).eq(6).text("").append($lnkcode);
+                    $lnkcode.attr("src", "@Url.Action("GetImageFile", "Home")/?fileName=" +data.Image);
+                    $("td", row).eq(2).text("").append($lnkcode);
+                    var $lnkcode = $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
+                    //啟用
+                    if (data.Enable == true)
+                    {
+                      $("td", row).eq(3).text("啟用").append($lnkcode);
+                    } else
+                    {
+                      $("td", row).eq(3).text("未啟用").append($lnkcode);
+                    }
+                    $lnkcode.attr("onclick", "onEdit('" + data.Blog_id + "' )");
+                    $("td", row).eq(4).text("").append($lnkcode);
                     var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");
-                    $lnkcode.attr("onclick", "onDelete('" + data.Id + "' )");
-                    $("td", row).eq(7).text("").append($lnkcode);
+                    $lnkcode.attr("onclick", "onDelete('" + data.Blog_id + "' )");
+                    $("td", row).eq(5).text("").append($lnkcode);
                 },
                 "language": {
                     "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",

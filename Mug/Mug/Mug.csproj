@@ -133,8 +133,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArticlePartialController.cs" />
+    <Compile Include="Controllers\HomeTest1Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\HomeTestController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -11132,10 +11133,19 @@
     <Content Include="Content\DataTables\css\dataTables.jqueryui.scss" />
     <Content Include="Content\DataTables\css\dataTables.responsive.scss" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
+    <Content Include="Scripts\ckeditor\CHANGES.html" />
+    <Content Include="Scripts\ckeditor\ckeditor.asp" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.php" />
+    <Content Include="Scripts\ckeditor\ckeditor_basic.js" />
+    <Content Include="Scripts\ckeditor\ckeditor_basic_source.js" />
+    <Content Include="Scripts\ckeditor\ckeditor_php4.php" />
+    <Content Include="Scripts\ckeditor\ckeditor_php5.php" />
+    <Content Include="Scripts\ckeditor\ckeditor_source.js" />
     <Content Include="Scripts\ckeditor\config.js" />
     <Content Include="Scripts\ckeditor\contents.css" />
     <Content Include="Scripts\ckeditor\images\spacer.gif" />
+    <Content Include="Scripts\ckeditor\INSTALL.html" />
     <Content Include="Scripts\ckeditor\lang\af.js" />
     <Content Include="Scripts\ckeditor\lang\ar.js" />
     <Content Include="Scripts\ckeditor\lang\bg.js" />
@@ -11173,7 +11183,6 @@
     <Content Include="Scripts\ckeditor\lang\ka.js" />
     <Content Include="Scripts\ckeditor\lang\km.js" />
     <Content Include="Scripts\ckeditor\lang\ko.js" />
-    <Content Include="Scripts\ckeditor\lang\ku.js" />
     <Content Include="Scripts\ckeditor\lang\lt.js" />
     <Content Include="Scripts\ckeditor\lang\lv.js" />
     <Content Include="Scripts\ckeditor\lang\mk.js" />
@@ -11201,6 +11210,7 @@
     <Content Include="Scripts\ckeditor\lang\zh.js" />
     <Content Include="Scripts\ckeditor\lang\_languages.js" />
     <Content Include="Scripts\ckeditor\lang\_translationstatus.txt" />
+    <Content Include="Scripts\ckeditor\LICENSE.html" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\cs.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\cy.js" />
@@ -11215,14 +11225,12 @@
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\gu.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\he.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\ku.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\mk.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\nb.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\nl.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\no.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\pt-br.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\ro.js" />
-    <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\sk.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\tr.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\ug.js" />
     <Content Include="Scripts\ckeditor\plugins\a11yhelp\lang\vi.js" />
@@ -11252,13 +11260,11 @@
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\he.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\hr.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\devtools\lang\ku.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\nb.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\nl.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\no.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\pl.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\pt-br.js" />
-    <Content Include="Scripts\ckeditor\plugins\devtools\lang\sk.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\tr.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\ug.js" />
     <Content Include="Scripts\ckeditor\plugins\devtools\lang\uk.js" />
@@ -11309,13 +11315,11 @@
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\he.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\hr.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\placeholder\lang\ku.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\nb.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\nl.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\no.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\pl.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\pt-br.js" />
-    <Content Include="Scripts\ckeditor\plugins\placeholder\lang\sk.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\tr.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\ug.js" />
     <Content Include="Scripts\ckeditor\plugins\placeholder\lang\uk.js" />
@@ -11374,7 +11378,6 @@
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\he.js" />
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\hr.js" />
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\specialchar\lang\ku.js" />
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\nb.js" />
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\nl.js" />
     <Content Include="Scripts\ckeditor\plugins\specialchar\lang\no.js" />
@@ -11409,14 +11412,12 @@
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\he.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\hr.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\it.js" />
-    <Content Include="Scripts\ckeditor\plugins\uicolor\lang\ku.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\mk.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\nb.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\nl.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\no.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\pl.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\pt-br.js" />
-    <Content Include="Scripts\ckeditor\plugins\uicolor\lang\sk.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\tr.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\ug.js" />
     <Content Include="Scripts\ckeditor\plugins\uicolor\lang\uk.js" />
@@ -11502,6 +11503,7 @@
     <Content Include="Scripts\DataTables\jquery.dataTables.js" />
     <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
     <Content Include="Scripts\DatetimePicker\jquery.datetimepicker.js" />
+    <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -11520,20 +11522,24 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HomeTest1\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\login_Layout.cshtml" />
-    <Content Include="Views\Home\Insert.cshtml" />
-    <Content Include="Views\Home\Edit.cshtml" />
-    <Content Include="Views\Home\Cooperation.cshtml" />
-    <Content Include="Views\Home\CooperationEdit.cshtml" />
+    <Content Include="Views\HomeTest1\Insert.cshtml" />
+    <Content Include="Views\HomeTest1\Edit.cshtml" />
+    <Content Include="Views\HomeTest1\Cooperation.cshtml" />
+    <Content Include="Views\HomeTest1\CooperationEdit.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Insert.cshtml" />
     <Content Include="Views\About\Edit.cshtml" />
-    <Content Include="Views\HomeTest\Index.cshtml" />
-    <Content Include="Views\HomeTest\Insert.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Insert.cshtml" />
     <Content Include="Views\ArticlePartial\ArticleCreate.cshtml" />
-    <Content Include="Views\HomeTest\Edit.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
+    <Content Include="Views\Partner\Insert.cshtml" />
+    <Content Include="Views\Partner\Edit.cshtml" />
+    <Content Include="Views\ArticlePartial\ArticleCreateCkeditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

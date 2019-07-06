@@ -7,176 +7,155 @@ using Mug.Service;
 using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
+using Mug.Models;
 
 namespace Mug.Controllers
 {
     public class HomeController : Controller
     {
-        private IHomePageService HomePageService = new HomePageService();
+
+        private IBloggerService BloggerService = new BloggerService();
+        private ILanguageService LanguageService = new LanguageService();
+        private IArticleService ArticleService = new ArticleService();
+
+        // GET: HomeTest
         public ActionResult Index()
         {
             return View();
         }
+
         #region Search 大圖查詢
         [HttpPost]
         public ActionResult Search()
         {
- 
-            //ID >1 首頁大圖
-            var q = HomePageService.GetAll().Where(i=>i.Opt== "首頁大圖").ToList();
-            int totalLen = Convert.ToInt16(q.Count());
-            var result = from Row in q
-                         select new HomePage
-                         {
-                             Id = Row.Id,
-                             Title = Row.Title,
-                             Description = Row.Description,
-                             Image = Row.Image,
-                             Enable = Row.Enable,
-                           //  Time = DBNull.Value.Equals(Row.CreateTime) ?"":DateTimeExtension.ToYMD(Row.CreateTime)
-                           
-                         };
-            JQueryDataTableResponse<HomePage> jqDataTableRs = JQueryDataTableHelper<HomePage>.GetResponse(1, totalLen, totalLen, result.ToList());
+
+            var blog = BloggerService.GetAll();
+            var articles = ArticleService.GetAll();
+            //var result = BloggerService.GetAll().Join(ArticleService.GetAll(), o => o.Blog_id, d => d.Post_Id, (o, d) =>
+            //          new ArticleViewModel
+            //         {
+            //             Blog_id = o.Blog_id,
+            //             Title = d.Title,
+            //             Image = o.Image,
+            //             Enable = o.Enable,
+            //         }).Where(o => o.Categore == "首頁大圖").OrderBy(o => o.Blog_id).ToList();
+          var   result = (from b in blog
+                      join a in articles
+                       on b.Blog_id equals a.Post_Id
+                     where b.Categore == "首頁大圖"
+                     orderby b.Blog_id
+                     select new ArticleViewModel
+                     {
+                         Blog_id = b.Blog_id,
+                         Title = a.Title,
+                         Image = b.Image,
+                         Enable = b.Enable,
+                     }).ToList();
+
+            int totalLen = Convert.ToInt16(result.Count());
+            JQueryDataTableResponse<ArticleViewModel> jqDataTableRs = JQueryDataTableHelper<ArticleViewModel>.GetResponse(1, totalLen, totalLen, result.ToList());
             return Json(jqDataTableRs);
         }
         #endregion
-      
-        #region Insert
+
+
         [HttpGet]
         public ActionResult Insert()
         {
             return View();
         }
-        #endregion
 
-        #region Insert 大圖新增
+        #region blogger 新增
         [HttpPost]
-        public ActionResult Insert(FormCollection form, HttpPostedFileBase Image)
+        public ActionResult Insert(FormCollection form)
         {
-            bool Enable = true;
-            if (form["Enable"] != "on") 
+            try
             {
-                Enable = false;
-            }
-            var q = HomePageService.GetAll().ToList();
-            var result = (from Row in q
-                          select new HomePage
-                          {
-                              Id = Row.Id,
-                              Title = Row.Title,
-                              Description = Row.Description,
-                              Image = Row.Image,
-                              Enable = Row.Enable,
-                              CreateTime = Row.CreateTime
-                          }).OrderByDescending(x => x.Id);
-            var MaxId = int.Parse(result.First().Id.ToString());
-            int i = MaxId + 1;
-            HomePage _HomePage = new HomePage();
-            _HomePage.Id = i;
-            _HomePage.Title = form["Title"];
-            _HomePage.Description = form["Description"];
-            _HomePage.Enable = Enable;
-            _HomePage.CreateTime = DateTime.Now;
-            _HomePage.Opt = "首頁大圖";
-            if (Image != null)
-            {
-                //判斷圖片名稱是否重複
-                var rptimg = (from Row in q
-                              select new HomePage
-                              {
-                                  Image = Row.Image
-                              }).Where(x => x.Image == Image.FileName);
-                if (rptimg != null)
+                bool Enable = true;
+                if (form["Enable"] != "true")
                 {
-                    if (rptimg.Count() != 0)
-                    {
-                        ViewBag.ErrMessage = "已有圖片名稱：" + Image.FileName + "，請檢查";
-                        return View(_HomePage);
-                    }
+                    Enable = false;
                 }
-                string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
-                Image.SaveAs(strPath);
-                _HomePage.Image = Image.FileName;
-            }      
-             var Message=  HomePageService.Create(_HomePage);  
-            if (Message.Success == true)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.ErrMessage = "請洽程式管理人員" + Message.Exception.ToString();
-                return View(_HomePage);
-            }
-        }
-        #endregion
-
-
-        [HttpGet]
-        public ActionResult Edit(int id = 0)
-        {
-            var _HomePage = HomePageService.GetByID(id);
-            ViewBag.Enable = _HomePage.Enable.ToString();
-            ViewBag.Image = _HomePage.Image.ToString();
-            return View(_HomePage);
-        }
-        #region 大圖修改
-        [HttpPost]
-        public ActionResult Edit(FormCollection form, HttpPostedFileBase Image)
-        {
-            bool Enable = true;
-            if (form["Enable"] != "on")
-            {
-                Enable = false;
-            }
-            HomePage _HomePage = HomePageService.GetByID(int.Parse(form["Id"]));
-            _HomePage.Title = form["Title"];
-            _HomePage.Description = form["Description"];
-            _HomePage.Enable = Enable;
-            _HomePage.ModifyTime = DateTime.Now;
-            _HomePage.Opt = "首頁大圖";       
-            if (Image != null)
-            {
-                var q = HomePageService.GetAll().ToList();
-                //判斷圖片名稱是否重複
-                var rptimg = (from Row in q
-                                select new HomePage
-                                {
-                                    Image = Row.Image
-                                }).Where(x => x.Image == Image.FileName);
-                if (rptimg != null)
+                var q = BloggerService.GetAll().ToList();
+                Blogger _Blogger = new Blogger();
+                //get image file
+                HttpPostedFileBase Image = Request.Files[0];
+                if (Image != null)
                 {
-                    if (rptimg.Count() != 0)
+                    //判斷圖片名稱是否重複
+                    var rptimg = (from Row in q
+                                  select new Blogger
+                                  {
+                                      Image = Row.Image
+                                  }).Where(x => x.Image == Image.FileName);
+                    if (rptimg != null)
                     {
-                        ViewBag.Image = _HomePage.Image.ToString();
-                        ViewBag.ErrMessage = "已有圖片名稱：" + Image.FileName + "，請檢查";
-                        return View(_HomePage);
+                        if (rptimg.Count() != 0)
+                        {
+                            string ErrMeg = "已有圖片名稱：" + Image.FileName + "，請檢查";
+                            return Json(new { Status = "1", Message = ErrMeg });
+                        }
+                    }
+                    string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
+                    Image.SaveAs(strPath);
+                    _Blogger.Image = Image.FileName;
+                }
+                //取號
+                SqlCommand _GetSerialNumber = new SqlCommand();
+                string Blog_id = _GetSerialNumber.GetBySeq();
+                _Blogger.Blog_id = int.Parse(Blog_id);
+                _Blogger.Enable = Enable;
+                _Blogger.CreateTime = DateTime.Now;
+                _Blogger.Categore = "首頁大圖";
+                var Message = BloggerService.Create(_Blogger);
+                //順便把articel 也新增
+                var art = ArticleService.GetAll().ToList();
+                var result = (from r in art
+                              select new Article
+                              {
+                                  Article_ID = r.Article_ID,
+                              }).OrderByDescending(x => x.Article_ID);
+                int MaxId = 1;
+                if (result.Count() != 0)
+                {
+                    MaxId = int.Parse(result.First().Article_ID.ToString());
+                    MaxId = MaxId + 1;
+                }
+                // LanguageService
+                var lang = LanguageService.GetAll().ToList();
+                foreach (var i in lang)
+                {
+                    Article _Article = new Article();
+                    _Article.Post_Id = _Blogger.Blog_id;
+                    _Article.Title = "";
+                    _Article.Sub_Title = "";
+                    _Article.Contents = "";
+                    _Article.Article_ID = MaxId;
+                    _Article.Id = int.Parse(i.Id.ToString());
+                    var articleMsg=  ArticleService.Create(_Article);
+                    if(articleMsg.Success == true)
+                    {
+                        MaxId = MaxId + 1;
                     }
                     else
                     {
-                        string OrgImgName = form["OrgImgName"].ToString();
-                        if (OrgImgName != "")
-                        {
-                            string strPath1 = string.Format("~/Image/Home/{0}", OrgImgName);
-                            var fullPath = Request.MapPath(strPath1);
-                            System.IO.File.Delete(fullPath);
-                        }
+                        return Json(new { Status = "1", Message = "請洽程式管理人員，在一開始連文章順便新增有錯" + Message.Exception.ToString() });
                     }
-                }          
-                string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
-                Image.SaveAs(strPath);
-                _HomePage.Image = Image.FileName;
-            }            
-           var Message= HomePageService.Update(_HomePage);
-            if (Message.Success == true)
-            {
-                return RedirectToAction("Index");
+                }
+                if (Message.Success == true)
+                {
+                    return Json(new { Status = "0", Message = "新增成功，編號是："+ Blog_id, SeqID= Blog_id });
+                }
+                else
+                {
+                    return Json(new { Status = "1", Message = "請洽程式管理人員" + Message.Exception.ToString() });
+                }
             }
-            else
+            catch (Exception err)
             {
-                ViewBag.ErrMessage = "請洽程式管理人員" + Message.Exception.ToString();
-                return View(_HomePage);
+                return Json(new { Status = "1", Message = "新增失敗" + err.Message });
             }
+         
         }
         #endregion
 
@@ -186,14 +165,22 @@ namespace Mug.Controllers
         {
             try
             {
-                HomePage _HomePage = HomePageService.GetByID(int.Parse(Id));
-                if (!String.IsNullOrEmpty(_HomePage.Image))
+                //先刪文章
+                SqlCommand _GetSerialNumber = new SqlCommand();
+               string ArtMeg=  _GetSerialNumber.DeleteAllArticle(Id);
+                if (ArtMeg != "0")
                 {
-                    string strPath = string.Format("~/Image/Home/{0}", _HomePage.Image);
+                    return Json(new { Status = "1", StatusDesc = "文章刪除失敗請洽管理員" });
+                }
+
+                    Blogger _Blogger =  BloggerService.GetByID(int.Parse(Id));
+                if (!String.IsNullOrEmpty(_Blogger.Image))
+                {
+                    string strPath = string.Format("~/Image/Home/{0}", _Blogger.Image);
                     var fullPath = Request.MapPath(strPath);
                     System.IO.File.Delete(fullPath);
-                }             
-                HomePageService.Delete(int.Parse(Id));
+                }
+                BloggerService.Delete(int.Parse(Id));
                 return Json(new { Status = "0", StatusDesc = "刪除成功" });
             }
             catch (Exception err)
@@ -204,59 +191,37 @@ namespace Mug.Controllers
 
         }
         #endregion
-
-
-        public ActionResult Cooperation()
-        {
-            return View();
-        }
-
-        #region CooperationSearch 合作廠商圖片
-        [HttpPost]
-        public ActionResult CooperationSearch()
-        {
-             //ID >1 合作廠商
-            var q = HomePageService.GetAll().Where(i=>i.Opt== "合作廠商").ToList();
-            int totalLen = Convert.ToInt16(q.Count());
-            var result = from Row in q
-                         select new HomePage
-                         {
-                             Id = Row.Id,
-                             Title = Row.Title,
-                             Description = Row.Description,
-                             Image = Row.Image,
-                             Enable = Row.Enable,
-                             CreateTime=Row.CreateTime
-                         };
-            JQueryDataTableResponse<HomePage> jqDataTableRs = JQueryDataTableHelper<HomePage>.GetResponse(1, totalLen, totalLen, result.ToList());
-            return Json(jqDataTableRs);
-        }
-        #endregion
         [HttpGet]
-        public ActionResult CooperationEdit(int id = 0)
+        public ActionResult Edit(int id = 0)
         {
-            var _HomePage = HomePageService.GetByID(id);
-            if (!String.IsNullOrEmpty(_HomePage.Image))
-            {
-                ViewBag.Image = _HomePage.Image.ToString();
-            }
-            return View(_HomePage);
+            var _Blogger = BloggerService.GetByID(id);
+            ViewBag.Enable = _Blogger.Enable.ToString();
+            ViewBag.Image = _Blogger.Image.ToString();
+            //取所有文章
+            ViewBag.Article = ArticleService.GetAll().Where(x=>x.Post_Id==id).ToList();
+            return View(_Blogger);
         }
+
         #region 大圖修改
         [HttpPost]
-        public ActionResult CooperationEdit(FormCollection form, HttpPostedFileBase Image)
+        public ActionResult Edit(FormCollection form)
         {
-    
-            HomePage _HomePage = HomePageService.GetByID(int.Parse(form["Id"]));
-            _HomePage.Title = form["Title"];
-            _HomePage.Description = form["Description"];
-            _HomePage.Enable = true;
-            _HomePage.CreateTime = DateTime.Now;
-            _HomePage.ModifyTime = DateTime.Now;
-            _HomePage.Opt = "合作廠商";
+            bool Enable = true;
+            if (form["Enable"] != "true")
+            {
+                Enable = false;
+            }
+            HttpPostedFileBase Image = null;
+            if (Request.Files.Count != 0)
+            {
+                 Image = Request.Files[0];
+            }
+
+            Blogger _Blogger = BloggerService.GetByID(int.Parse(form["Blog_id"]));
+            _Blogger.Enable = Enable;
             if (Image != null)
             {
-                var q = HomePageService.GetAll().ToList();
+                var q = BloggerService.GetAll().ToList();
                 //判斷圖片名稱是否重複
                 var rptimg = (from Row in q
                               select new HomePage
@@ -267,40 +232,36 @@ namespace Mug.Controllers
                 {
                     if (rptimg.Count() != 0)
                     {
-                        ViewBag.Image = _HomePage.Image.ToString();
-                        ViewBag.ErrMessage = "已有圖片名稱：" + Image.FileName + "，請檢查";
-                        return View(_HomePage);
+                        ViewBag.Image = _Blogger.Image.ToString();
+                        string ErrMeg = "已有圖片名稱：" + Image.FileName + "，請檢查";
+                        return Json(new { Status = "1", Message = ErrMeg });
                     }
-                    else
-                    {
-                        string OrgImgName = form["OrgImgName"].ToString();
-                        if (OrgImgName != "")
-                        {
-                            string strPath1 = string.Format("~/Image/Home/{0}", OrgImgName);
-                            var fullPath = Request.MapPath(strPath1);
-                            System.IO.File.Delete(fullPath);
-                        }
-                    }
+                    //else
+                    //{
+                    //    string OrgImgName = form["OrgImgName"].ToString();
+                    //    if (OrgImgName != "")
+                    //    {
+                    //        string strPath1 = string.Format("~/Image/Home/{0}", OrgImgName);
+                    //        var fullPath = Request.MapPath(strPath1);
+                    //        System.IO.File.Delete(fullPath);
+                    //    }
+                    //}
                 }
                 string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
                 Image.SaveAs(strPath);
-                _HomePage.Image = Image.FileName;
+                _Blogger.Image = Image.FileName;
             }
-            var Message = HomePageService.Update(_HomePage);
+            var Message = BloggerService.Update(_Blogger);
             if (Message.Success == true)
             {
-                return RedirectToAction("Index");
+                return Json(new { Status = "0", Message = "更新成功" });
             }
             else
             {
-                ViewBag.ErrMessage = "請洽程式管理人員" + Message.Exception.ToString();
-                return View(_HomePage);
+                return Json(new { Status = "1", Message = "請洽程式管理人員" + Message.Exception.ToString() });
             }
-
-            return RedirectToAction("Cooperation");
         }
         #endregion
-
 
         public ActionResult GetImageFile(string fileName)
         {

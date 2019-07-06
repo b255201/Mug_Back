@@ -1,15 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "首頁-大圖維護";
 }
 @section heads
 {
-   
+
     @Styles.Render("~/Content/css/datatables")
     <style>
         table.dataTable tbody td {
             vertical-align: middle;
         }
-
     </style>
 }
 <div class="page-header">
@@ -18,22 +17,21 @@
     </h1>
 </div>
 <br /><br />
-      <button type="button" class="btn btn-primary" onclick="javascript:location.href='/Home/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+<button type="button" class="btn btn-primary" onclick="javascript:location.href='/Home/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
 <!--顯示資料-->
 <table id="main" class="display" cellspacing="0" style="width:100%">
     <thead>
         <tr>
             <th style="width:10%" class="control-label ">序號</th>
             <th style="width:10%" class="control-label ">標題</th>
-            <th style="width:10%" class="control-label ">描述</th>
             <th style="width:10%" class="control-label ">圖片</th>
             <th style="width:10%" class="control-label ">是否啟動</th>
-            <th style="width:10%" class="control-label ">建立時間</th>
             <th style="width:10%" class="control-label ">編輯</th>
             <th style="width:10%" class="control-label ">刪除</th>
         </tr>
     </thead>
 </table>
+
 
 @section Scripts
 {
@@ -70,26 +68,31 @@
                 },
                 "sServerMethod": "post",
                 "columns": [
-                    { "data": "Id" },
+                    { "data": "Blog_id" },
                     { "data": "Title" },
-                    { "data": "Description" },
                     { "data": "Image" },
                     { "data": "Enable" },
-                    { "data": "Time" },
-                    { "data": "Id" },
-                    { "data": "Id" }
+                    { "data": "Blog_id" },
+                    { "data": "Blog_id" }
                 ],
                 "createdRow": function (row, data, index) {
-                   
                     var $lnkcode = $("<img class='img - thumbnail thumb' style='width:50px; heigh:40px;' />");
                     $lnkcode.attr("src", "@Url.Action("GetImageFile", "Home")/?fileName=" +data.Image);
-                    $("td", row).eq(3).text("").append($lnkcode);
-                    var $lnkcode =  $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
-                    $lnkcode.attr("onclick", "onEdit('" + data.Id + "' )");
-                    $("td", row).eq(6).text("").append($lnkcode);
-                    var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");               
-                    $lnkcode.attr("onclick", "onDelete('" + data.Id + "' )");
-                    $("td", row).eq(7).text("").append($lnkcode);
+                    $("td", row).eq(2).text("").append($lnkcode);
+                    var $lnkcode = $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
+                    //啟用
+                    if (data.Enable == true)
+                    {
+                      $("td", row).eq(3).text("啟用").append($lnkcode);
+                    } else
+                    {
+                      $("td", row).eq(3).text("未啟用").append($lnkcode);
+                    }
+                    $lnkcode.attr("onclick", "onEdit('" + data.Blog_id + "' )");
+                    $("td", row).eq(4).text("").append($lnkcode);
+                    var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");
+                    $lnkcode.attr("onclick", "onDelete('" + data.Blog_id + "' )");
+                    $("td", row).eq(5).text("").append($lnkcode);
                 },
                 "language": {
                     "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",
