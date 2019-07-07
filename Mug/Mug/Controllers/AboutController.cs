@@ -75,6 +75,18 @@ namespace Mug.Controllers
                     Enable = false;
                 }
                 var q = BloggerService.GetAll().ToList();
+                //判斷是否有圖片以啟用,只能一筆
+                if (Enable == true)
+                {
+                    var checkEnacle = q;
+                    if (checkEnacle.Where(i => i.Enable == true && i.Categore == "合作廠商").Count() > 0)
+                    {
+                        string ErrMeg = "請先回查詢頁,把啟用狀態取消在新增";
+                        return Json(new { Status = "1", Message = ErrMeg });
+                    }
+                }
+
+
                 Blogger _Blogger = new Blogger();
                 //get image file
                 HttpPostedFileBase Image = Request.Files[0];
@@ -196,7 +208,27 @@ namespace Mug.Controllers
             ViewBag.Enable = _Blogger.Enable.ToString();
             ViewBag.Image = _Blogger.Image.ToString();
             //取所有文章
-            ViewBag.Article = ArticleService.GetAll().Where(x => x.Post_Id == id).ToList();
+           var q = ArticleService.GetAll().Where(x => x.Post_Id == id).ToList();
+            var result = (from Row in q
+                         select new Article
+                         {
+                             Post_Id = Row.Post_Id,
+                             Title=Row.Title,
+                             Contents=HttpUtility.HtmlDecode(Row.Contents),
+                             Id=Row.Id,
+                             Article_ID=Row.Article_ID
+                         }).ToList();
+            ViewBag.Article = result;
+            //lang
+            var Langq = LanguageService.GetAll();
+            var LangResult = (from item in Langq
+                          orderby item.Id
+                          select new Language
+                          {
+                              Id = item.Id
+                          }).ToList();
+            ViewBag.Lang_Id = LangResult;
+
             return View(_Blogger);
         }
 
@@ -214,12 +246,20 @@ namespace Mug.Controllers
             {
                 Image = Request.Files[0];
             }
-
+            var q = BloggerService.GetAll().ToList();
+            if (Enable == true)
+            {
+                var checkEnacle = q;
+                if (checkEnacle.Where(i => i.Enable == true && i.Categore == "合作廠商").Count() > 0)
+                {
+                    string ErrMeg = "請先回查詢頁,把啟用狀態取消在修改";
+                    return Json(new { Status = "1", Message = ErrMeg });
+                }
+            }
             Blogger _Blogger = BloggerService.GetByID(int.Parse(form["Blog_id"]));
             _Blogger.Enable = Enable;
             if (Image != null)
-            {
-                var q = BloggerService.GetAll().ToList();
+            {             
                 //判斷圖片名稱是否重複
                 var rptimg = (from Row in q
                               select new HomePage

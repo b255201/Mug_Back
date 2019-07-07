@@ -187,6 +187,7 @@ namespace Mug.Controllers
 
         #region  文章 編輯
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditCkeditor(FormCollection form)
         {
             try
