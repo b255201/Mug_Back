@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeePageService.cs" />
+    <Compile Include="Interface\IEmployeePageService.cs" />
     <Compile Include="Interface\ISerialNumberService.cs" />
     <Compile Include="SerialNumberService.cs" />
     <Compile Include="LanguageService.cs" />

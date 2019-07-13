@@ -124,27 +124,17 @@
                                 <span></span>
                             </div>
                         </li>
-                       
+
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-diamond"></i>
-                                <span class="title">學生聯絡資料維護</span>
+                                <span class="title">聯絡資料維護</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("Index", "Contact")" class="nav-link ">
-                                        <span class="title">學生聯絡資料</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "LessonOpt")" class="nav-link ">
-                                        <span class="title">預約課程表清單查詢</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "LessonOpt")" class="nav-link ">
-                                        <span class="title">預約課程表清單新增</span>
+                                        <span class="title">聯絡資料</span>
                                     </a>
                                 </li>
 
@@ -154,18 +144,33 @@
                         <li class="nav-item  ">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-social-dribbble"></i>
-                                <span class="title">首頁管理</span>
+                                <span class="title">頁面管理</span>
                                 <span class="arrow"></span>
                             </a>
                             <ul class="sub-menu">
                                 <li class="nav-item  ">
                                     <a href="@Url.Action("Index", "Home")" class="nav-link ">
-                                        <span class="title">首頁-大圖維護</span>
+                                        <span class="title">首頁-大圖</span>
                                     </a>
                                 </li>
                                 <li class="nav-item  ">
-                                    <a href="@Url.Action("Cooperation", "Home")" class="nav-link ">
-                                        <span class="title">首頁-廠商圖片維護</span>
+                                    <a href="@Url.Action("Index", "partner")" class="nav-link ">
+                                        <span class="title">首頁-合作廠商</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Index", "About")" class="nav-link ">
+                                        <span class="title">關於頁</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Index", "Service")" class="nav-link ">
+                                        <span class="title">服務項目頁</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                    <a href="@Url.Action("Index", "Product")" class="nav-link ">
+                                        <span class="title">產品頁</span>
                                     </a>
                                 </li>
                             </ul>
@@ -192,70 +197,70 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item  ">
-                            <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-wrench"></i>
-                                <span class="title">課程維護</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "ChildClass")" class="nav-link ">
-                                        <span class="title">兒童部課程查詢</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "ChildClass")" class="nav-link ">
-                                        <span class="title">兒童部課程新增</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "JuniorClass")" class="nav-link ">
-                                        <span class="title">國中部課程查詢</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "JuniorClass")" class="nav-link ">
-                                        <span class="title">國中部課程新增</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "HighClass")" class="nav-link ">
-                                        <span class="title">高中部課程查詢</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "HighClass")" class="nav-link ">
-                                        <span class="title">高中部課程新增</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "AdultClass")" class="nav-link ">
-                                        <span class="title">成人部課程查詢</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "AdultClass")" class="nav-link ">
-                                        <span class="title">成人部課程新增</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Index", "LessonCalendar")" class="nav-link ">
-                                        <span class="title">課程表管理</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="@Url.Action("Insert", "LessonCalendar")" class="nav-link ">
-                                        <span class="title">課程表新增</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>                     
+                        <!-- <li class="nav-item  ">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="icon-wrench"></i>
+            <span class="title">課程維護</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu">
+            <li class="nav-item  ">
+                <a href="@Url.Action("Index", "ChildClass")" class="nav-link ">
+                    <span class="title">兒童部課程查詢</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Insert", "ChildClass")" class="nav-link ">
+                    <span class="title">兒童部課程新增</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Index", "JuniorClass")" class="nav-link ">
+                    <span class="title">國中部課程查詢</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Insert", "JuniorClass")" class="nav-link ">
+                    <span class="title">國中部課程新增</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Index", "HighClass")" class="nav-link ">
+                    <span class="title">高中部課程查詢</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Insert", "HighClass")" class="nav-link ">
+                    <span class="title">高中部課程新增</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Index", "AdultClass")" class="nav-link ">
+                    <span class="title">成人部課程查詢</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Insert", "AdultClass")" class="nav-link ">
+                    <span class="title">成人部課程新增</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Index", "LessonCalendar")" class="nav-link ">
+                    <span class="title">課程表管理</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="@Url.Action("Insert", "LessonCalendar")" class="nav-link ">
+                    <span class="title">課程表新增</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
 
                     </ul>
-                    <!-- END SIDEBAR MENU -->
-                    <!-- END SIDEBAR MENU -->
-                </div>
+                        <!-- END SIDEBAR MENU -->
+                        <!-- END SIDEBAR MENU -->
+</div>
                 <!-- END SIDEBAR -->
             </div>
             <!-- END SIDEBAR -->

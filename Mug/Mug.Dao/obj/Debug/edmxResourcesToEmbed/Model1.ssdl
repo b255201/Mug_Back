@@ -36,18 +36,38 @@
     <Property Name="Categore" Type="nvarchar" MaxLength="50" />
     <Property Name="Category_Opt" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="employee">
+  <EntityType Name="Contact">
     <Key>
-      <PropertyRef Name="employeeId" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="employeeName" Type="nvarchar" MaxLength="50" />
-    <Property Name="employeeAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="employeePwd" Type="varbinary" MaxLength="60" Nullable="false" />
-    <Property Name="employeeSalt" Type="varbinary" MaxLength="50" Nullable="false" />
-    <Property Name="employeeEmail" Type="nvarchar(max)" />
-    <Property Name="createTime" Type="datetime" />
-    <Property Name="modifyTime" Type="datetime" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Skype" Type="nvarchar(max)" />
+    <Property Name="Service" Type="nvarchar" MaxLength="50" />
+    <Property Name="Memo" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ContactOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seq" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Account" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varbinary" MaxLength="60" Nullable="false" />
+    <Property Name="Salt" Type="varbinary" MaxLength="60" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="HomePage">
     <Key>
@@ -120,7 +140,9 @@
     <EntitySet Name="AboutPage" EntityType="Self.AboutPage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Blogger" EntityType="Self.Blogger" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactOption" EntityType="Self.ContactOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductPage" EntityType="Self.ProductPage" Schema="dbo" store:Type="Tables" />

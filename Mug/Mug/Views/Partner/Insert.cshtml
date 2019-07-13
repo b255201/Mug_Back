@@ -104,7 +104,7 @@
                     $("#Blogbtn").attr("disabled", true);
                 }
                 else if (data.Status == "1") {
-
+                      unlockScreen();
                     alert('' + data.Message);
                 }
             },
@@ -166,6 +166,7 @@
                     }
                 }
                 else if (data.Status == "1") {
+                      unlockScreen();
                     alert('' + data.Message);
                 }
             },

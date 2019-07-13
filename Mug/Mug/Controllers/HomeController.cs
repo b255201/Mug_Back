@@ -8,9 +8,11 @@ using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
 using Mug.Models;
+using Mug.Attribute;
 
 namespace Mug.Controllers
 {
+    [AuthenticateUser]
     public class HomeController : Controller
     {
 

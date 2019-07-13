@@ -130,16 +130,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Attribute\AuthenticateUser.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArticlePartialController.cs" />
-    <Compile Include="Controllers\HomeTest1Controller.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticelViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -11522,13 +11526,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\HomeTest1\Index.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\login_Layout.cshtml" />
-    <Content Include="Views\HomeTest1\Insert.cshtml" />
-    <Content Include="Views\HomeTest1\Edit.cshtml" />
-    <Content Include="Views\HomeTest1\Cooperation.cshtml" />
-    <Content Include="Views\HomeTest1\CooperationEdit.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\Insert.cshtml" />
     <Content Include="Views\About\Edit.cshtml" />
@@ -11540,6 +11539,14 @@
     <Content Include="Views\Partner\Insert.cshtml" />
     <Content Include="Views\Partner\Edit.cshtml" />
     <Content Include="Views\ArticlePartial\ArticleCreateCkeditor.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Service\Insert.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Insert.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Employee\Insert.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

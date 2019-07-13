@@ -1,0 +1,96 @@
+﻿@using Mug.Dao;
+@model Blogger
+@{
+    ViewBag.Title = "新增-員工帳號";
+}
+
+<div class="page-header">
+    <h1>
+        新增-員工帳號
+    </h1>
+</div>
+<br />
+<br />
+<form id="frmSub" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Blog_id" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-3">
+            <input type="text" class="theinput form-control" id="Name" name="Name" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Blog_id" class="col-sm-2 control-label">帳號</label>
+        <div class="col-sm-3">
+            <input type="text" class="theinput form-control" id="Account" name="Account" />
+        </div>
+    </div>
+    <div class="form-group">
+     
+        <label for="Blog_id" class="col-sm-2 control-label">密碼</label>
+        <div class="col-sm-3">
+            <input type="password" class="theinput form-control" id="Password" name="Password" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Blog_id" class="col-sm-2 control-label">再確認密碼</label>
+        <div class="col-sm-3">
+            <input type="password" class="theinput form-control" id="PasswordConfirm" name="PasswordConfirm" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+            <button type="button"  class="btn btn-primary" onclick="onSave();">儲存</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:location.href='/Employee/Index'">回查詢頁</button>
+        </div>
+    </div>
+
+</form>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+
+        });
+  
+    function onSave()
+    {
+        lockScreen();
+          $.ajax({
+                url: '@Url.Action("Insert")',
+                type: "POST",
+                data: {
+                    "Name": $("#Name").val(),
+                    "Account": $("#Account").val(),
+                    "Password": $("#Password").val(),
+                    "PasswordConfirm": $("#PasswordConfirm").val()
+                },
+                success: function (data) {
+                     unlockScreen();
+                    if (data.Status == "0") {
+                        ///跳至新增
+                        alert("新增成功");                     
+                        window.open( '@Url.Action("Index")', "_self");
+                    }
+                    else if (data.Status == "1") {
+                         unlockScreen();
+                        var message = data.Message;
+                        alert('' + data.Message);
+                    }
+                },
+                error: function (err) {
+                     unlockScreen();
+                    alert(err.status);
+                }
+            });
+    }
+        
+
+
+    </script>
+}

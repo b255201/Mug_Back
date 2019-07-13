@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "員工查詢";
 }
 @section heads
 {
@@ -13,30 +13,27 @@
 }
 <div class="page-header">
     <h1>
-        首頁-合作廠商圖片維護
+        員工查詢
     </h1>
 </div>
 <br /><br />
+<button type="button" class="btn btn-primary" onclick="javascript:location.href='/Employee/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
 <!--顯示資料-->
 <table id="main" class="display" cellspacing="0" style="width:100%">
     <thead>
         <tr>
-            <th style="width:10%" class="control-label ">序號</th>
-            <th style="width:10%" class="control-label ">標題</th>
-            <th style="width:10%" class="control-label ">描述</th>
-            <th style="width:10%" class="control-label ">圖片</th>
-            <th style="width:10%" class="control-label ">是否啟動</th>
-            <th style="width:10%" class="control-label ">建立時間</th>
-            <th style="width:10%" class="control-label ">編輯</th>
+            <th style="width:10%" class="control-label ">姓名</th>
+            <th style="width:10%" class="control-label ">帳號</th>
+            <th style="width:10%" class="control-label ">刪除</th>
         </tr>
     </thead>
 </table>
+
 
 @section Scripts
 {
     @Scripts.Render("~/bundles/datatables")
     <script>
-        //ddtrS, ddtrE, noperS, noperE, naper
         $(document).ready(function () {
             onSearch();
         });
@@ -60,29 +57,22 @@
                 "order": [[0, "asc"]],
                 "ajax": {
                     "type": "Post",
-                    "url": '@Url.Action("CooperationSearch")',
+                    "url": '@Url.Action("Search")',
                     "error": function (msg) {
                         alert(msg);
                     }
                 },
                 "sServerMethod": "post",
                 "columns": [
-                    { "data": "Id" },
-                    { "data": "Title" },
-                    { "data": "Description" },
-                    { "data": "Image" },
-                    { "data": "Enable" },
-                    { "data": "Time" },
-                    { "data": "Id" }
+                    { "data": "Name" },
+                    { "data": "Account" },
+                    { "data": "Account" }
+                  
                 ],
                 "createdRow": function (row, data, index) {
-
-                    var $lnkcode = $("<img class='img - thumbnail thumb' style='width:50px; heigh:40px;' />");
-                    $lnkcode.attr("src", "@Url.Action("GetImageFile", "Home")/?fileName=" +data.Image);
-                    $("td", row).eq(3).text("").append($lnkcode);
-                    var $lnkcode =  $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
-                    $lnkcode.attr("onclick", "onEdit('" + data.Id + "' )");
-                    $("td", row).eq(6).text("").append($lnkcode);
+                    var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");
+                    $lnkcode.attr("onclick", "onDelete('" + data.Account + "' )");
+                    $("td", row).eq(2).text("").append($lnkcode);
                 },
                 "language": {
                     "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",
@@ -99,10 +89,37 @@
                 }
             })
         };
-        function onEdit(Id) {
-            var url = "/Home/CooperationEdit/" + Id;
-            window.location.href = url;
+
+        function onDelete(Account)
+        {
+            var message = confirm("確定刪除嗎？");
+            if (message == true)
+            {
+                 lockScreen();
+                $.ajax({
+                    "url": '@Url.Action("Delete")',
+                    type: "POST",
+                    data: {
+                        "Account": Account,
+                    },
+                    success: function (data) {
+                        unlockScreen();
+                        if (data.Status == "0")
+                        {
+                            alert('' + data.StatusDesc);
+                            var url ='@Url.Action("Index")';
+                            window.open(url, "_self");
+                        } else {
+                            var message = data.StatusDesc;
+                            alert(message);
+                        }
+                    },
+                    error: function (err) {
+                        unlockScreen();
+                        alert(err.Status);
+                    }
+                });
+            }
         }
-    
     </script>
 }

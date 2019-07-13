@@ -41,18 +41,38 @@
           <Property Name="Categore" Type="nvarchar" MaxLength="50" />
           <Property Name="Category_Opt" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="employee">
+        <EntityType Name="Contact">
           <Key>
-            <PropertyRef Name="employeeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="employeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="employeeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="employeeAccount" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="employeePwd" Type="varbinary" MaxLength="60" Nullable="false" />
-          <Property Name="employeeSalt" Type="varbinary" MaxLength="50" Nullable="false" />
-          <Property Name="employeeEmail" Type="nvarchar(max)" />
-          <Property Name="createTime" Type="datetime" />
-          <Property Name="modifyTime" Type="datetime" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Skype" Type="nvarchar(max)" />
+          <Property Name="Service" Type="nvarchar" MaxLength="50" />
+          <Property Name="Memo" Type="nvarchar(max)" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="Subject" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ContactOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Seq" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Account" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varbinary" MaxLength="60" Nullable="false" />
+          <Property Name="Salt" Type="varbinary" MaxLength="60" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="HomePage">
           <Key>
@@ -125,7 +145,9 @@
           <EntitySet Name="AboutPage" EntityType="Self.AboutPage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Blogger" EntityType="Self.Blogger" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactOption" EntityType="Self.ContactOption" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductPage" EntityType="Self.ProductPage" Schema="dbo" store:Type="Tables" />
@@ -183,18 +205,38 @@
           <Property Name="Category_Opt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Article" Relationship="Self.FK_Article_Blogger" FromRole="Blogger" ToRole="Article" />
         </EntityType>
-        <EntityType Name="employee">
+        <EntityType Name="Contact">
           <Key>
-            <PropertyRef Name="employeeId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="employeeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="employeePwd" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
-          <Property Name="employeeSalt" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
-          <Property Name="employeeEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="createTime" Type="DateTime" Precision="3" />
-          <Property Name="modifyTime" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ContactOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Seq" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+          <Property Name="Salt" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="HomePage">
           <Key>
@@ -268,7 +310,9 @@
           <EntitySet Name="AboutPage" EntityType="Self.AboutPage" />
           <EntitySet Name="Article" EntityType="Self.Article" />
           <EntitySet Name="Blogger" EntityType="Self.Blogger" />
-          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="ContactOption" EntityType="Self.ContactOption" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="HomePage" EntityType="Self.HomePage" />
           <EntitySet Name="Language" EntityType="Self.Language" />
           <EntitySet Name="ProductPage" EntityType="Self.ProductPage" />
@@ -327,17 +371,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="employee">
-            <EntityTypeMapping TypeName="MugFactoryModel.employee">
-              <MappingFragment StoreEntitySet="employee">
-                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
-                <ScalarProperty Name="employeeName" ColumnName="employeeName" />
-                <ScalarProperty Name="employeeAccount" ColumnName="employeeAccount" />
-                <ScalarProperty Name="employeePwd" ColumnName="employeePwd" />
-                <ScalarProperty Name="employeeSalt" ColumnName="employeeSalt" />
-                <ScalarProperty Name="employeeEmail" ColumnName="employeeEmail" />
-                <ScalarProperty Name="createTime" ColumnName="createTime" />
-                <ScalarProperty Name="modifyTime" ColumnName="modifyTime" />
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="MugFactoryModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactOption">
+            <EntityTypeMapping TypeName="MugFactoryModel.ContactOption">
+              <MappingFragment StoreEntitySet="ContactOption">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Seq" ColumnName="Seq" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="MugFactoryModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

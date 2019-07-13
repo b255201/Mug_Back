@@ -20,6 +20,7 @@
             <a id="PreImgName">@ViewBag.Image</a>
             <img id="preimg" class="img-thumbnail thumb imgthumb" src="@Url.Action("GetImageFile","Home",new { fileName= Model.Image })" />
         </div>
+        <div class="col-sm-offset-2 col-sm-10" style="color:red">*請使用1500*1000.jpg圖片</div>
     </div>
     <div class="form-group">
         <label for="file" class="col-sm-2 control-label">是否啟用</label>
@@ -93,7 +94,6 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-3">
                     <button type="button" id="AtricleBtn" class="btn btn-primary" onclick="onSaveLang(@(i.Article_ID),@(i.Id));">儲存</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:location.href='/Home/Index'">回查詢頁</button>
                 </div>
             </div>
         </form>
@@ -152,7 +152,7 @@
                     alert('' + data.Message);
                 }
                 else if (data.Status == "1") {
-
+                     unlockScreen();
                     alert('' + data.Message);
                 }
             },

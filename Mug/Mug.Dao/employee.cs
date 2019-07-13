@@ -12,15 +12,13 @@ namespace Mug.Dao
     using System;
     using System.Collections.Generic;
     
-    public partial class employee
+    public partial class Employee
     {
-        public int employeeId { get; set; }
-        public string employeeName { get; set; }
-        public string employeeAccount { get; set; }
-        public byte[] employeePwd { get; set; }
-        public byte[] employeeSalt { get; set; }
-        public string employeeEmail { get; set; }
-        public Nullable<System.DateTime> createTime { get; set; }
-        public Nullable<System.DateTime> modifyTime { get; set; }
+        public int EmpId { get; set; }
+        public string Name { get; set; }
+        public string Account { get; set; }
+        public byte[] Password { get; set; }
+        public byte[] Salt { get; set; }
+        public System.DateTime CreateTime { get; set; }
     }
 }

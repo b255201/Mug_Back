@@ -39,18 +39,38 @@
     <Property Name="Category_Opt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Article" Relationship="Self.FK_Article_Blogger" FromRole="Blogger" ToRole="Article" />
   </EntityType>
-  <EntityType Name="employee">
+  <EntityType Name="Contact">
     <Key>
-      <PropertyRef Name="employeeId" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="employeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="employeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="employeeAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="employeePwd" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
-    <Property Name="employeeSalt" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
-    <Property Name="employeeEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="createTime" Type="DateTime" Precision="3" />
-    <Property Name="modifyTime" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ContactOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Seq" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+    <Property Name="Salt" Type="Binary" MaxLength="60" FixedLength="false" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="HomePage">
     <Key>
@@ -124,7 +144,9 @@
     <EntitySet Name="AboutPage" EntityType="Self.AboutPage" />
     <EntitySet Name="Article" EntityType="Self.Article" />
     <EntitySet Name="Blogger" EntityType="Self.Blogger" />
-    <EntitySet Name="employee" EntityType="Self.employee" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" />
+    <EntitySet Name="ContactOption" EntityType="Self.ContactOption" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
     <EntitySet Name="HomePage" EntityType="Self.HomePage" />
     <EntitySet Name="Language" EntityType="Self.Language" />
     <EntitySet Name="ProductPage" EntityType="Self.ProductPage" />
