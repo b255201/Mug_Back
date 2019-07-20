@@ -9,20 +9,21 @@ using System.Web.Mvc;
 
 namespace Mug_Front.Controllers
 {
-    public class AboutController : Controller
+    public class ServiceController : Controller
     {
         private IBloggerService BloggerService = new BloggerService();
         private ILanguageService LanguageService = new LanguageService();
         private IArticleService ArticleService = new ArticleService();
-        // GET: About
+        // GET: Service
         public ActionResult Index()
         {
             var blog = BloggerService.GetAll();
             var articles = ArticleService.GetAll();
+            //首頁大圖
             var result = from b in blog
                          join a in articles
                           on b.Blog_id equals a.Post_Id
-                         where b.Categore == "關於頁" && b.Enable == true
+                         where b.Categore == "服務頁" && b.Enable == true
                          orderby b.Blog_id
                          select new ArticleViewModel
                          {
@@ -31,10 +32,12 @@ namespace Mug_Front.Controllers
                              Image = b.Image,
                              Enable = b.Enable,
                              Categore = b.Categore,
+                             Category_Opt=b.Category_Opt,
                              Sub_Title = a.Sub_Title,
                              Contents = a.Contents,
                              Id = a.Id
                          };
+
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
             {
@@ -47,9 +50,6 @@ namespace Mug_Front.Controllers
                 result = result.Where(x => x.Id == 1).ToList();
             }
             return View(result);
-
         }
     }
-
-  
 }

@@ -18,10 +18,11 @@ namespace Mug_Front.Controllers
         {
             var  blog = BloggerService.GetAll();
             var articles = ArticleService.GetAll();
+            //首頁大圖
             var result = from b in blog
                           join a in articles
                            on b.Blog_id equals a.Post_Id
-                          where b.Categore == "首頁大圖" && b.Enable==true
+                          where b.Categore == "首頁大圖" || b.Categore== "合作廠商" && b.Enable==true
                           orderby b.Blog_id
                           select new ArticleViewModel
                           {
@@ -34,11 +35,12 @@ namespace Mug_Front.Controllers
                               Contents=a.Contents,   
                               Id=a.Id
                           };
+
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
             {
                 LanguageCommon LangUser = new LanguageCommon();
-               string LangKey=LangUser.GetUserLang(cookie.Value.ToString());
+                string LangKey=LangUser.GetUserLang(cookie.Value.ToString());
                 result = result.Where(x => x.Id == int.Parse(LangKey)).ToList();
             }
             else

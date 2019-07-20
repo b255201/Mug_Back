@@ -1,12 +1,9 @@
 ﻿@model List<Mug_Front.Models.ArticleViewModel>
-    <section class="home-slider owl-carousel">
-        @foreach (var item in Model)
+<section class="home-slider owl-carousel">
+    @foreach (var item in Model)
+    {
+        if (item.Categore == "首頁大圖")
         {
-
-           
-            <!--有誤
-        <div class="slider-item" style="background-image:url();">
-            -->
             <div class="slider-item" style="background-image:url( @Url.Action("GetImageFile", "Home", new { fileName = @item.Image }));">
 
                 <div class="overlay"></div>
@@ -21,7 +18,8 @@
                 </div>
             </div>
         }
-    </section>
+    }
+</section>
 
 <section class="ftco-services ftco-no-pb">
     <div class="container">
@@ -73,3 +71,24 @@
         </div>
     </div>
 </section>
+
+
+@foreach (var item in Model)
+{
+    if (item.Categore == "合作廠商")
+    {
+        <section class="ftco-customer testimony-section bg-light">
+            <div class="container">
+                <div class="row justify-content-center mb-5 pb-2">
+                    <div class="col-md-8 text-center heading-section ftco-animate">
+                        <h2 class="mb-4">@item.Title</h2>
+                        <p>@item.Contents</p>
+                        <div style="margin:0 atuo;">
+                            <img class="img-thumbnail" src="@Url.Action("GetImageFile", "Home", new { fileName = @item.Image })" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
