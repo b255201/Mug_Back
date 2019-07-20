@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">Contact Us</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Idenx","Home")">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 py-5 pr-md-5">
+                <div class="heading-section heading-section-white ftco-animate mb-5">
+                    <h2 class="mb-4">Require</h2>
+                    <p>We will contact with you soon.</p>
+                </div>
+                <form id="FrmId" class="appointment-form ftco-animate">
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Your Name (Require)">
+                        </div>
+                        <div class="form-group ml-md-4">
+                            <input type="text" class="form-control" id="Tel" name="Tel" placeholder="Tel">
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <div class="form-field">
+                                <div class="select-wrap">
+                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                    <select name="Service" id="Service" class="form-control" style="background-color:black">
+                                        <option style="background-color:cornflowerblue" value="Select">Select Your Services</option>
+                                        <option style="background-color:cornflowerblue" value="Neurology">Neurology</option>
+                                        <option style="background-color:cornflowerblue" value="Cardiology">Cardiology</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group ml-md-12">
+                            <input type="text" name="Email" id="Email" class="form-control" placeholder="Email (Require)">
+                        </div>
+                    </div>
+                    <div class="d-md-flex">
+                        <div class="form-group">
+                            <textarea name="Memo" id="Memo" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+                        </div>
+                        <div class="form-group ml-md-4">
+                            <input type="button" onclick="SendBtn()"  value="Send" class="btn btn-secondary py-3 px-4">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6 p-5 bg-counter aside-stretch">
+                <h3 class="vr">聯絡地方</h3>
+                <div class="row pt-4 mt-1">
+                    <div class="col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 p-5 bg-light">
+                            <div class="text" style="text-align:left">
+                                <span>Address:</span>
+                                <span> 198 West 21th Street, Suite 721 New York NY 10016</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 p-5 bg-light">
+                            <div class="text" style="text-align:left">
+                                <span>Phone:</span>
+                                <span><a href="tel://123455">+886 0234678891</a>:</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 p-5 bg-light">
+                            <div class="text" style="text-align:left">
+                                <span>Email:</span>
+                                <span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18  bg-light">
+                            <div class="" style="text-align:left">
+
+                                <span>  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.438750343366!2d121.46866641462255!3d25.01918024504014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a83da8f5fa1d%3A0x3f336a27102b1815!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A5rCR55Sf6Lev5LqM5q61!5e0!3m2!1szh-TW!2stw!4v1563621187178!5m2!1szh-TW!2stw" frameborder="0" style="border:0;width:100%" allowfullscreen></iframe></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section contact-section">
+    <div class="container">
+
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+                <h2 class="h4">Our Factory</h2>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="bg-light d-flex align-self-stretch box p-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.438750343366!2d121.46866641462255!3d25.01918024504014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a83da8f5fa1d%3A0x3f336a27102b1815!2zMjIw5paw5YyX5biC5p2_5qmL5Y2A5rCR55Sf6Lev5LqM5q61!5e0!3m2!1szh-TW!2stw!4v1563621187178!5m2!1szh-TW!2stw" frameborder="0" style="border:0;width:100%" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+@section Scripts
+{
+    <script>
+
+        function SendBtn()
+        {
+            var Name = $("#Name").val();
+            var Email = $("#Email").val();
+            if (Name == "")
+            {
+                alert("Require Name");
+                return false;
+            }
+            if (Email == "")
+            {
+                alert("Require Email");
+                return false;
+            }
+            var Opt = $("#Service").val();
+            $.ajax({
+                url: '@Url.Action("Insert")',
+                type: "POST",
+                data:  $("#FrmId").serialize(),
+                success: function (data)
+                {
+                    var message = data.Message;
+                    if (data.Status == "0") {
+                        alert('Thanks You' +);
+                    }
+                    else if (data.Status == "1") {
+
+                        alert('' + data.Message);
+                    }
+                },
+                error: function (err) {
+                    unlockScreen();
+                    alert(err.status);
+                }
+             });
+        }
+
+     </script>
+}
+

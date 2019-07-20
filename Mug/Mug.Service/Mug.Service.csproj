@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="EmployeePageService.cs" />
     <Compile Include="Interface\IEmployeePageService.cs" />
+    <Compile Include="Interface\IContactPageService.cs" />
     <Compile Include="Interface\ISerialNumberService.cs" />
+    <Compile Include="ContactService.cs" />
     <Compile Include="SerialNumberService.cs" />
     <Compile Include="LanguageService.cs" />
     <Compile Include="AboutPageService.cs" />
