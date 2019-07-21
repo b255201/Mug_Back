@@ -24,11 +24,11 @@ namespace Mug_Front.Controllers
         public ActionResult Insert(FormCollection form,string Opt)
         {
             var Cont = ContactService.GetAll().ToList();
-            var result = from r in Cont
+            var result = (from r in Cont
                          select new Contact
                           {
                               Id = r.Id,
-                          };
+                          }).OrderByDescending(x => x.Id); ;
             int MaxId = 1;
             if (result.Count() != 0)
             {
@@ -42,6 +42,7 @@ namespace Mug_Front.Controllers
             _Contact.Service = form["Service"];
             _Contact.Email = form["Email"];
             _Contact.Memo = form["Memo"];
+            _Contact.CreateTime = DateTime.Now;
             var Message = ContactService.Create(_Contact);
 
             if (Message.Success == true)

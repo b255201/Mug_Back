@@ -22,7 +22,7 @@ namespace Mug_Front.Controllers
             var result = from b in blog
                           join a in articles
                            on b.Blog_id equals a.Post_Id
-                          where b.Categore == "首頁大圖" || b.Categore== "合作廠商" && b.Enable==true
+                          where b.Categore == "首頁大圖" || b.Categore== "合作廠商" || b.Categore== "產品頁"  
                           orderby b.Blog_id
                           select new ArticleViewModel
                           {
@@ -35,7 +35,7 @@ namespace Mug_Front.Controllers
                               Contents=a.Contents,   
                               Id=a.Id
                           };
-
+            result = result.Where(x => x.Enable == true);
             HttpCookie cookie = Request.Cookies["_culture"];
             if (cookie != null)
             {

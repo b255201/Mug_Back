@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title -vvv</title>
+    <title>@Mug.Common.Resources.Layout.Title</title>
     @Styles.Render("~/Content/css")
     @RenderSection("heads", required: false)
     @RenderSection("styles", required: false)
@@ -17,75 +17,70 @@
         <div class="container">
             <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
                 <div class="col-lg-2 pr-4 align-items-center">
-                    <a class="navbar-brand" href="index.html">@Mug.Common.Resources.Layout.Title<span>Factory</span></a>
+
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")"> 
+                    <span class="icon-map" style="margin-right:10px"></span>@Mug.Common.Resources.Layout.Title
+                    </a>
                 </div>
                 <div class="col-lg-10 d-none d-md-block">
                     <div class="row d-flex">
                         <div class="col-md-3 pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Test</span>
+                            <span class="text">@Mug.Common.Resources.Layout.Address: 198 West 21th Street, Suite 721 New York NY 10016</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                            <span class="text">Email: youremail@email.com</span>
+                            <span class="text">@Mug.Common.Resources.Layout.Email: youremail@email.com</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                            <span class="text">Phone: + 1235 2355 98</span>
+                            <span class="text">@Mug.Common.Resources.Layout.Tel: + 1235 2355 98</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
+                <span class="oi oi-menu"></span>  @Mug.Common.Resources.Layout.Menu
             </button>
             @*<p class="button-custom order-lg-last mb-0"><a href="contact.html" class="btn btn-secondary py-2 px-3">Contact Us</a></p>*@
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link pl-0">Home</a></li>
-                <li class="nav-item"><a href="@Url.Action("Index","About")" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="@Url.Action("Index","Service")" class="nav-link">Service</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Product
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="1" })">陶瓷</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="2" })">玻璃</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="3" })">馬克杯</a>
-                        <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="4" })">其他</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="Contact.html" class="nav-link">聯絡我們</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        語言
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @Html.ActionLink("English", "SetCulture", "Language", new { culture = "", retrnUrl = this.Request.RawUrl }, null)
-                        @Html.ActionLink("繁體中文", "SetCulture", "Language", new { culture = "zh-TW", retrnUrl = this.Request.RawUrl }, null)
-                    </div>
-                </li>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a href="@Url.Action("Index","Home")" class="nav-link pl-0">@Mug.Common.Resources.Layout.Home</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index","About")" class="nav-link">@Mug.Common.Resources.Layout.About</a></li>
+                    <li class="nav-item"><a href="@Url.Action("Index","Service")" class="nav-link">@Mug.Common.Resources.Layout.Service</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @Mug.Common.Resources.Layout.Product
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="1" })">@Mug.Common.Resources.Layout.Product_Ceramics</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="2" })">@Mug.Common.Resources.Layout.Product_Glass</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="3" })">@Mug.Common.Resources.Layout.Product_Mug</a>
+                            <a class="dropdown-item" href="@Url.Action("Index","Product",new {ProId="4" })">@Mug.Common.Resources.Layout.Product_Other</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="@Url.Action("Index","Contact")" class="nav-link">@Mug.Common.Resources.Layout.Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav ">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" id="LanguageMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="flag-icon flag-icon-us"> </span> @Mug.Common.Resources.Layout.Language
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="LanguageMenuLink">
+                            <a class="dropdown-item" href="@Url.Action("SetCulture","Language",new { culture = "", retrnUrl = this.Request.RawUrl})"><span class="flag-icon flag-icon-us"> </span>  English</a>
+                            <a class="dropdown-item" href="@Url.Action("SetCulture","Language",new { culture = "zh-TW", retrnUrl = this.Request.RawUrl})"><span class="flag-icon flag-icon-tw"> </span>中文繁體</a>
 
-            </ul>
-            <ul class="nav navbar-nav ">
-                <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle" id="LanguageMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="flag-icon flag-icon-us"> </span> English
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="LanguageMenuLink">
-                        <a class="dropdown-item" href="#fr"><span style="background-color:red" class="flag-icon flag-icon-tw"> </span>  French</a>
-                        <a class="dropdown-item" href="#it"><span class="flag-icon flag-icon-tw"> </span>  Italian</a>
-                        <a class="dropdown-item" href="#ru"><span class="flag-icon flag-icon-ru"> </span>  Russian</a>
-                    </div>
-                </li>
-            </ul>
+                        </div>
+                    </li>
+                </ul>
 
-        </div>
+            </div>
         </div>
     </nav>
     <!-- END nav -->
@@ -98,11 +93,20 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-5">
-                        <h2 class="ftco-heading-2 logo">Ｍug.<span>Factory</span></h2>
+                        <h2 class="ftco-heading-2 logo">@Mug.Common.Resources.Layout.Title.<span>@Mug.Common.Resources.Layout.Company</span></h2>
                         <p>直接說明聯絡方式.</p>
                     </div>
                     <div class="ftco-footer-widget mb-5">
-                        <h2 class="ftco-heading-2">歡迎聯繫</h2>
+                        <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.Contact</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                            </ul>
+                        </div>
+
+                        <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.Factory</h2>
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
@@ -122,28 +126,23 @@
                     <div class="ftco-footer-widget mb-5 ml-md-4">
                         <h2 class="ftco-heading-2">Links</h2>
                         <ul class="list-unstyled">
-                            <li><a href="index.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Home</a></li>
-                            <li><a href="about.html"><span class="ion-ios-arrow-round-forward mr-2"></span>About</a></li>
-                            <li><a href="service.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Service</a></li>
-                            <li><a href="contact.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Contact Us</a></li>
+                            <li><a href="@Url.Action("Index","Home")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Home</a></li>
+                            <li><a href="@Url.Action("Index","About")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.About</a></li>
+                            <li><a href="@Url.Action("Index","Service")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Service</a></li>
+                            <li><a href="@Url.Action("Index","Contact")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Contact</a></li>
                         </ul>
                     </div>
                     <div class="ftco-footer-widget mb-5 ml-md-4">
-                        <h2 class="ftco-heading-2">Product</h2>
+                        <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.Product</h2>
                         <ul class="list-unstyled">
-                            <li><a href="porcelain.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Porcelain</a></li>
-                            <li><a href="mug.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Mug</a></li>
-                            <li><a href="else.html"><span class="ion-ios-arrow-round-forward mr-2"></span>Else</a></li>
+                            <li><a href="@Url.Action("Index","Product",new {ProId="1" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Ceramics</a></li>
+                            <li><a href="@Url.Action("Index","Product",new {ProId="2" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Glass</a></li>
+                            <li><a href="@Url.Action("Index","Product",new {ProId="3" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Mug</a></li>
+                            <li><a  href="@Url.Action("Index","Product",new {ProId="4" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Other</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-md">
-                    <div class="ftco-footer-widget mb-5">
-                        <h2 class="ftco-heading-2">Opening Hours</h2>
-                        <h3 class="open-hours pl-4"><span class="ion-ios-time mr-3"></span>We are open 24/7</h3>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center">

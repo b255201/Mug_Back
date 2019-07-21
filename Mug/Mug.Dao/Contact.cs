@@ -23,5 +23,7 @@ namespace Mug.Dao
         public string Memo { get; set; }
         public Nullable<System.DateTime> CreateTime { get; set; }
         public string Subject { get; set; }
+
+        public string Time { get; set; }
     }
 }

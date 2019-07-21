@@ -117,10 +117,109 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Test" xml:space="preserve">
-    <value>dd</value>
+  <data name="About" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Contact_Btn" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Contact_Email" xml:space="preserve">
+    <value>Your Email (Require)</value>
+  </data>
+  <data name="Contact_Memo" xml:space="preserve">
+    <value>Memo</value>
+  </data>
+  <data name="Contact_Name" xml:space="preserve">
+    <value>Your Name (Require)</value>
+  </data>
+  <data name="Contact_opt1" xml:space="preserve">
+    <value>Order Inquiry</value>
+  </data>
+  <data name="Contact_opt2" xml:space="preserve">
+    <value>Product Inquiry</value>
+  </data>
+  <data name="Contact_opt3" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="Contact_opt4" xml:space="preserve">
+    <value>Else Service</value>
+  </data>
+  <data name="Contact_Tel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Exhibition" xml:space="preserve">
+    <value>Exhibition</value>
+  </data>
+  <data name="Exhibition_Description" xml:space="preserve">
+    <value>Exhibition Description(未打)</value>
+  </data>
+  <data name="Factory" xml:space="preserve">
+    <value>Our Factory</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Product_Ceramics" xml:space="preserve">
+    <value>Ceramics</value>
+  </data>
+  <data name="Product_Glass" xml:space="preserve">
+    <value>Glass</value>
+  </data>
+  <data name="Product_Mug" xml:space="preserve">
+    <value>Mug</value>
+  </data>
+  <data name="Product_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Require" xml:space="preserve">
+    <value>Require(未打)</value>
+  </data>
+  <data name="Require_Description" xml:space="preserve">
+    <value>Require_Description(未打)</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service Items</value>
+  </data>
+  <data name="Service_Description" xml:space="preserve">
+    <value>Service_Description(未打)</value>
+  </data>
+  <data name="Step1" xml:space="preserve">
+    <value>Step1(未打)</value>
+  </data>
+  <data name="Step2" xml:space="preserve">
+    <value>Step2(未打)</value>
+  </data>
+  <data name="Step3" xml:space="preserve">
+    <value>Step3(未打)</value>
+  </data>
+  <data name="Step4" xml:space="preserve">
+    <value>Step4(未打)</value>
+  </data>
+  <data name="Tel" xml:space="preserve">
+    <value>Tel</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>fukkkk</value>
+    <value>SOUVENIRS</value>
   </data>
 </root>

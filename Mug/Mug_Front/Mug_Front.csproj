@@ -235,6 +235,7 @@
     <Content Include="Scripts\js\jquery.stellar.min.js" />
     <Content Include="Scripts\js\jquery.timepicker.min.js" />
     <Content Include="Scripts\js\jquery.waypoints.min.js" />
+    <Content Include="Scripts\lock.js" />
     <Content Include="Scripts\js\main.js" />
     <Content Include="Scripts\js\owl.carousel.min.js" />
     <Content Include="Scripts\js\popper.min.js" />
