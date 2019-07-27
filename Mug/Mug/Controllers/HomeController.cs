@@ -9,6 +9,7 @@ using Mug.Dao;
 using Mug.Service.UI;
 using Mug.Models;
 using Mug.Attribute;
+using Mug.HtmlHelper;
 
 namespace Mug.Controllers
 {
@@ -23,36 +24,23 @@ namespace Mug.Controllers
         // GET: HomeTest
         public ActionResult Index()
         {
+            LinqTable optHelper = new LinqTable();
+            ViewBag.SelectList = optHelper.option();
             return View();
         }
 
         #region Search 大圖查詢
         [HttpPost]
-        public ActionResult Search()
+        public ActionResult Search(string Lang)
         {
 
-            var blog = BloggerService.GetAll();
-            var articles = ArticleService.GetAll();
-            //var result = BloggerService.GetAll().Join(ArticleService.GetAll(), o => o.Blog_id, d => d.Post_Id, (o, d) =>
-            //          new ArticleViewModel
-            //         {
-            //             Blog_id = o.Blog_id,
-            //             Title = d.Title,
-            //             Image = o.Image,
-            //             Enable = o.Enable,
-            //         }).Where(o => o.Categore == "首頁大圖").OrderBy(o => o.Blog_id).ToList();
-          var   result = (from b in blog
-                      join a in articles
-                       on b.Blog_id equals a.Post_Id
-                     where b.Categore == "首頁大圖"
-                     orderby b.Blog_id
-                     select new ArticleViewModel
-                     {
-                         Blog_id = b.Blog_id,
-                         Title = a.Title,
-                         Image = b.Image,
-                         Enable = b.Enable,
-                     }).ToList();
+            LinqTable optHelper = new LinqTable();
+            var result = optHelper.ArtHelper();
+            result = result.Where(x => x.Categore == "首頁大圖");
+            if (!String.IsNullOrEmpty(Lang))
+            {
+                result= result.Where(i => i.Id == int.Parse(Lang)).ToList();
+            }
 
             int totalLen = Convert.ToInt16(result.Count());
             JQueryDataTableResponse<ArticleViewModel> jqDataTableRs = JQueryDataTableHelper<ArticleViewModel>.GetResponse(1, totalLen, totalLen, result.ToList());

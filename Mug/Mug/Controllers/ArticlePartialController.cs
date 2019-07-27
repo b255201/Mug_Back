@@ -7,9 +7,11 @@ using Mug.Service;
 using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
+using Mug.Attribute;
 
 namespace Mug.Controllers
 {
+    [AuthenticateUser]
     public class ArticlePartialController : Controller
     {
         private IArticleService ArticleService = new ArticleService();

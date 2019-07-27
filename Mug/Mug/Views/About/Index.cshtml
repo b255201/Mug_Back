@@ -17,7 +17,25 @@
     </h1>
 </div>
 <br /><br />
-<button type="button" class="btn btn-primary" onclick="javascript:location.href='/About/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+
+
+      <div class="form-horizontal">
+          <div class="form-group" style="margin-top:10px">
+              <label class="col-sm-2 control-label">語言：</label>
+              <div class="col-sm-3">
+                  @Html.DropDownList("Lang", (IEnumerable<SelectListItem>)ViewBag.SelectList, new { @class = "form-control" })
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                  <button type="button" class="btn btn-danger" onclick="onSearch();">查詢</button>
+                  <button type="button" class="btn btn-primary" onclick="javascript:location.href='/About/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+              </div>
+          </div>
+      </div>
+
+
 <!--顯示資料-->
 <table id="main" class="display" cellspacing="0" style="width:100%">
     <thead>
@@ -62,6 +80,9 @@
                 "ajax": {
                     "type": "Post",
                     "url": '@Url.Action("Search")',
+                      "data": {
+                        "Lang": $("#Lang").val()
+                    },
                     "error": function (msg) {
                         alert(msg);
                     }

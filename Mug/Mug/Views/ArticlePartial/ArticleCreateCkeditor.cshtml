@@ -4,7 +4,7 @@
     ViewBag.Title = "新增-文章";
 }
 
-<hr />
+
 
 @foreach (var i in Model)
 {
@@ -73,7 +73,7 @@
                   <div class="form-group">
                       <div class="col-sm-2"></div>
                       <div class="col-sm-3">
-                          <button type="button" id="AtricleBtn_" class="btn btn-primary" onclick="onSaveLang('@i.Id')">儲存</button>
+                          <button type="button" id="AtricleBtn_@i.Id" class="btn btn-primary" onclick="onSaveLang('@i.Id')">儲存</button>
                           @*<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript: location.href = '/Home/Index'">回查詢頁</button>*@
                       </div>
                   </div>

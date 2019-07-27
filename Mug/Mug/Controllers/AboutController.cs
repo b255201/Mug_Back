@@ -8,9 +8,12 @@ using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
 using Mug.Models;
+using Mug.HtmlHelper;
+using Mug.Attribute;
 
 namespace Mug.Controllers
 {
+    [AuthenticateUser]
     public class AboutController : Controller
     {
         private IBloggerService BloggerService = new BloggerService();
@@ -20,28 +23,24 @@ namespace Mug.Controllers
         // GET: About
         public ActionResult Index()
         {
+            LinqTable optHelper = new LinqTable();
+            ViewBag.SelectList = optHelper.option();
             return View();
         }
 
         #region Search 大圖查詢
         [HttpPost]
-        public ActionResult Search()
+        public ActionResult Search(string Lang)
         {
             var blog = BloggerService.GetAll();
             var articles = ArticleService.GetAll();
-            var result = (from b in blog
-                          join a in articles
-                           on b.Blog_id equals a.Post_Id
-                          where b.Categore == "關於頁"
-                          orderby b.Blog_id
-                          select new ArticleViewModel
-                          {
-                              Blog_id = b.Blog_id,
-                              Title = a.Title,
-                              Image = b.Image,
-                              Enable = b.Enable,
-                          }).ToList();
-
+            LinqTable optHelper = new LinqTable();
+            var result = optHelper.ArtHelper();
+            result = result.Where(x => x.Categore == "關於頁");
+            if (!String.IsNullOrEmpty(Lang))
+            {
+                result = result.Where(i => i.Id == int.Parse(Lang)).ToList();
+            }
             int totalLen = Convert.ToInt16(result.Count());
             JQueryDataTableResponse<ArticleViewModel> jqDataTableRs = JQueryDataTableHelper<ArticleViewModel>.GetResponse(1, totalLen, totalLen, result.ToList());
             return Json(jqDataTableRs);
@@ -79,7 +78,7 @@ namespace Mug.Controllers
                 if (Enable == true)
                 {
                     var checkEnacle = q;
-                    if (checkEnacle.Where(i => i.Enable == true && i.Categore == "合作廠商").Count() > 0)
+                    if (checkEnacle.Where(i => i.Enable == true && i.Categore == "關於頁").Count() > 0)
                     {
                         string ErrMeg = "請先回查詢頁,把啟用狀態取消在新增";
                         return Json(new { Status = "1", Message = ErrMeg });
@@ -250,7 +249,7 @@ namespace Mug.Controllers
             if (Enable == true)
             {
                 var checkEnacle = q;
-                if (checkEnacle.Where(i => i.Enable == true && i.Categore == "合作廠商").Count() > 0)
+                if (checkEnacle.Where(i => i.Enable == true && i.Categore == "關於頁").Count() > 0)
                 {
                     string ErrMeg = "請先回查詢頁,把啟用狀態取消在修改";
                     return Json(new { Status = "1", Message = ErrMeg });

@@ -10,9 +10,11 @@ using Mug.Service.UI;
 using Mug.Models;
 using System.Text;
 using System.Security.Cryptography;
+using Mug.Attribute;
 
 namespace Mug.Controllers
 {
+    [AuthenticateUser]
     public class EmployeeController : Controller
     {
       //  public MugFactoryEntities db = new MugFactoryEntities();

@@ -20,5 +20,6 @@ namespace Mug.Models
         public string Title { get; set; }
         public string Sub_Title { get; set; }
         public string Contents { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -8,9 +8,12 @@ using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
 using Mug.Models;
+using Mug.HtmlHelper;
+using Mug.Attribute;
 
 namespace Mug.Controllers
 {
+    [AuthenticateUser]
     public class ProductController : Controller
     {
         private IBloggerService BloggerService = new BloggerService();
@@ -20,29 +23,24 @@ namespace Mug.Controllers
         // GET: About
         public ActionResult Index()
         {
+            LinqTable optHelper = new LinqTable();
+            ViewBag.SelectList = optHelper.option();
             return View();
         }
 
         #region Search 大圖查詢
         [HttpPost]
-        public ActionResult Search()
+        public ActionResult Search(string Lang)
         {
             var blog = BloggerService.GetAll();
             var articles = ArticleService.GetAll();
-            var result = (from b in blog
-                          join a in articles
-                           on b.Blog_id equals a.Post_Id
-                          where b.Categore == "產品頁"
-                          orderby b.Blog_id
-                          select new ArticleViewModel
-                          {
-                              Blog_id = b.Blog_id,
-                              Category_Opt = b.Category_Opt,
-                              Title = a.Title,
-                              Image = b.Image,
-                              Enable = b.Enable,
-                          }).ToList();
-
+            LinqTable optHelper = new LinqTable();
+            var result = optHelper.ArtHelper();
+            result = result.Where(x => x.Categore == "產品頁");
+            if (!String.IsNullOrEmpty(Lang))
+            {
+                result = result.Where(i => i.Id == int.Parse(Lang)).ToList();
+            }
             int totalLen = Convert.ToInt16(result.Count());
             JQueryDataTableResponse<ArticleViewModel> jqDataTableRs = JQueryDataTableHelper<ArticleViewModel>.GetResponse(1, totalLen, totalLen, result.ToList());
             return Json(jqDataTableRs);
