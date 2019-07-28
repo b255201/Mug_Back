@@ -45,6 +45,7 @@
     <Compile Include="Interface\IContactPageService.cs" />
     <Compile Include="Interface\ISerialNumberService.cs" />
     <Compile Include="ContactService.cs" />
+    <Compile Include="Job\EmailClient.cs" />
     <Compile Include="SerialNumberService.cs" />
     <Compile Include="LanguageService.cs" />
     <Compile Include="AboutPageService.cs" />
@@ -69,7 +70,9 @@
       <Name>Mug.Dao</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="MailTemplate.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -7,7 +7,7 @@ using Mug.Service;
 using Mug.Service.Interface;
 using Mug.Dao;
 using Mug.Service.UI;
-
+using Mug.Service.Job;
 
 namespace Mug_Front.Controllers
 {
@@ -44,6 +44,8 @@ namespace Mug_Front.Controllers
             _Contact.Memo = form["Memo"];
             _Contact.CreateTime = DateTime.Now;
             var Message = ContactService.Create(_Contact);
+            EmailClient email = new EmailClient();
+            email.sendEmail(_Contact);
 
             if (Message.Success == true)
             {
