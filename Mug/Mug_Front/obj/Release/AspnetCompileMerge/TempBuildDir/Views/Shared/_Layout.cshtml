@@ -5,29 +5,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Mug.Common.Resources.Layout.Title</title>
-    @Styles.Render("~/Content/css")
+    <link href="~/Content/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Content/css/icomoon.css" rel="stylesheet" />
+
+
+    @Styles.Render("~/style/css")
     @RenderSection("heads", required: false)
     @RenderSection("styles", required: false)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .nav-item>a
-        {
-            font-weight:300 !important;
+        .nav-item > a {
+            font-weight: 300 !important;
             font-size: 20px !important;
         }
-        .childsubitem>a
-        {
-              font-size: 18px !important;
+
+        .childsubitem > a {
+            font-size: 18px !important;
         }
-        .nav-item>a:hover
-        {
-            color:#2f89fc !important;
+
+        .nav-item > a:hover {
+            color: #2f89fc !important;
         }
-        .dropdown-item:hover
-        {
-            background-color:#2f89fc !important;
-             color:white !important;
+
+        .dropdown-item:hover {
+            background-color: #2f89fc !important;
+            color: white !important;
         }
     </style>
 </head>
