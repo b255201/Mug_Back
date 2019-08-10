@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "聯絡人資訊";
+}
+@section heads
+{
+
+    @Styles.Render("~/Content/css/datatables")
+    <style>
+        table.dataTable tbody td {
+            vertical-align: middle;
+        }
+    </style>
+}
+<div class="page-header">
+    <h1>
+        聯絡人資訊
+    </h1>
+</div>
+<br /><br />
+
+<!--顯示資料-->
+<table id="main" class="display" cellspacing="0" style="width:100%">
+    <thead>
+        <tr>
+            <th style="width:10%" class="control-label ">序號</th>
+            <th style="width:10%" class="control-label ">姓名</th>
+            <th style="width:10%" class="control-label ">電話</th>
+            <th style="width:10%" class="control-label ">信箱</th>
+            <th style="width:10%" class="control-label ">詢問</th>
+            <th style="width:10%" class="control-label ">時間</th>
+            <th style="width:10%" class="control-label ">備註</th>
+        </tr>
+    </thead>
+</table>
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/datatables")
+    <script>
+        //ddtrS, ddtrE, noperS, noperE, naper
+        $(document).ready(function () {
+            onSearch();
+        });
+
+        function onSearch() {
+            $("#main").DataTable({
+                "responsive": true,
+                "processing": true,
+                "serverSide": false,
+                "bAutoWidth": false,
+                "bDestroy": true,
+                "bInfo": true,
+                "bFilter": false,
+                "bSortable": true,
+                "orderMulti": false,
+                "bPaginate": true,
+                "bLengthChange": false,
+                "dom": "<'clear'>frtip",    //無工具列
+                "displayStart": 0,
+                "pageLength": 10,
+                "order": [[6, "desc"]],
+                "ajax": {
+                    "type": "Post",
+                    "url": '@Url.Action("Search")',
+                    "error": function (msg) {
+                        alert(msg);
+                    }
+                },
+                "sServerMethod": "post",
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "Name" },
+                    { "data": "Phone" },
+                    { "data": "Email" },
+                    { "data": "Service" },
+                    { "data": "Time" },
+                    { "data": "Memo" }
+                ],
+                "createdRow": function (row, data, index) {
+                },
+                "language": {
+                    "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",
+                    "infoEmpty": "0筆",
+                    "zeroRecords": "查無符合條件資料",
+                    "lengthMenu": "每頁顯示 _MENU_ 筆資料",
+                    "infoFiltered": "(從 _MAX_ 筆資料中篩選)",
+                    "paginate": {
+                        "first": "第一頁",
+                        "last": "最後一頁",
+                        "next": "下一頁",
+                        "previous": "上一頁"
+                    }
+                }
+            })
+        };
+ 
+    </script>
+}

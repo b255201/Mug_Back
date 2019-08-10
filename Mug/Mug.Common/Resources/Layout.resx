@@ -222,4 +222,7 @@
   <data name="Title" xml:space="preserve">
     <value>SOUVENIRS</value>
   </data>
+  <data name="VideoTxt" xml:space="preserve">
+    <value>View our Factory</value>
+  </data>
 </root>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MugFactoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AboutPage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Subheading" Type="nvarchar" MaxLength="50" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Article_ID" />
+    </Key>
+    <Property Name="Post_Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" />
+    <Property Name="Sub_Title" Type="nvarchar(max)" />
+    <Property Name="Contents" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Article_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blogger">
+    <Key>
+      <PropertyRef Name="Blog_id" />
+    </Key>
+    <Property Name="Blog_id" Type="int" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="Categore" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category_Opt" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Skype" Type="nvarchar(max)" />
+    <Property Name="Service" Type="nvarchar" MaxLength="50" />
+    <Property Name="Memo" Type="nvarchar(max)" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ContactOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Seq" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Account" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varbinary" MaxLength="60" Nullable="false" />
+    <Property Name="Salt" Type="varbinary" MaxLength="60" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HomePage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="Opt" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Lang_val" Type="nvarchar" MaxLength="10" />
+    <Property Name="Lang_text" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProductPage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Opt" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="Enable" Type="bit" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServiceTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="ServiceContent" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SerialNumber">
+    <Key>
+      <PropertyRef Name="SeqId" />
+    </Key>
+    <Property Name="SeqId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Article_Blogger">
+    <End Role="Blogger" Type="Self.Blogger" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blogger">
+        <PropertyRef Name="Blog_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Post_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Article_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MugFactoryModelStoreContainer">
+    <EntitySet Name="AboutPage" EntityType="Self.AboutPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Blogger" EntityType="Self.Blogger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactOption" EntityType="Self.ContactOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HomePage" EntityType="Self.HomePage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductPage" EntityType="Self.ProductPage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SerialNumber" EntityType="Self.SerialNumber" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Article_Blogger" Association="Self.FK_Article_Blogger">
+      <End Role="Blogger" EntitySet="Blogger" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Article_Language" Association="Self.FK_Article_Language">
+      <End Role="Language" EntitySet="Language" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

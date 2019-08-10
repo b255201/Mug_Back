@@ -1,0 +1,57 @@
+﻿@model Mug.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/login_Layout.cshtml";
+}
+
+<div class="content">
+    @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { @class = "login-form", enctype = "multipart/form-data", novalidate = "novalidate", id = "frmLogin" }))
+    {
+
+        <div class="form-title">
+            <span class="form-title">Welcome.</span>
+            <span class="form-subtitle">百盛後台管理系統.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="Account" 　class="control-label visible-ie8 visible-ie9">帳號：</label>
+            @Html.EditorFor(s => s.Account, new { htmlAttributes = new { @class = "form-control form-control-solid placeholder-no-fix", autocomplete = "off" } })
+            @Html.ValidationMessageFor(s => s.Account, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label for="Password" 　class="control-label visible-ie8 visible-ie9">密碼：</label>
+            @Html.EditorFor(s => s.Password, new { htmlAttributes = new { @class = "form-control form-control-solid placeholder-no-fix", autocomplete = "off" } })
+
+            @Html.ValidationMessageFor(s => s.Password, "", new { @class = "text-danger" })
+        </div>
+        @*<div class="form-group">
+                <input type="checkbox" name="ckbRemember" id="ckbRemember" value="value" indeterminate="true" class="thecheckbox">
+                <label for="ckbRemember">Remember Me</label>
+            </div>*@
+        <div class="form-actions">
+            <button id="btnSubmit" type="submit" class="btn red btn-block uppercase">Login</button>
+        </div>
+
+        <div class="form-group">
+            <span class="text-danger">@ViewBag.WrongLogin</span>
+        </div>
+
+
+    }
+</div>
+<script>
+
+    function btn() {
+        $.blockUI({
+            message: "<i class='fa fa-spinner fa-pulse orange' style='font-size:600%'>請稍等</i>",
+            //borderWidth:'0px' 和透明背景
+            css: { borderWidth: '0px', backgroundColor: 'transparent' },
+        });
+
+        //3秒後，解除BlockUI
+        setTimeout(function () {
+            $.unblockUI();
+        }, 3000);
+    }
+</script>
+

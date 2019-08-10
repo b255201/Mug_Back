@@ -1,0 +1,14 @@
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\Mug.Dao.dll.config
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\Mug.Dao.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\Mug.Dao.pdb
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\EntityFramework.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\EntityFramework.xml
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\zh-Hant\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\bin\Release\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\obj\Release\Mug.Dao.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\obj\Release\Mug.Dao.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\obj\Release\Mug.Dao.csproj.CopyComplete
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\obj\Release\Mug.Dao.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Dao\obj\Release\Mug.Dao.pdb

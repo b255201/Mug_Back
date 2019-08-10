@@ -1,0 +1,154 @@
+﻿@model List<Mug_Front.Models.ArticleViewModel>
+
+
+
+<section class="hero-wrap hero-wrap-2" @*style="background-image: url('images/bg_1.jpg');"*@ data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-2 bread">@Mug.Common.Resources.Layout.Service</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">@Mug.Common.Resources.Layout.Home <i class="ion-ios-arrow-forward"></i></a></span> <span>@Mug.Common.Resources.Layout.Service <i class="ion-ios-arrow-forward"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-2">
+            <div class="col-md-8 text-center heading-section ftco-animate">
+                <h2 class="mb-4">@Mug.Common.Resources.Layout.Service</h2>
+                <p>@Mug.Common.Resources.Layout.Service_Description</p>
+            </div>
+        </div>
+        <div class="ftco-departments">
+            <div class="row">
+                <div class="col-md-12 nav-link-wrap">
+                    <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link ftco-animate col-md-3 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">@Mug.Common.Resources.Layout.Product_Ceramics</a>
+                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">@Mug.Common.Resources.Layout.Product_Glass</a>
+                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">@Mug.Common.Resources.Layout.Product_Mug</a>
+                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">@Mug.Common.Resources.Layout.Product_Other</a>
+                    </div>
+                </div>
+
+              
+                    <div class="col-md-12 tab-wrap">
+                        <div class="tab-content bg-light p-4 p-md-5 ftco-animate" id="v-pills-tabContent">
+                            @foreach (var item in Model)
+                            {
+                                if (item.Category_Opt == "陶瓷")
+                                {
+                                    <div class="tab-pane py-2 fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
+                                        <div class="row departments">
+                                            <div class="col-lg-4 order-lg-last d-flex align-items-stretch">
+                                                <div class="img d-flex align-self-stretch" style="background-image: url( @Url.Action("GetImageFile", "Home", new { fileName = @item.Image }))"></div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h2>@item.Title</h2>
+                                                @Html.Raw(item.Contents)
+                                                <div class="row mt-5 pt-2">
+                                                    <div class="col-lg-6">
+
+                                                        <div class="services-2 d-flex">
+                                                            <div class="mt-2 mr-3 d-flex justify-content-center align-items-center"></div>
+                                                            <div class="text">
+                                                                <h3>&nbsp;</h3>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.Category_Opt == "玻璃")
+                                {
+
+                                    <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-day-2-tab">
+                                        <div class="row departments">
+                                            <div class="col-lg-4 order-lg-last d-flex align-items-stretch">
+                                                <div class="img d-flex align-self-stretch" style="background-image: url( @Url.Action("GetImageFile", "Home", new { fileName = @item.Image }))"></div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h2>@item.Title</h2>
+                                                @Html.Raw(item.Contents)
+                                                <div class="row mt-5 pt-2">
+                                                    <div class="col-lg-6">
+                                                        <div class="services-2 d-flex">
+                                                            <div class="mt-2 mr-3 d-flex justify-content-center align-items-center"></div>
+                                                            <div class="text">
+                                                                <h3>&nbsp;</h3>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.Category_Opt == "馬克杯")
+                                {
+                                    <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
+                                        <div class="row departments">
+                                            <div class="col-lg-4 order-lg-last d-flex align-items-stretch">
+                                                <div class="img d-flex align-self-stretch" style="background-image: url( @Url.Action("GetImageFile", "Home", new { fileName = @item.Image }))"></div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h2>@item.Title</h2>
+                                                @Html.Raw(item.Contents)
+                                                <div class="row mt-5 pt-2">
+                                                    <div class="col-lg-6">
+
+                                                        <div class="services-2 d-flex">
+                                                            <div class="mt-2 mr-3 d-flex justify-content-center align-items-center"></div>
+                                                            <div class="text">
+                                                                <h3>&nbsp;</h3>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (item.Category_Opt == "其他")
+                                {
+                                    <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
+                                        <div class="row departments">
+                                            <div class="col-lg-4 order-lg-last d-flex align-items-stretch">
+                                                <div class="img d-flex align-self-stretch" style="background-image: url( @Url.Action("GetImageFile", "Home", new { fileName = @item.Image }))"></div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h2>BBB</h2>
+                                                @Html.Raw(item.Contents)
+                                                <div class="row mt-5 pt-2">
+                                                    <div class="col-lg-6">
+
+                                                        <div class="services-2 d-flex">
+                                                            <div class="mt-2 mr-3 d-flex justify-content-center align-items-center"></div>
+                                                            <div class="text">
+                                                                <h3>&nbsp;</h3>
+                                                                <p>&nbsp;</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+

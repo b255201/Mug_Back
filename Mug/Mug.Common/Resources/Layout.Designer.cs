@@ -374,5 +374,14 @@ namespace Mug.Common.Resources {
                 return ResourceManager.GetString("Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查詢類似 View our Factory 的當地語系化字串。
+        /// </summary>
+        public static string VideoTxt {
+            get {
+                return ResourceManager.GetString("VideoTxt", resourceCulture);
+            }
+        }
     }
 }

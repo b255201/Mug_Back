@@ -8,8 +8,6 @@ namespace Mug
         // 如需統合的詳細資訊，請瀏覽 https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-            //            "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -19,13 +17,7 @@ namespace Mug
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-            //          "~/Scripts/bootstrap.js"));
-
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //          "~/Content/bootstrap.css",
-            //          "~/Content/site.css"));
-
+   
             // jquery datatable
             bundles.Add(new StyleBundle("~/Content/css/datatables").Include(
                       "~/Content/DataTables/css/jquery.dataTables.css",
@@ -38,9 +30,9 @@ namespace Mug
                       "~/Scripts/DataTables/dataTables.responsive.js"));
 
             // metroc
-            bundles.Add(new StyleBundle("~/Content/assets").Include(
-                      "~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css",
-                      "~/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css",
+            bundles.Add(new StyleBundle("~/assets/global/css").Include(
+                      //"~/Content/assets/global/plugins/font-awesome/css/font-awesome.min.css",
+                      //"~/Content/assets/global/plugins/simple-line-icons/simple-line-icons.min.css",
                       "~/Content/assets/global/plugins/bootstrap/css/bootstrap.min.css",
                       "~/Content/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css",
                       "~/Content/assets/global/css/components.min.css",

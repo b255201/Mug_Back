@@ -1,0 +1,94 @@
+﻿@using Mug.Dao;
+@model List<Language>
+@{
+    ViewBag.Title = "新增-文章";
+}
+
+
+
+@foreach (var i in Model)
+{
+    if (i.Lang_val == "")
+    {
+        <h1>
+            新增-英文
+        </h1>
+        <br /><br />
+
+              <form  class="form-horizontal" action="/ArticlePartial/InsertCkeditor" method="post" enctype="multipart/form-data" id="frmSub_@i.Id">
+                  <div class="form-group">
+                      <label for="Title" class="col-sm-2 control-label">標題</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="theinput form-control" id="Title_@i.Id" name="Title" />
+                      </div>
+                  </div>
+                  @*<div class="form-group">
+            <label for="SubTitle" class="col-sm-2 control-label">子標題</label>
+            <div class="col-sm-10">
+                <input type="text" class="theinput form-control" id="SubTitle" name="SubTitle" />
+            </div>
+        </div>*@
+                  <div class="form-group">
+                      <label for="Contents" class="col-sm-2 control-label">內文</label>
+                      <div class="col-sm-10">
+                          <textarea class="theinput form-control" id="Contents_@i.Id" name="Contents"></textarea>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-3">
+                          <button type="button" id="AtricleBtn_@i.Id" class="btn btn-primary" onclick="onSaveLang('@i.Id')">儲存</button>
+                          @*<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript:location.href='/Home/Index'">回查詢頁</button>*@
+                      </div>
+                  </div>
+              </form>
+    }
+    else
+    {
+        <hr />
+        <h1>
+            @i.Lang_val
+        </h1>
+        <br /><br />
+              <form id="frmSub_@i.Id" class="form-horizontal" action="/ArticlePartial/InsertCkeditor" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                      <label for="Title" class="col-sm-2 control-label">標題</label>
+                      <div class="col-sm-10">
+                          <input type="text" class="theinput form-control" id="Title_@i.Id" name="Title" />
+                      </div>
+                  </div>
+                  @*<div class="form-group">
+            <label for="SubTitle" class="col-sm-2 control-label">子標題</label>
+            <div class="col-sm-10">
+                <input type="text" class="theinput form-control" id="SubTitle_tw" name="SubTitle" />
+            </div>
+        </div>*@
+                  <div class="form-group">
+                      <label for="Contents" class="col-sm-2 control-label">內文</label>
+                      <div class="col-sm-10">
+                          <textarea class="theinput form-control" id="Contents_@i.Id" name="Contents"></textarea>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-3">
+                          <button type="button" id="AtricleBtn_@i.Id" class="btn btn-primary" onclick="onSaveLang('@i.Id')">儲存</button>
+                          @*<button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="javascript: location.href = '/Home/Index'">回查詢頁</button>*@
+                      </div>
+                  </div>
+              </form>
+    }
+}
+
+@section Scripts
+{
+
+    <script>
+        $(function () {
+
+
+        });
+
+    </script>
+}

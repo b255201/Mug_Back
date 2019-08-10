@@ -81,5 +81,13 @@ namespace Mug.Controllers
 
             return isValid;
         }
+
+
+        public ActionResult Logout()
+        {
+            //登出
+            Session.Abandon();
+            return RedirectToAction("Login", "Admin");
+        }
     }
 }
