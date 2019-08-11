@@ -79,6 +79,15 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Comapny_desc 的當地語系化字串。
+        /// </summary>
+        public static string Comapny_desc {
+            get {
+                return ResourceManager.GetString("Comapny_desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Company 的當地語系化字串。
         /// </summary>
         public static string Company {
@@ -93,6 +102,15 @@ namespace Mug.Common.Resources {
         public static string Contact {
             get {
                 return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Contact_Addr 的當地語系化字串。
+        /// </summary>
+        public static string Contact_Addr {
+            get {
+                return ResourceManager.GetString("Contact_Addr", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace Mug.Common.Resources {
         public static string Factory {
             get {
                 return ResourceManager.GetString("Factory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Factory_Addr 的當地語系化字串。
+        /// </summary>
+        public static string Factory_Addr {
+            get {
+                return ResourceManager.GetString("Factory_Addr", resourceCulture);
             }
         }
         

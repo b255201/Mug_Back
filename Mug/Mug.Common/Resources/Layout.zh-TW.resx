@@ -225,4 +225,13 @@
   <data name="VideoTxt" xml:space="preserve">
     <value>觀看工廠</value>
   </data>
+  <data name="Contact_Addr" xml:space="preserve">
+    <value>聯絡地方的地址</value>
+  </data>
+  <data name="Factory_Addr" xml:space="preserve">
+    <value>工廠的地址</value>
+  </data>
+  <data name="Comapny_desc" xml:space="preserve">
+    <value>公司描述</value>
+  </data>
 </root>

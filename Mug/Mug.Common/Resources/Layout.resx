@@ -225,4 +225,13 @@
   <data name="VideoTxt" xml:space="preserve">
     <value>View our Factory</value>
   </data>
+  <data name="Contact_Addr" xml:space="preserve">
+    <value>Contact_Addr</value>
+  </data>
+  <data name="Factory_Addr" xml:space="preserve">
+    <value>Factory_Addr</value>
+  </data>
+  <data name="Comapny_desc" xml:space="preserve">
+    <value>Comapny_desc</value>
+  </data>
 </root>
