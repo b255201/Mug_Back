@@ -13,7 +13,7 @@ namespace Mug.Service.Job
 {
     public class EmailClient
     {
-        private const string SUBJECT = "百盛網站客戶-詢問通知";
+        private const string SUBJECT = "XX網站客戶-詢問通知";
         public  void  sendEmail(Contact _Contact)
         {
             try

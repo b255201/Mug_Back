@@ -53,7 +53,7 @@ namespace Mug_Front.Controllers
         public ActionResult GetImageFile(string fileName)
         {
             //return File("../../Image/Home/" + fileName, "image/png");
-            return File("C:/Users/Administrator/Desktop/MUG_Back/Mug/Mug/Image/Home/" + fileName, "image/png");
+            return File("C:/Mug/Image/Home/" + fileName, "image/png");
         }
 
     }
