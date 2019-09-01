@@ -70,7 +70,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Address 的當地語系化字串。
+        ///   查詢類似 Adderss 的當地語系化字串。
         /// </summary>
         public static string Address {
             get {
@@ -106,7 +106,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Contact_Addr 的當地語系化字串。
+        ///   查詢類似 2F., No. 55, Yongfu St., Wanhua Dist., Taipei City 108, Taiwan (R.O.C.) 的當地語系化字串。
         /// </summary>
         public static string Contact_Addr {
             get {
@@ -232,7 +232,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Factory_Addr 的當地語系化字串。
+        ///   查詢類似 Chao&apos;an, Chaozhou, GuangdongChina 的當地語系化字串。
         /// </summary>
         public static string Factory_Addr {
             get {
@@ -304,7 +304,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Other 的當地語系化字串。
+        ///   查詢類似 Decoration 的當地語系化字串。
         /// </summary>
         public static string Product_Other {
             get {
@@ -394,7 +394,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 SOUVENIRS 的當地語系化字串。
+        ///   查詢類似  的當地語系化字串。
         /// </summary>
         public static string Title {
             get {

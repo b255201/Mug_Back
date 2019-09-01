@@ -3,6 +3,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
+    <!-- Favicons -->
+    <link href="~/Content/logo.jpg" rel="icon">
+    <link href="~/Content/logo.jpg" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Mug.Common.Resources.Layout.Title</title>
     <link href="~/Content/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
@@ -40,13 +43,13 @@
     <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
         <div class="container">
             <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-                <div class="col-lg-2 pr-4 align-items-center">
+                <div class="col-lg-3 pr-4 align-items-center">
 
                     <a class="navbar-brand" href="@Url.Action("Index","Home")"> 
-                    <span class="icon-map" style="margin-right:10px"></span>@Mug.Common.Resources.Layout.Title
+                    <span><img style="width:120px;"  src="~/Content/logo.jpg"></span>
                     </a>
                 </div>
-                <div class="col-lg-10 d-none d-md-block">
+                <div class="col-lg-9 d-none d-md-block">
                     <div class="row d-flex">
                         <div class="col-md-3 pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
@@ -70,7 +73,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container d-flex align-items-center">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span>  @Mug.Common.Resources.Layout.Menu
+                <span class="oi oi-menu"></span>  @*@Mug.Common.Resources.Layout.Menu*@
             </button>
             @*<p class="button-custom order-lg-last mb-0"><a href="contact.html" class="btn btn-secondary py-2 px-3">Contact Us</a></p>*@
             <div class="collapse navbar-collapse" id="ftco-nav">

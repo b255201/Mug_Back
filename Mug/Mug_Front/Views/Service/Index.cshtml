@@ -26,10 +26,10 @@
             <div class="row">
                 <div class="col-md-12 nav-link-wrap">
                     <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link ftco-animate col-md-3 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">@Mug.Common.Resources.Layout.Product_Ceramics</a>
-                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">@Mug.Common.Resources.Layout.Product_Glass</a>
-                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">@Mug.Common.Resources.Layout.Product_Mug</a>
-                        <a class="nav-link ftco-animate col-md-3 " id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">@Mug.Common.Resources.Layout.Product_Other</a>
+                        <a class="nav-link ftco-animate col-md-4 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">@Mug.Common.Resources.Layout.Product_Ceramics</a>
+                        <a class="nav-link ftco-animate col-md-4 " id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">@Mug.Common.Resources.Layout.Product_Glass</a>
+                        <a class="nav-link ftco-animate col-md-4 " id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">@Mug.Common.Resources.Layout.Product_Mug</a>
+                        @*<a class="nav-link ftco-animate col-md-3 " id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">@Mug.Common.Resources.Layout.Product_Other</a>*@
                     </div>
                 </div>
 
@@ -48,7 +48,7 @@
                                             <div class="col-md-8">
                                                 <h2>@item.Title</h2>
                                                 @Html.Raw(item.Contents)
-                                                <div class="row mt-5 pt-2">
+                                                @*<div class="row mt-5 pt-2">
                                                     <div class="col-lg-6">
 
                                                         <div class="services-2 d-flex">
@@ -59,7 +59,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>*@
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                         </div>
                                     </div>
                                 }
-                                else if (item.Category_Opt == "馬克杯")
+                                else if (item.Category_Opt == "裝飾品")
                                 {
                                     <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-day-3-tab">
                                         <div class="row departments">
@@ -116,7 +116,7 @@
                                         </div>
                                     </div>
                                 }
-                                else if (item.Category_Opt == "其他")
+                                @*else if (item.Category_Opt == "其他")
                                 {
                                     <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-day-4-tab">
                                         <div class="row departments">
@@ -141,7 +141,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                }
+                                }*@
                             }
 
                         </div>

@@ -158,12 +158,7 @@
                 var message = data.Message;
                 if (data.Status == "0") {
                     alert('' + data.Message);
-                    if (lang == "1") {
-                       $("#AtricleBtn").attr("disabled", true);
-                    } else if (lang == "2")
-                    {
-                        $("#AtricleBtn_TW").attr("disabled", true);
-                    }
+                     $("#AtricleBtn_"+lang).attr("disabled", true);     
                 }
                 else if (data.Status == "1") {
                       unlockScreen();

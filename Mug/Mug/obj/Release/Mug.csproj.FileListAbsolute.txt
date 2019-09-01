@@ -92,3 +92,4 @@ C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug\obj\Release\Mug.csproj.CoreCompi
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug\obj\Release\Mug.csproj.CopyComplete
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug\obj\Release\Mug.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug\obj\Release\Mug.pdb
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug\bin\MailTemplate.html

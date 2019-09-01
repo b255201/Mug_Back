@@ -23,35 +23,42 @@ namespace Mug_Front.Controllers
         [HttpPost]
         public ActionResult Insert(FormCollection form,string Opt)
         {
-            var Cont = ContactService.GetAll().ToList();
-            var result = (from r in Cont
-                         select new Contact
-                          {
-                              Id = r.Id,
-                          }).OrderByDescending(x => x.Id); ;
-            int MaxId = 1;
-            if (result.Count() != 0)
+            try
             {
-                MaxId = int.Parse(result.First().Id.ToString());
-                MaxId = MaxId + 1;
+                var Cont = ContactService.GetAll().ToList();
+                var result = (from r in Cont
+                              select new Contact
+                              {
+                                  Id = r.Id,
+                              }).OrderByDescending(x => x.Id); ;
+                int MaxId = 1;
+                if (result.Count() != 0)
+                {
+                    MaxId = int.Parse(result.First().Id.ToString());
+                    MaxId = MaxId + 1;
+                }
+                Contact _Contact = new Contact();
+                _Contact.Id = MaxId;
+                _Contact.Name = form["Name"];
+                _Contact.Phone = form["Tel"];
+                _Contact.Service = form["Service"];
+                _Contact.Email = form["Email"];
+                _Contact.Memo = form["Memo"];
+                _Contact.CreateTime = DateTime.Now;
+                var Message = ContactService.Create(_Contact);
+                EmailClient email = new EmailClient();
+                 email.sendEmail(_Contact);
+           
+                if (Message.Success == true)
+                {
+                    return Json(new { Status = "0", Message = "成功" });
+                }
+                return Json(new { Status = "0", Message = "成功aaa" });
             }
-            Contact _Contact = new Contact();
-            _Contact.Id = MaxId;
-            _Contact.Name = form["Name"];
-            _Contact.Phone = form["Tel"];
-            _Contact.Service = form["Service"];
-            _Contact.Email = form["Email"];
-            _Contact.Memo = form["Memo"];
-            _Contact.CreateTime = DateTime.Now;
-            var Message = ContactService.Create(_Contact);
-            EmailClient email = new EmailClient();
-            email.sendEmail(_Contact);
-
-            if (Message.Success == true)
+            catch (Exception ex)
             {
-                return Json(new { Status = "0", Message = "成功" });
+                return Json(new { Status = "0", Message = ex.ToString() });
             }
-            return Json(new { Status = "0", Message = "成功" });
         }
     }
 }

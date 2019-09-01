@@ -11,3 +11,4 @@ C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Debug\Mug.Dao.dll.co
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Debug\Mug.Service.csprojAssemblyReference.cache
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Debug\Mug.Service.csproj.CoreCompileInputs.cache
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Debug\Mug.Service.csproj.CopyComplete
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Debug\MailTemplate.html

@@ -96,3 +96,4 @@ C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\zh-Hant\EntityFramewor
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\EntityFramework.SqlServer.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\EntityFramework.SqlServer.xml
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\MailTemplate.html

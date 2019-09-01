@@ -19,11 +19,11 @@ namespace Mug.Service.Job
             try
             {
                 //寄件人的帳密
-                GMailer.GmailUsername = "YourEmailAccount";
-                GMailer.GmailPassword = "YourEmailPassword";
+                GMailer.GmailUsername = "ZZZZ@gmail.com";
+                GMailer.GmailPassword = "OOOO";
                 GMailer mailer = new GMailer();
                 //這裡要改成收件者
-                mailer.ToEmail = "aaaa@gmail.com,bbbbb@yahoo.com.tw";
+                mailer.ToEmail = "ka@@@@@gmail.com,OOOO@yahoo.com.tw";
                 mailer.Subject = SUBJECT;
                 //寄信
                 string Time = _Contact.CreateTime?.ToString("yyyy-MM-dd HH:mm");
