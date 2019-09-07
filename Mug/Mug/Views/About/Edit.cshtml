@@ -41,7 +41,7 @@
         <div class="col-sm-3">
             
             <button type="button" class="btn btn-primary" onclick="onSave();">儲存</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='/About/Index'">回查詢頁</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='@Url.Action("Insert","About")'">回查詢頁</button>
         </div>
     </div>
     @Html.HiddenFor(c => c.Blog_id);
@@ -150,7 +150,7 @@
          fileData.append("Blog_id", $("#Blog_id").val());
            lockScreen();
            $.ajax({
-            url: '@Url.Action("Edit")',
+            url: '@Url.Action("Edit","About")',
             type: "POST",
             contentType: false,  // Not to set any content header
             processData: false,  // Not to process data

@@ -41,32 +41,66 @@
 
 <body>
     <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
+
+
         <div class="container">
             <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-                <div class="col-lg-3 pr-4 align-items-center">
-
-                    <a class="navbar-brand" href="@Url.Action("Index","Home")"> 
-                    <span><img style="width:120px;"  src="~/Content/logo.jpg"></span>
+                <div class="col-lg-2 pr-4 align-items-center">
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                        <span style="margin-left:0px"><img style="width:120px;" src="~/Content/logo.jpg"></span>
                     </a>
                 </div>
-                <div class="col-lg-9 d-none d-md-block">
+                <div class="col-lg-10 d-none d-md-block">
                     <div class="row d-flex">
-                        <div class="col-md-3 pr-4 d-flex topper align-items-center">
+                        <div class="col-md-4 pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Address: @Mug.Common.Resources.Layout.Contact_Addr</span>
+                            <span class="text">@Mug.Common.Resources.Layout.Contact_Addr</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Email: youremail@email.com</span>
+                            <span class="text">souvsouv@ms45.hinet.net</span>
                         </div>
                         <div class="col-md pr-4 d-flex topper align-items-center">
                             <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Tel: + phone number</span>
+                            <span class="text">+ 886-2-23120508</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+        @*<div class="container">
+            <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+                <div class="col-lg-4 pr-4 align-items-center">
+
+                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                        <span style="margin-left:0px"><img style="width:120px;" src="~/Content/logo.jpg">@Mug.Common.Resources.Layout.Title</span>
+                    </a>
+                </div>
+                <div class="col-lg-8 d-none d-md-block">
+                    <div class="row d-flex">
+                        <div class="col-md-1 pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
+                            <span class="text"></span>
+                        </div>
+                        <div class="col-md-5 pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                            <span class="text">souvsouv@ms45.hinet.net</span>
+                        </div>
+                        <div class="col-md-2 pr-4 d-flex topper align-items-center">
+
+                        </div>
+                        <div class="col-md-4 pr-4 d-flex topper align-items-center">
+                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                            <span class="text">@Mug.Common.Resources.Layout.Tel:886-2-23120508</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
     </nav>
 
 
@@ -120,16 +154,15 @@
             <div class="row mb-5">
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-5">
-                        <h2 class="ftco-heading-2 logo">@Mug.Common.Resources.Layout.Title.<span>@Mug.Common.Resources.Layout.Company</span></h2>
-                        <p>@Mug.Common.Resources.Layout.Comapny_desc</p>
+                        <h2 class="ftco-heading-2 logo">@Mug.Common.Resources.Layout.FooterCompany</h2>
                     </div>
                     <div class="ftco-footer-widget mb-5">
                         <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.Contact</h2>
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text"> @Mug.Common.Resources.Layout.Contact_Addr</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">phone number</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+886-2-23120508</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">souvsouv@ms45.hinet.net</span></a></li>
                             </ul>
                         </div>
 
@@ -137,16 +170,14 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text"> @Mug.Common.Resources.Layout.Factory_Addr</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">phone number</span></a></li>
-                                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
                             </ul>
                         </div>
 
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                        @*<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                             <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>
+                        </ul>*@
                     </div>
                 </div>
                 <div class="col-md">
@@ -176,7 +207,7 @@
 
                     <p>
                         Copyright &copy;
-                        <script>2019</script> All rights reserved Kai.
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                     </p>
                 </div>
             </div>

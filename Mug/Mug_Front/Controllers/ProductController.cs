@@ -69,7 +69,7 @@ namespace Mug_Front.Controllers
                     proNmae = "馬克杯";
                     break;
                 case "4":
-                    proNmae = "其他";
+                    proNmae = "裝飾品";
                     break;
                 default:
                     proNmae = "馬克杯";

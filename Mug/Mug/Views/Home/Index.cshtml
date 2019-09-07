@@ -22,17 +22,12 @@
 
 
 <div class="form-horizontal">
-    <div class="form-group" style="margin-top:10px">
-        <label class="col-sm-2 control-label">語言：</label>
-        <div class="col-sm-3">
-            @Html.DropDownList("Lang", (IEnumerable<SelectListItem>)ViewBag.SelectList, new { @class = "form-control" })
-        </div>
-    </div>
+
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-danger" onclick="onSearch();">查詢</button>
-            <button type="button" class="btn btn-primary" onclick="javascript:location.href='/Home/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+            <button type="button" class="btn btn-primary" onclick="javascript:location.href='@Url.Action("Insert", "Home")'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
         </div>
     </div>
 </div>
@@ -43,7 +38,6 @@
     <thead>
         <tr>
             <th style="width:10%" class="control-label ">序號</th>
-            <th style="width:10%" class="control-label ">標題</th>
             <th style="width:10%" class="control-label ">圖片</th>
             <th style="width:10%" class="control-label ">是否啟動</th>
             <th style="width:10%" class="control-label ">編輯</th>
@@ -82,7 +76,7 @@
                 "order": [[0, "asc"]],
                 "ajax": {
                     "type": "Post",
-                    "url": '@Url.Action("Search")',
+                    "url": '@Url.Action("Search","Home")',
                     "data": {
                         "Lang": $("#Lang").val(),
                     },
@@ -93,7 +87,6 @@
                 "sServerMethod": "post",
                 "columns": [
                     { "data": "Blog_id" },
-                    { "data": "Title" },
                     { "data": "Image" },
                     { "data": "Enable" },
                     { "data": "Blog_id" },
@@ -102,21 +95,21 @@
                 "createdRow": function (row, data, index) {
                     var $lnkcode = $("<img class='img - thumbnail thumb' style='width:50px; heigh:40px;' />");
                     $lnkcode.attr("src", "@Url.Action("GetImageFile", "Home")/?fileName=" +data.Image);
-                    $("td", row).eq(2).text("").append($lnkcode);
+                    $("td", row).eq(1).text("").append($lnkcode);
                     var $lnkcode = $("<button class='btn btn-success' ><i class='fa fa-pencil-square-o'></i></button>");
                     //啟用
                     if (data.Enable == true)
                     {
-                      $("td", row).eq(3).text("啟用").append($lnkcode);
+                      $("td", row).eq(2).text("啟用").append($lnkcode);
                     } else
                     {
-                      $("td", row).eq(3).text("未啟用").append($lnkcode);
+                      $("td", row).eq(2).text("未啟用").append($lnkcode);
                     }
                     $lnkcode.attr("onclick", "onEdit('" + data.Blog_id + "' )");
-                    $("td", row).eq(4).text("").append($lnkcode);
+                    $("td", row).eq(3).text("").append($lnkcode);
                     var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");
                     $lnkcode.attr("onclick", "onDelete('" + data.Blog_id + "' )");
-                    $("td", row).eq(5).text("").append($lnkcode);
+                    $("td", row).eq(4).text("").append($lnkcode);
                 },
                 "language": {
                     "info": "目前第 _START_ - _END_ 筆 ／ 共計 _TOTAL_ 筆",
@@ -134,7 +127,7 @@
             })
         };
         function onEdit(Id) {
-            var url = "/Home/Edit/" + Id;
+            var url = "@Url.Action("Edit", "Home")/" + Id;
             window.location.href = url;
         }
         function onDelete(Id)
@@ -144,7 +137,7 @@
             {
 
                 $.ajax({
-                    "url": '@Url.Action("Delete")',
+                    "url": '@Url.Action("Delete","Home")',
                     type: "POST",
                     data: {
                         "Id": Id,

@@ -1,3 +1,4 @@
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Release\MailTemplate.html
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Release\Mug.Service.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Release\Mug.Service.pdb
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Release\Mug.Dao.dll
@@ -11,4 +12,3 @@ C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Release\Mug.Service.
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Release\Mug.Service.csproj.CopyComplete
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Release\Mug.Service.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\obj\Release\Mug.Service.pdb
-C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug.Service\bin\Release\MailTemplate.html

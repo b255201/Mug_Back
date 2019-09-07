@@ -36,11 +36,5 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.flaticon-doctor:before { content: "\f100"; }
-.flaticon-stethoscope:before { content: "\f101"; }
-.flaticon-ambulance:before { content: "\f102"; }
+
 .flaticon-24-hours:before { content: "\f103"; }
-.flaticon-experiment-results:before { content: "\f104"; }
-.flaticon-heart-rate:before { content: "\f105"; }
-.flaticon-dropper:before { content: "\f106"; }
-.flaticon-first-aid-kit:before { content: "\f107"; }

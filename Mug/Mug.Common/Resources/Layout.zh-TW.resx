@@ -234,4 +234,7 @@
   <data name="Comapny_desc" xml:space="preserve">
     <value>公司描述</value>
   </data>
+  <data name="FooterCompany" xml:space="preserve">
+    <value>百盛有限公司</value>
+  </data>
 </root>

@@ -148,7 +148,7 @@
     <value>Product Inquiry</value>
   </data>
   <data name="Contact_opt3" xml:space="preserve">
-    <value>Stock</value>
+    <value>Delivery Order</value>
   </data>
   <data name="Contact_opt4" xml:space="preserve">
     <value>Else Service</value>
@@ -193,7 +193,7 @@
     <value>Decoration</value>
   </data>
   <data name="Require" xml:space="preserve">
-    <value>Require(未打)</value>
+    <value>Product Consultation</value>
   </data>
   <data name="Require_Description" xml:space="preserve">
     <value>Require_Description(未打)</value>
@@ -233,5 +233,8 @@
   </data>
   <data name="Comapny_desc" xml:space="preserve">
     <value>Comapny_desc</value>
+  </data>
+  <data name="FooterCompany" xml:space="preserve">
+    <value>Souvenirs Comapny.</value>
   </data>
 </root>

@@ -23,10 +23,10 @@
         <div class="col-sm-3">
             <select class="theinput form-control" name="Category_Opt" id="Category_Opt">
                 <option value="">請選擇分類</option>
-                <option value="馬克杯">馬克杯</option>
+                @*<option value="馬克杯">馬克杯</option>*@
                 <option value="陶瓷">陶瓷</option>
                 <option value="玻璃">玻璃</option>
-                <option value="其他">其他</option>
+                <option value="裝飾品">裝飾品</option>
             </select>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-3">
             <button type="button" id="Blogbtn" class="btn btn-primary" onclick="onSave();">儲存</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='/Service/Index'">回查詢頁</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='@Url.Action("Index", "Service")'">回查詢頁</button>
         </div>
     </div>
 </form>
@@ -124,7 +124,7 @@
             fileData.append("Category_Opt", Category_Opt);
             lockScreen();
            $.ajax({
-            url: '@Url.Action("Insert")',
+            url: '@Url.Action("Insert","Service")',
             type: "POST",
             contentType: false,  // Not to set any content header
             processData: false,  // Not to process data

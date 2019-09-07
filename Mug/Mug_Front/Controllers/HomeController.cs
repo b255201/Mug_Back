@@ -20,40 +20,34 @@ namespace Mug_Front.Controllers
             var articles = ArticleService.GetAll();
             //首頁大圖
             var result = from b in blog
-                          join a in articles
-                           on b.Blog_id equals a.Post_Id
-                          where b.Categore == "首頁大圖" || b.Categore== "合作廠商" || b.Categore== "產品頁"  
-                          orderby b.Blog_id
+                          where b.Categore == "首頁大圖" ||  b.Categore== "成品展覽"
+                         orderby b.Blog_id
                           select new ArticleViewModel
                           {
                               Blog_id = b.Blog_id,
-                              Title = a.Title,
                               Image = b.Image,
                               Enable = b.Enable,
-                              Categore=b.Categore,
-                              Sub_Title=a.Sub_Title,
-                              Contents=a.Contents,   
-                              Id=a.Id
+                              Categore=b.Categore, 
                           };
             result = result.Where(x => x.Enable == true);
-            HttpCookie cookie = Request.Cookies["_culture"];
-            if (cookie != null)
-            {
-                LanguageCommon LangUser = new LanguageCommon();
-                string LangKey=LangUser.GetUserLang(cookie.Value.ToString());
-                result = result.Where(x => x.Id == int.Parse(LangKey)).ToList();
-            }
-            else
-            {
-                result = result.Where(x => x.Id == 1).ToList();
-            }
-            return View(result);
+            //HttpCookie cookie = Request.Cookies["_culture"];
+            //if (cookie != null)
+            //{
+            //    LanguageCommon LangUser = new LanguageCommon();
+            //    string LangKey=LangUser.GetUserLang(cookie.Value.ToString());
+            //    result = result.Where(x => x.Id == int.Parse(LangKey)).ToList();
+            //}
+            //else
+            //{
+            //    result = result.Where(x => x.Id == 1).ToList();
+            //}
+            return View(result.ToList());
         }
 
         public ActionResult GetImageFile(string fileName)
         {
-            //return File("../../Image/Home/" + fileName, "image/png");
-            return File("C:/Mug/Image/Home/" + fileName, "image/png");
+           // return File("C:/Users/Administrator/Desktop/MUG_Back/Mug/Mug/Image/Home/" + fileName, "image/png");
+            return File("C:/Users/Back/Image/Home/" + fileName, "image/png");
         }
 
     }

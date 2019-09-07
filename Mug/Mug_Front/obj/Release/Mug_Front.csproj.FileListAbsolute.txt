@@ -1,3 +1,4 @@
+C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\MailTemplate.html
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\Mug_Front.dll.config
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\Mug_Front.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\Mug_Front.pdb
@@ -96,4 +97,3 @@ C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\obj\Release\Mug_Front.cspr
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\obj\Release\Mug_Front.csproj.CopyComplete
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\obj\Release\Mug_Front.dll
 C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\obj\Release\Mug_Front.pdb
-C:\Users\Administrator\Desktop\MUG_Back\Mug\Mug_Front\bin\MailTemplate.html

@@ -1,0 +1,114 @@
+﻿@using Mug.Dao;
+@model Blogger
+@{
+    ViewBag.Title = "修改-首頁(成品展覽)";
+}
+
+<h1 style="color:red">修改-首頁(成品展覽)</h1>
+<br />
+<br />
+<form id="frmSub" class="form-horizontal" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="file" class="col-sm-2 control-label">圖片</label>
+        <div class="col-sm-3">
+            @Html.EditorFor(c => c.Image, new { htmlAttributes = new { type = "file", name = "Image", @class = "form-control", onchange = "onfileChange();" } })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">預覽</label>
+        <div class="col-sm-3">
+            <a id="PreImgName">@ViewBag.Image</a>
+            <img id="preimg" class="img-thumbnail thumb imgthumb" src="@Url.Action("GetImageFile","Home",new { fileName= Model.Image })" />
+        </div>
+        <div class="col-sm-offset-2 col-sm-10" style="color:red">*請使用1500*1000.jpg圖片</div>
+    </div>
+    <div class="form-group">
+        <label for="file" class="col-sm-2 control-label">是否啟用</label>
+        <div class="col-sm-3">
+            @if (ViewBag.Enable == "True")
+            {
+                <input type="checkbox" id="Enable" name="Enable" checked />
+            }
+            else
+            {
+                <input type="checkbox" id="Enable" name="Enable" />
+            }
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" onclick="onSave();">儲存</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='@Url.Action("Index", "Exhabition")'">回查詢頁</button>
+        </div>
+    </div>
+    @Html.HiddenFor(c => c.Blog_id);
+    <input hidden type="text" id="OrgImgName" name="OrgImgName" value="@ViewBag.Image">
+</form>
+
+
+
+@section Scripts
+{
+    <script>
+        $(function () {
+
+        });
+        function onfileChange() {
+            var filename = $('#Image').val();
+            filename = filename.substring(filename.lastIndexOf('\\') + 1);
+            var input = document.getElementById("Image");
+            var fReader = new FileReader();
+            fReader.readAsDataURL(input.files[0]);
+            fReader.onloadend = function (event) {
+                var img = document.getElementById("preimg");
+                img.src = event.target.result;
+                $("#PreImgName").text(filename);
+            }
+        }
+
+
+     function onSave() {
+            if ($("#PreImgName").text() == "") {
+            alert("請上傳圖片");
+            return false;
+            }
+            var fileData = new FormData();
+            var file = $("#Image");//.get(0);
+            var isEmpty = true;
+            for (var i = 0; i < file.length; i++) {
+                if (file[i].files.length > 0) {
+                    fileData.append(file[i].files[0].name, file[i].files[0]);
+                    isEmpty = false;
+                }
+            }
+         fileData.append("Enable", $("#Enable").prop("checked"));
+         fileData.append("Blog_id", $("#Blog_id").val());
+           lockScreen();
+           $.ajax({
+            url: '@Url.Action("Edit")',
+            type: "POST",
+            contentType: false,  // Not to set any content header
+            processData: false,  // Not to process data
+            data: fileData,
+            success: function (data)
+            {
+                unlockScreen();
+                var message = data.Message;
+                if (data.Status == "0") {
+                    alert('' + data.Message);
+                }
+                else if (data.Status == "1") {
+                     unlockScreen();
+                    alert('' + data.Message);
+                }
+            },
+            error: function (err) {
+                unlockScreen();
+                alert(err.status);
+            }
+        });
+    }
+    </script>
+}

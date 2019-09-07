@@ -30,7 +30,7 @@
           <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
                   <button type="button" class="btn btn-danger" onclick="onSearch();">查詢</button>
-                  <button type="button" class="btn btn-primary" onclick="javascript:location.href='/About/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+                  <button type="button" class="btn btn-primary" onclick="javascript:location.href='@Url.Action("Insert","About")'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
               </div>
           </div>
       </div>
@@ -79,7 +79,7 @@
                 "order": [[0, "asc"]],
                 "ajax": {
                     "type": "Post",
-                    "url": '@Url.Action("Search")',
+                    "url": '@Url.Action("Search","About")',
                       "data": {
                         "Lang": $("#Lang").val()
                     },
@@ -131,7 +131,7 @@
             })
         };
         function onEdit(Id) {
-            var url = "/About/Edit/" + Id;
+            var url = '@Url.Action("Edit","About")/' + Id;
             window.location.href = url;
         }
         function onDelete(Id)
@@ -141,7 +141,7 @@
             {
 
                 $.ajax({
-                    "url": '@Url.Action("Delete")',
+                    "url": '@Url.Action("Delete","About")',
                     type: "POST",
                     data: {
                         "Id": Id,

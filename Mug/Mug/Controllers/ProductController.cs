@@ -80,25 +80,14 @@ namespace Mug.Controllers
                 Blogger _Blogger = new Blogger();
                 //get image file
                 HttpPostedFileBase Image = Request.Files[0];
+                ImageHelper imgHelper = new ImageHelper();
+                string Guid = imgHelper.GetGuid();
                 if (Image != null)
                 {
-                    //判斷圖片名稱是否重複
-                    var rptimg = (from Row in q
-                                  select new Blogger
-                                  {
-                                      Image = Row.Image
-                                  }).Where(x => x.Image == Image.FileName);
-                    if (rptimg != null)
-                    {
-                        if (rptimg.Count() != 0)
-                        {
-                            string ErrMeg = "已有圖片名稱：" + Image.FileName + "，請檢查";
-                            return Json(new { Status = "1", Message = ErrMeg });
-                        }
-                    }
-                    string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
+                    //判斷圖片名稱是否重複            
+                    string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Guid;
                     Image.SaveAs(strPath);
-                    _Blogger.Image = Image.FileName;
+                    _Blogger.Image = Guid;
                 }
                 //取號 服務頁
                 SqlCommand _GetSerialNumber = new SqlCommand();
@@ -245,26 +234,19 @@ namespace Mug.Controllers
             var q = BloggerService.GetAll().ToList();
             Blogger _Blogger = BloggerService.GetByID(int.Parse(form["Blog_id"]));
             _Blogger.Enable = Enable;
+            ImageHelper imgHelper = new ImageHelper();
             if (Image != null)
             {
-                //判斷圖片名稱是否重複
-                var rptimg = (from Row in q
-                              select new HomePage
-                              {
-                                  Image = Row.Image
-                              }).Where(x => x.Image == Image.FileName);
-                if (rptimg != null)
-                {
-                    if (rptimg.Count() != 0)
-                    {
-                        ViewBag.Image = _Blogger.Image.ToString();
-                        string ErrMeg = "已有圖片名稱：" + Image.FileName + "，請檢查";
-                        return Json(new { Status = "1", Message = ErrMeg });
-                    }
-                }
-                string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Image.FileName;
+                //先刪除原本的
+                string DelPath = string.Format("~/Image/Home/{0}", _Blogger.Image);
+                var fullPath = Request.MapPath(DelPath);
+                System.IO.File.Delete(fullPath);
+
+                //再新增
+                string Guid = imgHelper.GetGuid();
+                string strPath = Request.PhysicalApplicationPath + @"Image\Home\" + Guid;
                 Image.SaveAs(strPath);
-                _Blogger.Image = Image.FileName;
+                _Blogger.Image = Guid;
             }
             //更新種類 Category_Opt
             _Blogger.Category_Opt = Category_Opt;

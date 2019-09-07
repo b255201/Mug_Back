@@ -61,73 +61,19 @@
 
 
 
-
-
-@*<section class="ftco-services ftco-no-pb">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-md-3 d-flex services align-self-stretch p-4 ftco-animate">
-                    <div class="media block-6 d-block text-center">
-                         <div class="icon d-flex justify-content-center align-items-center">
-                         <span class="flaticon-doctor"></span>
-                    </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Step 1.</h3>
-                            <p>@Mug.Common.Resources.Layout.Step1</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch p-4 ftco-animate">
-                    <div class="media block-6 d-block text-center">
-                         <div class="icon d-flex justify-content-center align-items-center">
-                             <span class="flaticon-ambulance"></span>
-                    </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Step 2.</h3>
-                            <p>@Mug.Common.Resources.Layout.Step2</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch p-4 ftco-animate">
-                    <div class="media block-6 d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="flaticon-stethoscope"></span>
-                    </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Step 3.</h3>
-                            <p>@Mug.Common.Resources.Layout.Step3</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex services align-self-stretch p-4 ftco-animate">
-                    <div class="media block-6 d-block text-center">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                          <span class="flaticon-24-hours"></span>
-                    </div>
-                        <div class="media-body p-2 mt-3">
-                            <h3 class="heading">Step 4.</h3>
-                            <p>@Mug.Common.Resources.Layout.Step4</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>*@
-
-
 <section class="ftco-section ftco-no-pt">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
             <div class="col-md-8 text-center heading-section ftco-animate">
                 <h2 class="mb-4" style="padding-top: 50px">@Mug.Common.Resources.Layout.Exhibition</h2>
-                <p>@Mug.Common.Resources.Layout.Exhibition_Description</p>
+                @*<p>@Mug.Common.Resources.Layout.Exhibition_Description</p>*@
             </div>
         </div>
         <div class="row">
             <div id="owl-demo" class="owl-carousel ">
                 @foreach (var item in Model)
                 {
-                    if (item.Categore == "產品頁")
+                    if (item.Categore == "成品展覽")
                     {
                         <div><img src="@Url.Action("GetImageFile", "Home", new { fileName = @item.Image})" /></div>
                     }
@@ -140,35 +86,43 @@
 
 
 
-<section class="ftco-section contact-section" style="background-color:#fafafa !important">
+<section class="ftco-section contact-section ftco-services" style="background-color:#fafafa !important">
     <div class="container">
-
-        <div class="row d-flex mb-5 contact-info">
-            <div class="col-md-12 mb-4">
-                <h2 class="h4">@Mug.Common.Resources.Layout.Factory</h2>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-3 d-flex">
-                <div class="bg-light d-flex align-self-stretch box p-4">
-                    <p><span>@Mug.Common.Resources.Layout.Address:</span> @Mug.Common.Resources.Layout.Factory_Addr</p>
+     
+        <div class="row no-gutters">
+            <div class="col-md-4 d-flex services align-self-stretch p-4 ftco-animate">
+                <div class="media block-6 d-block text-center">
+                    <span><img src="~/images/people.png"></span>
+             
+                    <div class="media-body p-2 mt-3">
+                        <h3 class="heading">@Mug.Common.Resources.Layout.Step1</h3>
+                        <p>Even the all-powerful Pointing has no control about .</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex">
-                <div class="bg-light d-flex align-self-stretch box p-4">
-                    <p><span>@Mug.Common.Resources.Layout.Tel:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            <div class="col-md-4 d-flex services align-self-stretch p-4 ftco-animate">
+                <div class="media block-6 d-block text-center">
+                    <span><img src="~/images/hourglass.png"></span>
+               
+                    <div class="media-body p-2 mt-3">
+                        <h3 class="heading">@Mug.Common.Resources.Layout.Step2</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex">
-                <div class="bg-light d-flex align-self-stretch box p-4">
-                    <p><span>@Mug.Common.Resources.Layout.Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex">
-                <div class="bg-light d-flex align-self-stretch box p-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=" frameborder="0" style="border:0;width:100%" allowfullscreen></iframe>
+            <div class="col-md-4 d-flex services align-self-stretch p-4 ftco-animate">
+                <div class="media block-6 d-block text-center">
+                    <span><img src="~/images/sea-ship-with-containers.png"></span>
+       
+                    <div class="media-body p-2 mt-3">
+                        <h3 class="heading">@Mug.Common.Resources.Layout.Step3</h3>
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
 
     </div>
 </section>
@@ -181,7 +135,7 @@
             <div class="col-md-6 py-5 pr-md-5">
                 <div class="heading-section heading-section-white ftco-animate mb-5">
                     <h2 class="mb-4">@Mug.Common.Resources.Layout.Require</h2>
-                    <p>@Mug.Common.Resources.Layout.Require_Description</p>
+                    @*<p>@Mug.Common.Resources.Layout.Require_Description</p>*@
                 </div>
                 <form id="FrmId" class="appointment-form ftco-animate">
                     <div class="d-md-flex">
@@ -198,10 +152,10 @@
                                 <div class="select-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                     <select name="Service" id="Service" class="form-control" style="background-color:black">
-                                        <option style="background-color:cornflowerblue" value="Select">@Mug.Common.Resources.Layout.Contact_opt1</option>
-                                        <option style="background-color:cornflowerblue" value="Neurology">@Mug.Common.Resources.Layout.Contact_opt2</option>
-                                        <option style="background-color:cornflowerblue" value="Cardiology">@Mug.Common.Resources.Layout.Contact_opt3</option>
-                                        <option style="background-color:cornflowerblue" value="Cardiology">@Mug.Common.Resources.Layout.Contact_opt4</option>
+                                        <option style="background-color:cornflowerblue" value="訂單詢問">@Mug.Common.Resources.Layout.Contact_opt1</option>
+                                        <option style="background-color:cornflowerblue" value="產品諮詢">@Mug.Common.Resources.Layout.Contact_opt2</option>
+                                        <option style="background-color:cornflowerblue" value="如何出貨">@Mug.Common.Resources.Layout.Contact_opt3</option>
+                                        <option style="background-color:cornflowerblue" value="其他服務">@Mug.Common.Resources.Layout.Contact_opt4</option>
                                     </select>
                                 </div>
                             </div>
@@ -236,7 +190,7 @@
                         <div class="block-18 p-5 bg-light">
                             <div class="text" style="text-align:left">
                                 <span>@Mug.Common.Resources.Layout.Tel:</span>
-                                <span><a href="tel://123455">+886 0234678891</a>:</span>
+                                <span><a>+886 0234678891</a>:</span>
 
                             </div>
                         </div>
@@ -245,7 +199,7 @@
                         <div class="block-18 p-5 bg-light">
                             <div class="text" style="text-align:left">
                                 <span>@Mug.Common.Resources.Layout.Email:</span>
-                                <span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></span>
+                                <span> <a>souvsouv@ms45.hinet.net</a></span>
                             </div>
                         </div>
                     </div>
@@ -253,7 +207,7 @@
                         <div class="block-18  bg-light">
                             <div class="" style="text-align:left">
 
-                                <span>  <iframe src="https://www.google.com/maps/embed?pb=" frameborder="0" style="border:0;width:100%" allowfullscreen></iframe></span>
+                                <span>  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.870551467612!2d121.50200371462286!3d25.038466744267147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9a7b9d66047%3A0x5f707ae923af7357!2zMTA45Y-w5YyX5biC6JCs6I-v5Y2A5rC456aP6KGXNTXomZ8y!5e0!3m2!1szh-TW!2stw!4v1567321541677!5m2!1szh-TW!2stw" frameborder="0" style="border:0;width:100%" allowfullscreen></iframe></span>
                             </div>
                         </div>
                     </div>
@@ -292,23 +246,6 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="VideoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <!-- 16:9 aspect ratio -->
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/q8lBv5agXzI" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

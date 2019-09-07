@@ -169,7 +169,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Stock 的當地語系化字串。
+        ///   查詢類似 Delivery Order 的當地語系化字串。
         /// </summary>
         public static string Contact_opt3 {
             get {
@@ -237,6 +237,15 @@ namespace Mug.Common.Resources {
         public static string Factory_Addr {
             get {
                 return ResourceManager.GetString("Factory_Addr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Souvenirs Comapny. 的當地語系化字串。
+        /// </summary>
+        public static string FooterCompany {
+            get {
+                return ResourceManager.GetString("FooterCompany", resourceCulture);
             }
         }
         
@@ -313,7 +322,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Require(未打) 的當地語系化字串。
+        ///   查詢類似 Product Consultation 的當地語系化字串。
         /// </summary>
         public static string Require {
             get {

@@ -43,7 +43,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-3">
             <button type="button"  class="btn btn-primary" onclick="onSave();">儲存</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='/Employee/Index'">回查詢頁</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="javascript:location.href='@Url.Action("Index","Employee")'">回查詢頁</button>
         </div>
     </div>
 
@@ -62,7 +62,7 @@
     {
         lockScreen();
           $.ajax({
-                url: '@Url.Action("Insert")',
+                url: '@Url.Action("Insert","Employee")',
                 type: "POST",
                 data: {
                     "Name": $("#Name").val(),
@@ -75,7 +75,7 @@
                     if (data.Status == "0") {
                         ///跳至新增
                         alert("新增成功");                     
-                        window.open( '@Url.Action("Index")', "_self");
+                        window.open('@Url.Action("Index","Employee")', "_self");
                     }
                     else if (data.Status == "1") {
                          unlockScreen();

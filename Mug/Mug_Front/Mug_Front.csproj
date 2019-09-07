@@ -165,29 +165,6 @@
     <Content Include="Content\fonts\open-iconic\open-iconic.svg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="images\about.jpg" />
-    <Content Include="images\bg_1.jpg" />
-    <Content Include="images\bg_2.jpg" />
-    <Content Include="images\bg_3.jpg" />
-    <Content Include="images\dept-1.jpg" />
-    <Content Include="images\dept-2.jpg" />
-    <Content Include="images\dept-3.jpg" />
-    <Content Include="images\dept-4.jpg" />
-    <Content Include="images\dept-5.jpg" />
-    <Content Include="images\doc-1.jpg" />
-    <Content Include="images\doc-2.jpg" />
-    <Content Include="images\doc-3.jpg" />
-    <Content Include="images\doc-4.jpg" />
-    <Content Include="images\doc-5.jpg" />
-    <Content Include="images\doc-6.jpg" />
-    <Content Include="images\doc-7.jpg" />
-    <Content Include="images\doc-8.jpg" />
-    <Content Include="images\image_1.jpg" />
-    <Content Include="images\image_2.jpg" />
-    <Content Include="images\image_3.jpg" />
-    <Content Include="images\image_4.jpg" />
-    <Content Include="images\image_5.jpg" />
-    <Content Include="images\image_6.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\.DS_Store" />
@@ -262,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

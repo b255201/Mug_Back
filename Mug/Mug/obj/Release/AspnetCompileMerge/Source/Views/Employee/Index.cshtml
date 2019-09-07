@@ -16,8 +16,9 @@
         員工查詢
     </h1>
 </div>
-<br /><br />
-<button type="button" class="btn btn-primary" onclick="javascript:location.href='/Employee/Insert'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
+<br />
+<br />
+<button type="button" class="btn btn-primary" onclick="javascript:location.href='@Url.Action("Insert", "Employee")'"><i class="fa fa-plus-square" aria-hidden="true">&nbsp;&nbsp;新增</i></button>
 <!--顯示資料-->
 <table id="main" class="display" cellspacing="0" style="width:100%">
     <thead>
@@ -57,7 +58,7 @@
                 "order": [[0, "asc"]],
                 "ajax": {
                     "type": "Post",
-                    "url": '@Url.Action("Search")',
+                    "url": '@Url.Action("Search","Employee")',
                     "error": function (msg) {
                         alert(msg);
                     }
@@ -67,7 +68,7 @@
                     { "data": "Name" },
                     { "data": "Account" },
                     { "data": "Account" }
-                  
+
                 ],
                 "createdRow": function (row, data, index) {
                     var $lnkcode = $("<button class='btn btn-danger' ><i class='fa fa-trash'></i></button>");
@@ -97,7 +98,7 @@
             {
                  lockScreen();
                 $.ajax({
-                    "url": '@Url.Action("Delete")',
+                    "url": '@Url.Action("Delete","Employee")',
                     type: "POST",
                     data: {
                         "Account": Account,
@@ -107,7 +108,7 @@
                         if (data.Status == "0")
                         {
                             alert('' + data.StatusDesc);
-                            var url ='@Url.Action("Index")';
+                            var url ='@Url.Action("Index","Employee")';
                             window.open(url, "_self");
                         } else {
                             var message = data.StatusDesc;

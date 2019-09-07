@@ -139,6 +139,7 @@
     <Compile Include="Controllers\ArticlePartialController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\ExhabitionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelper\ImageHelper.cs" />
     <Compile Include="HtmlHelper\LinqTable.cs" />
     <Compile Include="Models\ArticelViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -11554,6 +11556,9 @@
     <Content Include="Views\Employee\Insert.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Exhabition\Insert.cshtml" />
+    <Content Include="Views\Exhabition\Index.cshtml" />
+    <Content Include="Views\Exhabition\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
