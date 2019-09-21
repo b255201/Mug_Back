@@ -10,6 +10,7 @@ using Mug.Service.UI;
 using Mug.Models;
 using Mug.HtmlHelper;
 using Mug.Attribute;
+using System.Data.Entity;
 
 namespace Mug.Controllers
 {
@@ -20,6 +21,7 @@ namespace Mug.Controllers
         private ILanguageService LanguageService = new LanguageService();
         private IArticleService ArticleService = new ArticleService();
 
+        DbContext db = new DbContext("MugFactoryEntities");
         // GET: About
         public ActionResult Index()
         {
@@ -70,6 +72,7 @@ namespace Mug.Controllers
         {
             try
             {
+             
                 bool Enable = true;
                 if (form["Enable"] != "true")
                 {
@@ -107,7 +110,10 @@ namespace Mug.Controllers
                 _Blogger.Enable = Enable;
                 _Blogger.CreateTime = DateTime.Now;
                 _Blogger.Categore = "關於頁";
-                var Message = BloggerService.Create(_Blogger);
+
+                //新增到temp
+                db.Set<Blogger>().Add(_Blogger);
+
                 //順便把articel 也新增
                 var art = ArticleService.GetAll().ToList();
                 var result = (from r in art
@@ -132,24 +138,14 @@ namespace Mug.Controllers
                     _Article.Contents = "";
                     _Article.Article_ID = MaxId;
                     _Article.Id = int.Parse(i.Id.ToString());
-                    var articleMsg = ArticleService.Create(_Article);
-                    if (articleMsg.Success == true)
-                    {
-                        MaxId = MaxId + 1;
-                    }
-                    else
-                    {
-                        return Json(new { Status = "1", Message = "請洽程式管理人員，在一開始連文章順便新增有錯" + Message.Exception.ToString() });
-                    }
+                    //新增到temp
+                    db.Set<Article>().Add(_Article);
+                    //序號加一
+                    MaxId = MaxId + 1;
                 }
-                if (Message.Success == true)
-                {
-                    return Json(new { Status = "0", Message = "新增成功，編號是：" + Blog_id, SeqID = Blog_id });
-                }
-                else
-                {
-                    return Json(new { Status = "1", Message = "請洽程式管理人員" + Message.Exception.ToString() });
-                }
+                //做交易
+                db.SaveChanges();
+                return Json(new { Status = "0", Message = "新增成功，編號是：" + Blog_id, SeqID = Blog_id });
             }
             catch (Exception err)
             {
@@ -165,23 +161,26 @@ namespace Mug.Controllers
         {
             try
             {
-                //先刪文章
                 SqlCommand _GetSerialNumber = new SqlCommand();
-                string ArtMeg = _GetSerialNumber.DeleteAllArticle(Id);
-                if (ArtMeg != "0")
-                {
-                    return Json(new { Status = "1", StatusDesc = "文章刪除失敗請洽管理員" });
-                }
-
                 Blogger _Blogger = BloggerService.GetByID(int.Parse(Id));
+                //取得文章跟blog 資料
+                string message = _GetSerialNumber.TranGetArticleBlog(Id);   
                 if (!String.IsNullOrEmpty(_Blogger.Image))
                 {
                     string strPath = string.Format("~/Image/Home/{0}", _Blogger.Image);
                     var fullPath = Request.MapPath(strPath);
                     System.IO.File.Delete(fullPath);
                 }
-                BloggerService.Delete(int.Parse(Id));
-                return Json(new { Status = "0", StatusDesc = "刪除成功" });
+                //刪除到temp
+                if (message == "0")
+                {
+                    return Json(new { Status = "0", StatusDesc = "刪除成功" });
+                }
+                else
+                {
+                    return Json(new { Status = "1", StatusDesc = "刪除失敗,請洽管理人員" + message });
+                }
+           
             }
             catch (Exception err)
             {
@@ -240,7 +239,7 @@ namespace Mug.Controllers
             if (Enable == true)
             {
                 var checkEnacle = q;
-                if (checkEnacle.Where(i => i.Enable == true && i.Categore == "關於頁").Count() > 0)
+                if (checkEnacle.Where(i => i.Enable == true && i.Categore == "關於頁" &&i.Blog_id != int.Parse(form["Blog_id"])).Count() > 0)
                 {
                     string ErrMeg = "請先回查詢頁,把啟用狀態取消在修改";
                     return Json(new { Status = "1", Message = ErrMeg });

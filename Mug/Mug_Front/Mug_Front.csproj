@@ -138,6 +138,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\DaoHelper.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="LanguageCommon.cs" />
     <Compile Include="Models\ArticelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -220,6 +223,14 @@
     <Content Include="Scripts\js\range.js" />
     <Content Include="Scripts\js\scrollax.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="template\animate.min.css" />
+    <Content Include="template\easyResponsiveTabs.js" />
+    <Content Include="template\main.js" />
+    <Content Include="template\owl.carousel.css" />
+    <Content Include="template\owl.carousel.min.js" />
+    <Content Include="template\style.css" />
+    <Content Include="template\venobox.css" />
+    <Content Include="template\venobox.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

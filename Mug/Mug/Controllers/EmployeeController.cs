@@ -93,11 +93,13 @@ namespace Mug.Controllers
                 return Json(new { Status = "1", Message = "密碼驗證錯誤，請檢查" });
             }
 
-            var q = EmployeePageService.GetAll();
+            var q = EmployeePageService.GetAll().OrderByDescending(x => x.EmpId); 
+      
+
             var MaxId = 0;
             if (q.Count() != 0)
             {
-                MaxId = int.Parse(q.First().EmpId.ToString());
+                MaxId = int.Parse(q.FirstOrDefault().EmpId.ToString());
             }
             int i = MaxId + 1;
 
@@ -116,7 +118,8 @@ namespace Mug.Controllers
             e.Password = result.HashedPwd;
             e.Salt = result.Salt;
             e.CreateTime = DateTime.Now;
-            EmployeePageService.Create(e);
+           var chkInsert= EmployeePageService.Create(e);
+     
             return Json(new { Status = "0" });
         }
         public static PwdSaltPair HashPassword(string strPwd, int saltsize = 20)

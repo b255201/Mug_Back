@@ -205,13 +205,13 @@
     <value>Service_Description(未打)</value>
   </data>
   <data name="Step1" xml:space="preserve">
-    <value>Step1(未打)</value>
+    <value>Experience Evaluation</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>Step2(未打)</value>
+    <value>Third Party Inspection</value>
   </data>
   <data name="Step3" xml:space="preserve">
-    <value>Step3(未打)</value>
+    <value>High Quality</value>
   </data>
   <data name="Step4" xml:space="preserve">
     <value>Step4(未打)</value>
@@ -236,5 +236,14 @@
   </data>
   <data name="FooterCompany" xml:space="preserve">
     <value>Souvenirs Comapny.</value>
+  </data>
+  <data name="Step1Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Step2Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Step3Text" xml:space="preserve">
+    <value />
   </data>
 </root>

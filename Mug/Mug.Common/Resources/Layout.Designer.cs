@@ -358,7 +358,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Step1(未打) 的當地語系化字串。
+        ///   查詢類似 Experience Evaluation 的當地語系化字串。
         /// </summary>
         public static string Step1 {
             get {
@@ -367,7 +367,16 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Step2(未打) 的當地語系化字串。
+        ///   查詢類似  的當地語系化字串。
+        /// </summary>
+        public static string Step1Text {
+            get {
+                return ResourceManager.GetString("Step1Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Third Party Inspection 的當地語系化字串。
         /// </summary>
         public static string Step2 {
             get {
@@ -376,11 +385,29 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Step3(未打) 的當地語系化字串。
+        ///   查詢類似  的當地語系化字串。
+        /// </summary>
+        public static string Step2Text {
+            get {
+                return ResourceManager.GetString("Step2Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 High Quality 的當地語系化字串。
         /// </summary>
         public static string Step3 {
             get {
                 return ResourceManager.GetString("Step3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似  的當地語系化字串。
+        /// </summary>
+        public static string Step3Text {
+            get {
+                return ResourceManager.GetString("Step3Text", resourceCulture);
             }
         }
         

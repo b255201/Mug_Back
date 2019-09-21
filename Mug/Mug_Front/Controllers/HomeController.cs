@@ -1,5 +1,6 @@
 ﻿using Mug.Service;
 using Mug.Service.Interface;
+using Mug_Front.Helper;
 using Mug_Front.Models;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,17 @@ namespace Mug_Front.Controllers
         private IBloggerService BloggerService = new BloggerService();
         private ILanguageService LanguageService = new LanguageService();
         private IArticleService ArticleService = new ArticleService();
+
         public ActionResult Index()
         {
-            var  blog = BloggerService.GetAll();
-            var articles = ArticleService.GetAll();
+
             //首頁大圖
-            var result = from b in blog
-                          where b.Categore == "首頁大圖" ||  b.Categore== "成品展覽"
-                         orderby b.Blog_id
-                          select new ArticleViewModel
-                          {
-                              Blog_id = b.Blog_id,
-                              Image = b.Image,
-                              Enable = b.Enable,
-                              Categore=b.Categore, 
-                          };
-            result = result.Where(x => x.Enable == true);
+            DaoHelper helper = new DaoHelper();
+            var result = helper.GetHome();
+            result= result.Where(x => x.Categore == "首頁大圖" || x.Categore == "成品展覽").ToList();
+
+
+            //result = result.Where(x => x.Enable == true);
             //HttpCookie cookie = Request.Cookies["_culture"];
             //if (cookie != null)
             //{
