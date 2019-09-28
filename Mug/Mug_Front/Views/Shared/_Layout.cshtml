@@ -8,6 +8,8 @@
     <link href="~/Content/logo1.jpg" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Mug.Common.Resources.Layout.Title</title>
+    <meta property="og:title" content="@Mug.Common.Resources.Layout.Title" />
+    <meta name="keywords" content="百盛,馬克杯,陶瓷,玻璃,代工,客製化,souvenirs,mug" />
     <link href="~/Content/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/flaticon.css" rel="stylesheet" />
     <link href="~/Content/css/icomoon.css" rel="stylesheet" />
@@ -19,6 +21,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        
+        body {
+             -moz-user-select: none;
+             -webkit-user-select: none;
+        }
+
         .nav-item > a {
             font-weight: 300 !important;
             font-size: 20px !important;
@@ -36,75 +44,71 @@
             background-color: #2f89fc !important;
             color: white !important;
         }
+
+        .logoC {
+            width: 150px;
+        }
+
+        .logobar {
+            padding-bottom: 1rem !important;
+            padding-top: 1rem !important;
+        }
+
+        @@media screen and (max-width: 900px) {
+            .logoC {
+                width: 90px;
+            }
+
+            .logobar {
+                padding-bottom: 10px !important;
+                padding-top: 10px !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row" style="background-color:#2f89fc !important">
+    <nav class="navbar logobar navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
 
 
         <div class="container">
-            <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0" >
-                <div class="col-lg-2 pr-4 align-items-center">
-                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                        <span style="margin-left:0px"><img style="width:120px" src="~/Content/logo1.jpg"></span>
-                        @*<span style="text-align:right;color:white !important" class="logotxt" >@Mug.Common.Resources.Layout.FooterCompany</span>*@
-                    </a>
-
-                </div>
-
-
-                <div class="col-lg-10 d-none d-md-block">
-                    <div class="row d-flex">
-                        <div class="col-md-4 pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                            <span class="text" style="color:white !important">@Mug.Common.Resources.Layout.Contact_Addr</span>
-                        </div>
-                        <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                            <span class="text" style="color:white !important">souvsouv@ms45.hinet.net</span>
-                        </div>
-                        <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                            <span class="text" style="color:white !important">+ 886-2-23120508</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a style="text-align:center !important ;margin:0 auto !important" class="navbar-brand" href="@Url.Action("Index","Home")">
+                <span style="margin-left:0px"><img class="logoC" src="~/Content/logo1.jpg"></span>
+            </a>
         </div>
 
 
 
 
         @*<div class="container">
-            <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-                <div class="col-lg-4 pr-4 align-items-center">
+                <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
+                    <div class="col-lg-4 pr-4 align-items-center">
 
-                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                        <span style="margin-left:0px"><img style="width:120px;" src="~/Content/logo.jpg">@Mug.Common.Resources.Layout.Title</span>
-                    </a>
-                </div>
-                <div class="col-lg-8 d-none d-md-block">
-                    <div class="row d-flex">
-                        <div class="col-md-1 pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                            <span class="text"></span>
-                        </div>
-                        <div class="col-md-5 pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                            <span class="text">souvsouv@ms45.hinet.net</span>
-                        </div>
-                        <div class="col-md-2 pr-4 d-flex topper align-items-center">
+                        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                            <span style="margin-left:0px"><img style="width:120px;" src="~/Content/logo.jpg">@Mug.Common.Resources.Layout.Title</span>
+                        </a>
+                    </div>
+                    <div class="col-lg-8 d-none d-md-block">
+                        <div class="row d-flex">
+                            <div class="col-md-1 pr-4 d-flex topper align-items-center">
+                                <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
+                                <span class="text"></span>
+                            </div>
+                            <div class="col-md-5 pr-4 d-flex topper align-items-center">
+                                <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+                                <span class="text">souvsouv@ms45.hinet.net</span>
+                            </div>
+                            <div class="col-md-2 pr-4 d-flex topper align-items-center">
 
-                        </div>
-                        <div class="col-md-4 pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Tel:886-2-23120508</span>
+                            </div>
+                            <div class="col-md-4 pr-4 d-flex topper align-items-center">
+                                <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+                                <span class="text">@Mug.Common.Resources.Layout.Tel:886-2-23120508</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
     </nav>
 
 
@@ -135,7 +139,7 @@
                 <ul class="nav navbar-nav ">
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" id="LanguageMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-globe" ></i> @Mug.Common.Resources.Layout.Language
+                            <i class="fa fa-globe"></i> @Mug.Common.Resources.Layout.Language
                         </a>
                         <div class="dropdown-menu childsubitem" aria-labelledby="LanguageMenuLink">
                             <a class="dropdown-item" href="@Url.Action("SetCulture","Language",new { culture = "", retrnUrl = this.Request.RawUrl})"><span class="flag-icon flag-icon-us"> </span>  English</a>
@@ -165,7 +169,7 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text"> @Mug.Common.Resources.Layout.Contact_Addr</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+886-2-23120508</span></a></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+886-2-23140125</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text">souvsouv@ms45.hinet.net</span></a></li>
                             </ul>
                         </div>
@@ -178,15 +182,15 @@
                         </div>
 
                         @*<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                        </ul>*@
+                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                            </ul>*@
                     </div>
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-5 ml-md-4">
-                        <h2 class="ftco-heading-2">Links</h2>
+                        <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.link</h2>
                         <ul class="list-unstyled">
                             <li><a href="@Url.Action("Index","Home")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Home</a></li>
                             <li><a href="@Url.Action("Index","About")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.About</a></li>
@@ -200,7 +204,7 @@
                             <li><a href="@Url.Action("Index","Product",new {ProId="1" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Ceramics</a></li>
                             <li><a href="@Url.Action("Index","Product",new {ProId="2" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Glass</a></li>
                             <li><a href="@Url.Action("Index","Product",new {ProId="3" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Mug</a></li>
-                            <li><a  href="@Url.Action("Index","Product",new {ProId="4" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Other</a></li>
+                            <li><a href="@Url.Action("Index","Product",new {ProId="4" })"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Product_Other</a></li>
                         </ul>
                     </div>
                 </div>
@@ -223,5 +227,10 @@
     @Scripts.Render("~/bundles/js")
 
 
+
 </body>
+
 </html>
+
+
+

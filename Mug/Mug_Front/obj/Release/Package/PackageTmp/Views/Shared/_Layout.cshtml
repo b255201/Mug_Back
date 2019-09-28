@@ -4,10 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <!-- Favicons -->
-    <link href="~/Content/logo.jpg" rel="icon">
-    <link href="~/Content/logo.jpg" rel="apple-touch-icon">
+    <link href="~/Content/logo1.jpg" rel="icon">
+    <link href="~/Content/logo1.jpg" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Mug.Common.Resources.Layout.Title</title>
+    <meta property="og:title" content="@Mug.Common.Resources.Layout.Title" />
+    <meta name="keywords" content="百盛,馬克杯,陶瓷,玻璃,代工,客製化,souvenirs,mug" />
     <link href="~/Content/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/flaticon.css" rel="stylesheet" />
     <link href="~/Content/css/icomoon.css" rel="stylesheet" />
@@ -36,37 +38,35 @@
             background-color: #2f89fc !important;
             color: white !important;
         }
+
+        .logoC {
+               width:150px;
+            }
+
+        .logobar{
+            padding-bottom: 1rem !important;
+             padding-top: 1rem !important;
+        }
+        @@media screen and (max-width: 900px) {
+            .logoC {
+                 width:90px;
+            }
+             .logobar{
+            padding-bottom: 10px !important;
+             padding-top: 10px !important;
+        }
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
+    <nav class="navbar logobar navbar-expand-lg ftco_navbar navbar-light bg-light flex-row" >
 
 
-        <div class="container">
-            <div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-                <div class="col-lg-2 pr-4 align-items-center">
-                    <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                        <span style="margin-left:0px"><img style="width:120px;" src="~/Content/logo.jpg"></span>
-                    </a>
-                </div>
-                <div class="col-lg-10 d-none d-md-block">
-                    <div class="row d-flex">
-                        <div class="col-md-4 pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-                            <span class="text">@Mug.Common.Resources.Layout.Contact_Addr</span>
-                        </div>
-                        <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-                            <span class="text">souvsouv@ms45.hinet.net</span>
-                        </div>
-                        <div class="col-md pr-4 d-flex topper align-items-center">
-                            <div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                            <span class="text">+ 886-2-23120508</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="container" >
+            <a style="text-align:center !important ;margin:0 auto !important" class="navbar-brand" href="@Url.Action("Index","Home")">
+                <span style="margin-left:0px"><img class="logoC" src="~/Content/logo1.jpg"></span>
+            </a>
         </div>
 
 
@@ -161,7 +161,7 @@
                         <div class="block-23 mb-3">
                             <ul>
                                 <li><span class="icon icon-map-marker"></span><span class="text"> @Mug.Common.Resources.Layout.Contact_Addr</span></li>
-                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+886-2-23120508</span></a></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+886-2-23140125</span></a></li>
                                 <li><a href="#"><span class="icon icon-envelope"></span><span class="text">souvsouv@ms45.hinet.net</span></a></li>
                             </ul>
                         </div>
@@ -182,7 +182,7 @@
                 </div>
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-5 ml-md-4">
-                        <h2 class="ftco-heading-2">Links</h2>
+                        <h2 class="ftco-heading-2">@Mug.Common.Resources.Layout.link</h2>
                         <ul class="list-unstyled">
                             <li><a href="@Url.Action("Index","Home")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.Home</a></li>
                             <li><a href="@Url.Action("Index","About")"><span class="ion-ios-arrow-round-forward mr-2"></span>@Mug.Common.Resources.Layout.About</a></li>

@@ -246,4 +246,7 @@
   <data name="Step3Text" xml:space="preserve">
     <value />
   </data>
+  <data name="link" xml:space="preserve">
+    <value>連結</value>
+  </data>
 </root>

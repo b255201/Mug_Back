@@ -268,6 +268,15 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Links 的當地語系化字串。
+        /// </summary>
+        public static string link {
+            get {
+                return ResourceManager.GetString("link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Menu 的當地語系化字串。
         /// </summary>
         public static string Menu {
@@ -430,7 +439,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似  的當地語系化字串。
+        ///   查詢類似 souvenirs 的當地語系化字串。
         /// </summary>
         public static string Title {
             get {
