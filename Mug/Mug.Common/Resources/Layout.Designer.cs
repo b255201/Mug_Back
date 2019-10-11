@@ -241,7 +241,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Souvenirs Comapny. 的當地語系化字串。
+        ///   查詢類似 Souvenirs Company. 的當地語系化字串。
         /// </summary>
         public static string FooterCompany {
             get {
@@ -322,7 +322,7 @@ namespace Mug.Common.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 Decoration 的當地語系化字串。
+        ///   查詢類似 Decoration&amp;Other 的當地語系化字串。
         /// </summary>
         public static string Product_Other {
             get {

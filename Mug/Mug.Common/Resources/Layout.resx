@@ -190,7 +190,7 @@
     <value>Mug</value>
   </data>
   <data name="Product_Other" xml:space="preserve">
-    <value>Decoration</value>
+    <value>Decoration&amp;Other</value>
   </data>
   <data name="Require" xml:space="preserve">
     <value>Product Consultation</value>
@@ -235,7 +235,7 @@
     <value>Comapny_desc</value>
   </data>
   <data name="FooterCompany" xml:space="preserve">
-    <value>Souvenirs Comapny.</value>
+    <value>Souvenirs Company.</value>
   </data>
   <data name="Step1Text" xml:space="preserve">
     <value />

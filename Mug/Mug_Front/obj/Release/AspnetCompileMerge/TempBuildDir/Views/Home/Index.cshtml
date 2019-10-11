@@ -40,22 +40,26 @@
             color: #fff;
             opacity: 1;
         }
+  
         @@media screen and (min-width: 900px) 
         {
             .relizeImg {
             width: 60%; 
             } 
             .logotxt {
-    display:none !important;
-}
+            display:none !important;
+            }
+             
+      
         }
         @@media screen and (max-width: 900px){
-    .class{
+        .class{
         width: 100%; 
-    }
-    .relizeImg {
-            width: 100%; 
-            } 
+        }
+        .relizeImg {
+        width: 100%; 
+        } 
+           
 }
    
     </style>
@@ -208,7 +212,7 @@
                 {
                     if (item.Categore == "成品展覽")
                     {
-                        <div><img src="@Url.Action("GetImageFile", "Home", new { fileName = @item.Image})" /></div>
+                        <div class="exdiv" ><img src="@Url.Action("GetImageFile", "Home", new { fileName = @item.Image})" /></div>
                     }
                 }
             </div>
@@ -378,10 +382,39 @@
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/lock.js"></script>
     <script>
+
+        function iEsc(){ return false; }
+        function iRec(){ return true; }
+        function DisableKeys() {
+        if(event.ctrlKey || event.shiftKey || event.altKey) {
+        window.event.returnValue=false;
+        iEsc();}
+        }
+        document.ondragstart=iEsc;
+        document.onkeydown=DisableKeys;
+        document.oncontextmenu=iEsc;
+        if (typeof document.onselectstart !="undefined")
+        document.onselectstart=iEsc;
+        else{
+        document.onmousedown=iEsc;
+        document.onmouseup=iRec;
+        }
+        function DisableRightClick(qsyzDOTnet){
+        if (window.Event){
+        if (qsyzDOTnet.which == 2 || qsyzDOTnet.which == 3)
+        iEsc();}
+        else
+        if (event.button == 2 || event.button == 3){
+        event.cancelBubble = true
+        event.returnValue = false;
+        iEsc();}
+        }
+
             $(document).ready(function () {
 
                 $("#owl-demo").owlCarousel({
-                    navigation: true
+                    navigation: true,
+                    items:2
                 });
                     $("body").on("click", "#SendBtn", Send);
             });
